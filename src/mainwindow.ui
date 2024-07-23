@@ -7,23 +7,23 @@
     <x>0</x>
     <y>0</y>
     <width>350</width>
-    <height>475</height>
+    <height>505</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>350</width>
-    <height>475</height>
+    <height>505</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>350</width>
-    <height>475</height>
+    <height>505</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>dsda-launcher</string>
+   <string>nyan-launcher</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -36,7 +36,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>420</y>
+      <y>440</y>
       <width>81</width>
       <height>32</height>
      </rect>
@@ -61,7 +61,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>357</y>
+      <y>372</y>
       <width>291</width>
       <height>51</height>
      </rect>
@@ -385,9 +385,9 @@ border-radius:3px</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>335</y>
+      <y>345</y>
       <width>311</width>
-      <height>81</height>
+      <height>86</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -397,7 +397,7 @@ border-radius:3px</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>5</y>
+       <y>6</y>
        <width>171</width>
        <height>16</height>
       </rect>
@@ -412,10 +412,10 @@ border-radius:3px</string>
     <widget class="QPushButton" name="additionalArguments_pushButton">
      <property name="geometry">
       <rect>
-       <x>155</x>
-       <y>4</y>
-       <width>16</width>
-       <height>16</height>
+       <x>175</x>
+       <y>5</y>
+       <width>20</width>
+       <height>19</height>
       </rect>
      </property>
      <property name="text">
@@ -426,9 +426,9 @@ border-radius:3px</string>
    <widget class="QPushButton" name="console_pushButton">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>420</y>
-      <width>71</width>
+      <x>20</x>
+      <y>440</y>
+      <width>81</width>
       <height>32</height>
      </rect>
     </property>
@@ -453,7 +453,7 @@ border-radius:3px</string>
       <x>20</x>
       <y>170</y>
       <width>311</width>
-      <height>155</height>
+      <height>165</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -478,7 +478,7 @@ border-radius:3px</string>
         <x>0</x>
         <y>0</y>
         <width>307</width>
-        <height>121</height>
+        <height>131</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -498,7 +498,7 @@ border-radius:3px</string>
          <string>&gt;</string>
         </property>
        </widget>
-       <widget class="QCheckBox" name="toggle4_checkBox">
+       <widget class="QCheckBox" name="solonet_checkBox">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -508,10 +508,10 @@ border-radius:3px</string>
          </rect>
         </property>
         <property name="text">
-         <string>Toggle 4</string>
+         <string>Solo Net</string>
         </property>
        </widget>
-       <widget class="QCheckBox" name="toggle3_checkBox">
+       <widget class="QCheckBox" name="respawn_checkBox">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -524,14 +524,14 @@ border-radius:3px</string>
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>Toggle 3</string>
+         <string>Respawn Monsters</string>
         </property>
        </widget>
        <widget class="QCheckBox" name="fullscreen_checkBox">
         <property name="geometry">
          <rect>
           <x>170</x>
-          <y>97</y>
+          <y>102</y>
           <width>111</width>
           <height>20</height>
          </rect>
@@ -540,7 +540,7 @@ border-radius:3px</string>
          <string>Fullscreen</string>
         </property>
        </widget>
-       <widget class="QCheckBox" name="toggle2_checkBox">
+       <widget class="QCheckBox" name="nomo_checkBox">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -553,10 +553,13 @@ border-radius:3px</string>
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>Toggle 2</string>
+         <string>No Monsters</string>
         </property>
        </widget>
        <widget class="QLabel" name="resolution_label">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>30</x>
@@ -567,14 +570,14 @@ border-radius:3px</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <pointsize>9</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Resolution&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>Resolution</string>
         </property>
        </widget>
-       <widget class="QCheckBox" name="toggle1_checkBox">
+       <widget class="QCheckBox" name="fast_checkBox">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -587,7 +590,7 @@ border-radius:3px</string>
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>Toggle 1</string>
+         <string>Fast Monsters</string>
         </property>
         <property name="checked">
          <bool>false</bool>
@@ -597,10 +600,13 @@ border-radius:3px</string>
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>95</y>
+          <y>100</y>
           <width>131</width>
           <height>24</height>
          </rect>
+        </property>
+        <property name="statusTip">
+         <string/>
         </property>
         <property name="styleSheet">
          <string notr="true"/>
@@ -608,8 +614,17 @@ border-radius:3px</string>
         <property name="editable">
          <bool>false</bool>
         </property>
+        <property name="currentText">
+         <string/>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
         <property name="maxCount">
          <number>30</number>
+        </property>
+        <property name="placeholderText">
+         <string/>
         </property>
         <item>
          <property name="text">
@@ -617,12 +632,12 @@ border-radius:3px</string>
          </property>
         </item>
        </widget>
-       <zorder>toggle4_checkBox</zorder>
-       <zorder>toggle3_checkBox</zorder>
+       <zorder>solonet_checkBox</zorder>
+       <zorder>respawn_checkBox</zorder>
        <zorder>fullscreen_checkBox</zorder>
-       <zorder>toggle2_checkBox</zorder>
+       <zorder>nomo_checkBox</zorder>
        <zorder>resolution_label</zorder>
-       <zorder>toggle1_checkBox</zorder>
+       <zorder>fast_checkBox</zorder>
        <zorder>resolution_comboBox</zorder>
        <zorder>nextPage_pushButton</zorder>
       </widget>
@@ -708,7 +723,7 @@ background-color:rgb(255, 255, 255);
 border-radius:3px</string>
         </property>
         <property name="placeholderText">
-         <string>dsda-doom.cfg</string>
+         <string>nyan-doom.cfg</string>
         </property>
         <property name="clearButtonEnabled">
          <bool>true</bool>
@@ -887,7 +902,7 @@ border-radius:3px</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QToolButton" name="addPwads_toolButton">
+     <widget class="QToolButton" name="addWads_toolButton">
       <property name="geometry">
        <rect>
         <x>274</x>
@@ -998,9 +1013,9 @@ border-radius:3px</string>
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>15</y>
+        <y>17</y>
         <width>61</width>
-        <height>32</height>
+        <height>26</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1017,9 +1032,9 @@ border-radius:3px</string>
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>58</y>
+        <y>60</y>
         <width>61</width>
-        <height>32</height>
+        <height>26</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1088,9 +1103,9 @@ border-radius:3px</string>
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>90</y>
+        <y>92</y>
         <width>61</width>
-        <height>32</height>
+        <height>26</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1104,12 +1119,257 @@ border-radius:3px</string>
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="dsdaTab">
+     <attribute name="title">
+      <string>DSDA</string>
+     </attribute>
+     <widget class="QComboBox" name="dsda_comboBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>131</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>UV Speed</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>UV Max</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>UV Fast</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>UV Respawn</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NM Speed</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NM 100S</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Tyson</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Pacifist</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Stroller</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NoMo</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NoMo 100S</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Collector</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="wadDSDA_label">
+      <property name="geometry">
+       <rect>
+        <x>24</x>
+        <y>45</y>
+        <width>60</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Wad:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="levelDSDA_label">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>71</y>
+        <width>60</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Level:</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="widget_2" native="true">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>5</y>
+        <width>1</width>
+        <height>110</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(100, 100, 100);</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="demoTime">
+      <property name="geometry">
+       <rect>
+        <x>165</x>
+        <y>10</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Time: </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="demoPlayer">
+      <property name="geometry">
+       <rect>
+        <x>165</x>
+        <y>30</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="demoPort">
+      <property name="geometry">
+       <rect>
+        <x>165</x>
+        <y>60</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="wadDSDA_lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>45</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid rgb(160, 160, 160);
+padding-left: 3px;
+color: #000;
+height: 20px;
+background-color:rgb(255, 255, 255);
+border-radius:3px</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="showLeaderboard_toolButton">
+      <property name="geometry">
+       <rect>
+        <x>178</x>
+        <y>98</y>
+        <width>100</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::TabFocus</enum>
+      </property>
+      <property name="text">
+       <string>Leaderboard</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="reloadLeaderboard_toolButton">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>98</y>
+        <width>61</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::TabFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Reload</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="levelDSDA_lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>70</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>ExMx
+Mapxx
+D2All
+Epx</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid rgb(160, 160, 160);
+padding-left: 3px;
+color: #000;
+height: 20px;
+background-color:rgb(255, 255, 255);
+border-radius:3px</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
    <widget class="QPushButton" name="showCommandLine_pushButton">
     <property name="geometry">
      <rect>
       <x>225</x>
-      <y>425</y>
+      <y>445</y>
       <width>20</width>
       <height>20</height>
      </rect>
@@ -1129,12 +1389,18 @@ border-radius:3px</string>
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>201</width>
-      <height>101</height>
+      <width>221</width>
+      <height>131</height>
      </rect>
     </property>
     <property name="font">
      <font/>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::DefaultContextMenu</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
     <property name="styleSheet">
      <string notr="true">border: 1px solid rgb(160, 160, 160);
@@ -1144,6 +1410,12 @@ height: 20px;
 background-color:rgb(255, 255, 255);
 border-radius:3px;</string>
     </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="autoFormatting">
+     <set>QTextEdit::AutoNone</set>
+    </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1151,128 +1423,13 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Don't see any IWAD?     ^&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Go to the settings and add the folder you have your IWADs in, to the &lt;/span&gt;&lt;span style=&quot; font-size:9pt; font-weight:700;&quot;&gt;IWAD Folders&lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt; list.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Then restart the Launcher&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.AppleSystemUIFont';&quot;&gt;Don't see any IWAD?     ^&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.AppleSystemUIFont';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.AppleSystemUIFont';&quot;&gt;Go to the settings and add the folder you have your IWADs in, to the &lt;/span&gt;&lt;span style=&quot; font-family:'.AppleSystemUIFont'; font-weight:700;&quot;&gt;IWAD Folders&lt;/span&gt;&lt;span style=&quot; font-family:'.AppleSystemUIFont';&quot;&gt; list.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.AppleSystemUIFont';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.AppleSystemUIFont';&quot;&gt;Then restart the Launcher&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>415</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <property name="spacing">
-      <number>5</number>
-     </property>
-     <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
-     </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>2</number>
-     </property>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="playingDemo_indicator">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel{border-radius:10px; background-color: rgb(123,218,136); color: rgb(250, 250, 250)}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="recordingDemo_indicator">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel{border-radius:10px; background-color: rgb(191,44,42); color: rgb(250, 250, 250)}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="wadsSelected_indicator">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel{border-radius:7px; background-color: rgb(58,96,206); color: rgb(250, 250, 250)}</string>
-       </property>
-       <property name="text">
-        <string>0</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
    </widget>
    <zorder>additionalArguments_groupBox</zorder>
    <zorder>main_groupBox</zorder>
@@ -1292,7 +1449,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
    <zorder>tabs</zorder>
    <zorder>showCommandLine_pushButton</zorder>
    <zorder>tooltip_textBrowser</zorder>
-   <zorder>horizontalLayoutWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -1300,48 +1456,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <x>0</x>
      <y>0</y>
      <width>350</width>
-     <height>24</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuState">
     <property name="title">
      <string>State</string>
     </property>
-    <addaction name="actionSaveState"/>
-    <addaction name="actionLoadState"/>
-    <addaction name="actionWhatIsThisState"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionLoad"/>
+    <addaction name="actionWhat_is_this"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
-     <string>About</string>
+     <string>Launcher</string>
     </property>
-    <addaction name="actionOpenSettings"/>
-    <addaction name="actionCheckForUpdatesDsdalauncher"/>
-    <addaction name="actionGithubDsdalauncher"/>
+    <addaction name="actionSet"/>
+    <addaction name="actionCheck_for_updates"/>
+    <addaction name="actionGithub"/>
     <addaction name="actionTips"/>
    </widget>
-   <widget class="QMenu" name="menudsda_doom">
+   <widget class="QMenu" name="menunyan_doom">
     <property name="title">
-     <string>dsda-doom</string>
+     <string>Nyan-Doom</string>
     </property>
-    <addaction name="actionCheckForUpdatesDsdadoom"/>
-    <addaction name="actionGithubDsdadoom"/>
+    <addaction name="actionCheck_for_Updates"/>
+    <addaction name="actionGithub_2"/>
    </widget>
    <widget class="QMenu" name="menuAdvanced">
     <property name="title">
      <string>Advanced</string>
     </property>
-    <addaction name="actionOpenIWADsFolder"/>
-    <addaction name="actionOpenConsole"/>
-    <addaction name="actionOpenHistory"/>
-    <addaction name="actionExportCommand"/>
+    <addaction name="actionOpen_IWAD_folder"/>
+    <addaction name="actionOpen_Console"/>
+    <addaction name="actionHistory"/>
+    <addaction name="actionCommand"/>
    </widget>
    <addaction name="menuAbout"/>
-   <addaction name="menudsda_doom"/>
+   <addaction name="menunyan_doom"/>
    <addaction name="menuAdvanced"/>
    <addaction name="menuState"/>
   </widget>
-  <action name="actionSaveState">
+  <action name="actionSave">
    <property name="text">
     <string>Save</string>
    </property>
@@ -1349,7 +1505,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <string>Ctrl+S</string>
    </property>
   </action>
-  <action name="actionLoadState">
+  <action name="actionLoad">
    <property name="text">
     <string>Load</string>
    </property>
@@ -1362,12 +1518,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <string>Version</string>
    </property>
   </action>
-  <action name="actionGithubDsdalauncher">
+  <action name="actionGithub">
    <property name="text">
     <string>Github</string>
    </property>
   </action>
-  <action name="actionCheckForUpdatesDsdalauncher">
+  <action name="actionCheck_for_updates">
    <property name="text">
     <string>Check for Updates</string>
    </property>
@@ -1377,32 +1533,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <string>Settings</string>
    </property>
   </action>
-  <action name="actionOpenSettings">
+  <action name="actionSet">
    <property name="text">
     <string>Settings</string>
    </property>
   </action>
   <action name="actionTips">
    <property name="text">
-    <string>Tips</string>
+    <string>Help</string>
    </property>
   </action>
-  <action name="actionWhatIsThisState">
+  <action name="actionWhat_is_this">
    <property name="text">
     <string>What is this?</string>
    </property>
   </action>
-  <action name="actionCheckForUpdatesDsdadoom">
+  <action name="actionCheck_for_Updates">
    <property name="text">
     <string>Check for Updates</string>
    </property>
   </action>
-  <action name="actionGithubDsdadoom">
+  <action name="actionGithub_2">
    <property name="text">
     <string>Github</string>
    </property>
   </action>
-  <action name="actionOpenIWADsFolder">
+  <action name="actionOpen_IWAD_folder">
    <property name="text">
     <string>Open IWAD folder</string>
    </property>
@@ -1420,7 +1576,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <string>.sh file</string>
    </property>
   </action>
-  <action name="actionExportCommand">
+  <action name="actionCommand">
    <property name="text">
     <string>Export Command</string>
    </property>
@@ -1428,7 +1584,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <string>Ctrl+E</string>
    </property>
   </action>
-  <action name="actionOpenConsole">
+  <action name="actionOpen_Console">
    <property name="text">
     <string>Open Console</string>
    </property>
@@ -1436,7 +1592,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <string>Ctrl+T</string>
    </property>
   </action>
-  <action name="actionOpenHistory">
+  <action name="actionHistory">
    <property name="text">
     <string>History</string>
    </property>

@@ -53,13 +53,13 @@ jobs:
           make.exe clean
           tree /F
           mkdir lib
-          windeployqt.exe release\dsda-launcher.exe
+          windeployqt.exe release\nyan-launcher.exe
           Compress-Archive -path .\release\* -destination .\windows.zip
           dir
       - uses: actions/upload-artifact@v2
         with:
           name: windows
-          path: dsda-launcher\build\windows.zip
+          path: src\build\windows.zip
   build-linux:
     runs-on: ubuntu-latest
     steps:
@@ -86,11 +86,11 @@ jobs:
           # make clean
           # wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
           # chmod a+x linuxdeployqt-continuous-x86_64.AppImage
-          # ./linuxdeployqt-continuous-x86_64.AppImage ./dsda-launcher -unsupported-allow-new-glibc
+          # ./linuxdeployqt-continuous-x86_64.AppImage ./nyan-launcher -unsupported-allow-new-glibc
       - uses: actions/upload-artifact@v3
         with:
           name: linux
-          path: dsda-launcher/build
+          path: src/build
           
   build-macos:
     runs-on: macos-latest
@@ -115,11 +115,11 @@ jobs:
           make
           make clean
           ls
-          macdeployqt ./dsda-launcher.app
+          macdeployqt ./nyan-launcher.app
       - uses: actions/upload-artifact@v3
         with:
           name: mac
-          path: dsda-launcher/build
+          path: src/build
     
 
 

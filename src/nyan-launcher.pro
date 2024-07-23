@@ -2,7 +2,7 @@ QT       += core gui network concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-DEFINES += "APP_NAME=dsda-launcher"
+DEFINES += "APP_NAME=nyan-launcher"
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -12,31 +12,20 @@ SOURCES += \
     console.cpp \
     demodialog.cpp \
     endoom.cpp \
-    funcs.cpp \
     historylist.cpp \
     main.cpp \
     mainwindow.cpp \
-    mainwindow_actions.cpp \
-    mainwindow_bottom.cpp \
-    mainwindow_demos.cpp \
-    mainwindow_options.cpp \
-    mainwindow_top.cpp \
-    mainwindow_wads.cpp \
     settings.cpp \
-    states.cpp \
-    theme.cpp
+    states.cpp
 
 HEADERS += \
     console.h \
-    constants.h \
     demodialog.h \
     endoom.h \
-    funcs.h \
     historylist.h \
     mainwindow.h \
     settings.h \
-    states.h \
-    theme.h
+    states.h
 
 FORMS += \
     console.ui \
@@ -46,17 +35,17 @@ FORMS += \
     settings.ui
 
 win32 {
-    CONFIG += c++11
-    RC_ICONS = icons/dsda-launcher.ico
+    CONFIG += static
+    RC_ICONS = icons/nyan-launcher.ico
     QMAKE_LFLAGS += -static-libgcc -static-libstdc++ -static
 }
 
 mac {
     CONFIG += c++11 appbundle
-    ICON = icons/dsda-launcher.icns
+    ICON = icons/nyan-launcher.icns
     !noport {
-        APP_FILES.files = ./dsda-doom
-        APP_FILES.files += ./dsda-doom.wad
+        APP_FILES.files = ./nyan-doom
+        APP_FILES.files += ./nyan-doom.wad
     }
     deploy {
         QMAKE_APPLE_DEVICE_ARCHS=arm64 x86_64

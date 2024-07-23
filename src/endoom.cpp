@@ -22,6 +22,16 @@ endoom::~endoom()
     delete ui;
 }
 
+void endoom::changeText(QString s)
+{
+    ui->endoom_textEdit->append(s);
+}
+
+void endoom::clearText()
+{
+    ui->endoom_textEdit->setPlainText("");
+}
+
 
 void endoom::fooo3() // CTRL+W runs this function close the active window
 {
@@ -29,12 +39,10 @@ void endoom::fooo3() // CTRL+W runs this function close the active window
     currentWindow->close();
 }
 
-void endoom::showEndoom(QString consoleOutput)
+void endoom::showEndoom(QString qs)
 {
-    ui->endoom_textEdit->setText("");
-
     QRegularExpression regex("\033");
-    QStringList qsl = consoleOutput.split(regex);
+    QStringList qsl = qs.split(regex);
 
     QString ret;
 
@@ -65,7 +73,6 @@ void endoom::showEndoom(QString consoleOutput)
             col = 0;
         }
     }
-
     ui->endoom_textEdit->append(ret);
 }
 

@@ -11,8 +11,8 @@ Console::Console(QWidget *parent) :
     // Qt::CTRL is the CTRL key for Windows/Linux and is the CMD key for MacOS
 
     // Closes the active window
-    QShortcut * ctrlwShortcut = new QShortcut(QKeySequence(Qt::Key_W | Qt::CTRL),this,SLOT(ctrlw()));
-    ctrlwShortcut->setAutoRepeat(false);
+    QShortcut * shortcut3 = new QShortcut(QKeySequence(Qt::Key_W | Qt::CTRL),this,SLOT(fooo3()));
+    shortcut3->setAutoRepeat(false);
 
     ui->console_textEdit->setReadOnly(true);
 }
@@ -22,7 +22,10 @@ Console::~Console()
     delete ui;
 }
 
-void Console::appendText(QString s) { ui->console_textEdit->append(s); }
+void Console::changeText(QString s)
+{
+    ui->console_textEdit->append(s);
+}
 
 void Console::clearText()
 {
@@ -30,7 +33,7 @@ void Console::clearText()
 }
 
 
-void Console::ctrlw() // CTRL+W runs this function close the active window
+void Console::fooo3() // CTRL+W runs this function close the active window
 {
     QWidget *currentWindow = QApplication::activeWindow();
     currentWindow->close();

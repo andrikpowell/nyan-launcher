@@ -1,4 +1,4 @@
-# Intructions for compiling dsda-launcher for Linux
+# Intructions for compiling nyan-launcher for Linux
 
 Tested with Ubuntu LTS 20.04
 
@@ -72,4 +72,4 @@ make
 There you go!
 You can now use the launcher.
 
-Note: if you built **dsda-doom's** binaries but didn't install it with 'make install' (a.k.a it doesn't exist in /usr/local/bin) you will have to symlink/copy it to the build folder.
+Note: if you built **nyan-doom's** binaries but didn't install it with 'make install' (a.k.a it doesn't exist in /usr/local/bin) you will have to symlink/copy it to the build folder.

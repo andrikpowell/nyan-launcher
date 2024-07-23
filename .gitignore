@@ -30,12 +30,16 @@
 *.exe
 *.out
 *.app
+src/.DS_Store
+src/nyan-launcher.pro.user
 .DS_Store
-src/dsda-doom
+src/nyan-doom
+build-nyan-launcher-Desktop_Qt_6_1_1_clang_64bit-Debug
 .vscode
+.vs
 src/build
 src/.DS_Store
-src/dsda-doom.wad
+src/.DS_Store
+src/nyan-doom.wad
 
-build*/
-src/dsda-launcher.pro.user
+build-nyan-launcher-Qt_6_2_2_for_macOS-Debug/

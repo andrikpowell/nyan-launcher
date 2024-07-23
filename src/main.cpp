@@ -1,12 +1,13 @@
 #include "mainwindow.h"
-#include <QApplication>
-#include <QDebug>
 #include <QFile>
-#include <QMessageBox>
-#include <QSettings>
-#include <QSplashScreen>
+#include <QApplication>
 #include <QStyleFactory>
+#include <QSplashScreen>
 #include <QTimer>
+#include <QDebug>
+#include <QSettings>
+#include <QMessageBox>
+#include <QDebug>
 
 extern QSettings *settings;
 
@@ -15,20 +16,20 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     // Settings to be stored
-#if defined Q_OS_WIN
-    settings = new QSettings(QCoreApplication::applicationDirPath() + "/dsda-launcher.ini", QSettings::IniFormat);
+#ifdef _WIN32
+    settings = new QSettings(QCoreApplication::applicationDirPath() + "/nyan-launcher.ini", QSettings::IniFormat);
 
     // Check for previous registry settings and copy it to the new one if needed
     if (settings->value("version").toString()=="")
     {
-        QSettings prev_reg_settings("pedrobeirao", "dsda-launcher");
+        QSettings prev_reg_settings("andrikpowell", "nyan-launcher");
         Q_FOREACH(QString key, prev_reg_settings.allKeys())
         {
             settings->setValue(key, prev_reg_settings.value(key));
         }
     }
 #else
-    settings = new QSettings("pedrobeirao", "dsda-launcher");
+    settings = new QSettings("andrikpowell", "nyan-launcher");
 #endif
 
     MainWindow w;
@@ -38,8 +39,8 @@ int main(int argc, char *argv[])
     if(settings->value("version").toString()!=version)
     {
         QMessageBox msgBox;
-        msgBox.setWindowTitle("dsda-launcher " + version);
-        msgBox.setText("It is recommended that you use dsda-doom v0.26 or later");
+        msgBox.setWindowTitle("nyan-launcher " + version);
+        //msgBox.setText("It is recommended that you use nyan-doom v1.1.6 or later");
         msgBox.setInformativeText(
                     "Here are a few tips you should know:\n"
                     "\n"

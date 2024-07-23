@@ -46,11 +46,13 @@ public:
     ~endoom();
 
 public slots:
-  void fooo3();
-  void showEndoom(QString consoleOutput);
+    void fooo3();
+    void changeText(QString s);
+    void clearText();
+    void showEndoom(QString qs);
 
 private slots:
-  void on_endoom_textEdit_textChanged();
+    void on_endoom_textEdit_textChanged();
 
 private:
     Ui::endoom *ui;

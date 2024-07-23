@@ -1,4 +1,4 @@
-# Intructions for compiling dsda-launcher for MacOS
+# Intructions for compiling nyan-launcher for MacOS
 
 Tested with a M1 MacBookPro running MacOS 11.3 (Big Sur)
 
@@ -36,7 +36,7 @@ ___
 
 2. Extract it & open the folder
  
-3. Put the **dsda-doom** executable and **dsda-doom.wad** (not included in this repo) inside the dsda-launcher folder
+3. Put the **nyan-doom** executable and **nyan-doom.wad** (not included in this repo) inside the nyan-launcher folder
 
       ^^^ Very important
 
@@ -45,7 +45,7 @@ ___
 mkdir build & cd build
 ```
 
-Your dsda-launcher folder should look like this: 
+Your nyan-launcher folder should look like this: 
 
 ![Screenshot 2021-07-07 at 10 22 17](https://user-images.githubusercontent.com/82064173/124734657-40395480-df0d-11eb-81c1-fd19231c5035.jpg)
 
@@ -75,5 +75,5 @@ macdeployqt is a tool to copy the required libraries into the .app
 
 It comes installed with Qt. Its in the same folder as qmake
 ```
-macdeployqt /path/to/dsda-launcher.app
+macdeployqt /path/to/nyan-launcher.app
 ```

@@ -1,23 +1,20 @@
 #ifndef STATES_H
 #define STATES_H
 
-#include <QCheckBox>
-#include <QLineEdit>
 #include <QObject>
-#include <QTextStream>
+#include <QLineEdit>
+#include <QCheckBox>
 
 class states : public QObject
 {
     Q_OBJECT
-  public:
+public:
     explicit states(QObject *parent = nullptr);
-    static void loadStateFromFile(QString filePath);
-    static void loadStateFromString(QString string);
-    static void saveStateToFile(QString filePath);
-    static void loadStateOld(QTextStream &stream);
-    static void loadStateNew(QTextStream &stream);
+    static void LoadState(QString fileName, bool isString);
+    static void SaveState(QString fileName);
 
-  signals:
+signals:
+
 };
 
 #endif // STATES_H

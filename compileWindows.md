@@ -1,4 +1,4 @@
-# Intructions for compiling dsda-launcher for Windows
+# Intructions for compiling nyan-launcher for Windows
 
 
 ___
@@ -44,7 +44,7 @@ If you installed Qt with the online installer, careful with qmake not being in t
 ```
 make
 ```
-Make sure that this launcher is in the same folder as **dsda-doom**
+Make sure that this launcher is in the same folder as **nyan-doom**
 There you go!
 You can now use this launcher
 

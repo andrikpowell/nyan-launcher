@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-export PROJECT=dsda-launcher
+export PROJECT=nyan-launcher
 export ICONDIR=$PROJECT.iconset
 export PNGICON=$PROJECT.png
 
