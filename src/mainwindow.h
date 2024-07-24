@@ -63,7 +63,7 @@ private:
     bool running = false;
     void gameIsRunning();
 
-    QString exeName = "nyan-doom";
+    QString exeName = "Nyan-Doom";
 
     void enable_disable_skill_comboBox();
     void enable_disable_complevel_comboBox();

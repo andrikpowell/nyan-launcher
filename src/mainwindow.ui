@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>nyan-launcher</string>
+   <string>Nyan-Launcher</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -357,6 +357,9 @@ border-radius:3px</string>
 </string>
     </property>
     <widget class="QPushButton" name="tooltip_pushButton">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -378,6 +381,9 @@ border-radius:3px</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
      </property>
     </widget>
    </widget>
@@ -771,7 +777,7 @@ border-radius:3px</string>
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>95</y>
+          <y>100</y>
           <width>121</width>
           <height>24</height>
          </rect>
@@ -796,7 +802,7 @@ border-radius:3px</string>
         <property name="geometry">
          <rect>
           <x>160</x>
-          <y>95</y>
+          <y>100</y>
           <width>121</width>
           <height>24</height>
          </rect>
@@ -1407,8 +1413,8 @@ border-radius:3px</string>
 padding-left: 6px;
 color: #000;
 height: 20px;
-background-color:rgb(255, 255, 255);
-border-radius:3px;</string>
+background-color:rgb(237, 179, 253);
+border-radius:6px;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -1469,7 +1475,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
-     <string>Launcher</string>
+     <string>About</string>
     </property>
     <addaction name="actionSet"/>
     <addaction name="actionCheck_for_updates"/>

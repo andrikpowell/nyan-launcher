@@ -12,6 +12,7 @@ void MainWindow::changeExeName(QString newName)
 void MainWindow::showSSLDialog()
 {
     QMessageBox msgBox;
+    msgBox.setWindowTitle("Nyan-Launcher");
     msgBox.setText("SSL library not found. Network features not available.");
     msgBox.setInformativeText("It should have been packaged with the Launcher.\nIf reinstalling does not fix this, try manually installing OpenSSL.\n\nlibssl-1_1-x64.dll + libcrypto-1_1-x64.dll");
     msgBox.addButton(tr("Ok"), QMessageBox::NoRole);
@@ -733,7 +734,7 @@ void MainWindow::on_actionCheck_for_Updates_triggered()
                 if(portversion!=value.toString())
                 {
                     QMessageBox msgBox;
-                    msgBox.setText("Nyan Doom "+portversion);
+                    msgBox.setText("Nyan-Doom "+portversion);
                     msgBox.setInformativeText("Available: "+value.toString());
                     QPushButton* pButtonYes;
                     pButtonYes = msgBox.addButton(tr("Update"), QMessageBox::YesRole);
@@ -748,7 +749,7 @@ void MainWindow::on_actionCheck_for_Updates_triggered()
                 else
                 {
                     QMessageBox msgBox;
-                    msgBox.setText("Nyan Doom "+portversion);
+                    msgBox.setText("Nyan-Doom "+portversion);
                     msgBox.setInformativeText("Up to Date");
                     msgBox.addButton(tr("Ignore"), QMessageBox::NoRole);
                     msgBox.exec();
@@ -769,6 +770,7 @@ void MainWindow::on_actionSet_triggered()
 void MainWindow::on_actionTips_triggered()
 {
     QMessageBox msgBox;
+    msgBox.setWindowTitle("Tips");
     msgBox.setText("A few tips you should know:");
     msgBox.setInformativeText("- Drag .wad / .deh files on top of the launcher to add them to the loaded files\n\n- Drag .lmp files on top of the launcher to play the demo and autoselect the correct IWAD, PWADs and complevel\n\n- For the mentioned autoselect to work correctly, go to the settings and set the PWADs folders");
     msgBox.setStandardButtons(QMessageBox::Ok);
@@ -778,6 +780,7 @@ void MainWindow::on_actionTips_triggered()
 void MainWindow::on_actionWhat_is_this_triggered()
 {
     QMessageBox msgBox;
+    msgBox.setWindowTitle("State Files");
     msgBox.setText("State files");
     msgBox.setInformativeText("These .state files save all the parameters selected on the launcher, and lets you load them again whenever you need");
     msgBox.setStandardButtons(QMessageBox::Ok);
@@ -882,7 +885,7 @@ void MainWindow::finished(int exitCode, QProcess::ExitStatus exitStatus)
 
     if (settings->value("endoom").toBool())
     {
-        endoomWindow->showEndoom(endoomString);
+        endoomWindow->showEndoom(String);
 
         endoomWindow->show();
         endoomWindow->activateWindow();
@@ -924,6 +927,7 @@ void MainWindow::started()
 void MainWindow::gameIsRunning()
 {
     QMessageBox msgBox;
+    msgBox.setWindowTitle("Nyan-Launcher");
     msgBox.setText(exeName+" is still running.");
     msgBox.addButton("Ok", QMessageBox::YesRole);
     msgBox.exec();
@@ -1355,6 +1359,7 @@ void MainWindow::on_launchGame_pushButton_clicked(bool onExit, bool returnToolti
         }
 
         QMessageBox msgBox;
+        msgBox.setWindowTitle("Parameters");
         msgBox.setText("Executable: "+exeName+"\nIWAD: "+ui->iwad_comboBox->currentText()+"\nParameters: "+argStr.c_str());
         msgBox.addButton(tr("Copy"), QMessageBox::NoRole);
         QPushButton* pButtonYes = msgBox.addButton(tr("Ok"), QMessageBox::YesRole);
@@ -1449,7 +1454,7 @@ void MainWindow::Launch(QString iwadName, QStringList argList)
             connect(process, SIGNAL(readyReadStandardOutput()), this, SLOT(readyReadStandardOutput()));
             connect(process, SIGNAL(started()), this, SLOT(started()));
         }
-        else QMessageBox::warning(this, "nyan-launcher", ("Failed to launch the application executable.\nMake sure that "+ exeName+" is installed correctly through your package manager or installed with the original build instructions.\n\nIf you are sure " + exeName + " exists, symlink it to nyan-launcher's folder."));
+        else QMessageBox::warning(this, "Application Not Found!", ("Failed to launch the application executable.\nMake sure that "+ exeName+" is installed correctly through your package manager or installed with the original build instructions.\n\nIf you are sure " + exeName + " exists, symlink it to nyan-launcher's folder."));
 #else
     /*
         std::string cmd = "\"" + execPath + "\\nyan-doom.exe \" -iwad \"" + execPath + "\\" + ui->iwad_comboBox->currentText().toStdString()+".wad\"" + arguments + " >> \""+ execPath+"\\LogFile.txt\" ";
@@ -1466,7 +1471,7 @@ void MainWindow::Launch(QString iwadName, QStringList argList)
                 CloseHandle(pi.hProcess);
                 CloseHandle(pi.hThread);
         } else {
-                QMessageBox::warning(this, "nyan-launcher", "Failed to launch the application executable.\nMake sure that the launcher is in the same folder as nyan-doom.exe");
+                QMessageBox::warning(this, "Application Not Found!", "Failed to launch the application executable.\nMake sure that the launcher is in the same folder as nyan-doom.exe");
         }
 
         // system() also works fine, but leaves a cmd window in the background, so CreateProcess() is better
@@ -1488,7 +1493,7 @@ void MainWindow::Launch(QString iwadName, QStringList argList)
         }
         else
         {
-            QMessageBox::warning(this, "nyan-launcher", "Failed to launch the application executable.\nMake sure that the launcher is in the same folder as "+exeName+".exe");
+            QMessageBox::warning(this, "Application Not Found!", "Failed to launch the application executable.\nMake sure that the launcher is in the same folder as "+exeName+".exe");
         }
 #endif
 

@@ -39,8 +39,8 @@ int main(int argc, char *argv[])
     if(settings->value("version").toString()!=version)
     {
         QMessageBox msgBox;
-        msgBox.setWindowTitle("nyan-launcher " + version);
-        //msgBox.setText("It is recommended that you use nyan-doom v1.1.6 or later");
+        msgBox.setWindowTitle("Nyan-Launcher " + version);
+        msgBox.setText("It is recommended that you use Nyan-Doom v1.1.7 or later");
         msgBox.setInformativeText(
                     "Here are a few tips you should know:\n"
                     "\n"

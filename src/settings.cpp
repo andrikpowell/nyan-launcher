@@ -569,10 +569,10 @@ void Settings::on_minusIWADFolders_toolButton_clicked()
 }
 
 
-void Settings::on_endoom_checkBox_clicked(bool checked)
-{
-    settings->setValue("endoom", checked);
-}
+//void Settings::on_endoom_checkBox_clicked(bool checked)
+//{
+//    settings->setValue("endoom", checked);
+//}
 
 
 void Settings::on_remember_checkBox_toggled(bool checked)
@@ -580,3 +580,12 @@ void Settings::on_remember_checkBox_toggled(bool checked)
     settings->setValue("remember", checked);
 }
 
+void Settings::on_dsda_doom_pushButton_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://github.com/kraflab/dsda-doom"));
+}
+
+void Settings::on_dsda_launch_pushButton_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://github.com/Pedro-Beirao/dsda-launcher"));
+}
