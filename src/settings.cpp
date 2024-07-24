@@ -569,10 +569,10 @@ void Settings::on_minusIWADFolders_toolButton_clicked()
 }
 
 
-//void Settings::on_endoom_checkBox_clicked(bool checked)
-//{
-//    settings->setValue("endoom", checked);
-//}
+void Settings::on_endoom_checkBox_clicked(bool checked)
+{
+    settings->setValue("endoom", checked);
+}
 
 
 void Settings::on_remember_checkBox_toggled(bool checked)

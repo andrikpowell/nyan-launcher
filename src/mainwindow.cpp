@@ -885,7 +885,7 @@ void MainWindow::finished(int exitCode, QProcess::ExitStatus exitStatus)
 
     if (settings->value("endoom").toBool())
     {
-        endoomWindow->showEndoom(String);
+        endoomWindow->showEndoom(endoomString);
 
         endoomWindow->show();
         endoomWindow->activateWindow();
