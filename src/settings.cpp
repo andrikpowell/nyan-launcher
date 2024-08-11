@@ -48,7 +48,7 @@ Settings::Settings(QWidget *parent) :
         {
             ui->minimalComplevels_radioButton->setChecked(true);
         }
-        if(settings->value("complevels").toInt()==2)
+        else if(settings->value("complevels").toInt()==2)
         {
             ui->advancedComplevels_radioButton->setChecked(true);
         }

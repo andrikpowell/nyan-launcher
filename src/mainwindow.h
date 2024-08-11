@@ -46,7 +46,7 @@
 #include <QTextEdit>
 #include "endoom.h"
 
-const QString version = "v1.3.1";
+const QString version = "v1.3.2";
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -148,6 +148,7 @@ public:
     QCheckBox *solonet_checkBox();
     QComboBox *resolution_comboBox();
     QCheckBox *fullscreen_checkBox();
+    QCheckBox *limit_removing_checkBox();
     QLineEdit *hud_lineEdit();
     QLineEdit *config_lineEdit();
     QComboBox *track_comboBox();
@@ -164,6 +165,7 @@ public slots:
     void closeEvent(QCloseEvent *event);
     void on_launchGame_pushButton_clicked(bool onExit, bool returnTooltip, std::string exportCmd);
     void on_iwad_comboBox_currentIndexChanged(int index);
+    void on_complevel_comboBox_currentIndexChanged(int index);
     void on_console_pushButton_clicked();
     void on_addWads_toolButton_clicked();
     void on_removeWads_toolButton_clicked();

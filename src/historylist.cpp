@@ -349,6 +349,12 @@ void historyList::on_launch_pushButton_clicked()
                              argList.append(settings->value("toggle4a").toString());
                         std::getline(file, buffer);
                     }
+            if(buffer.substr(0,15)=="limit-removing=") // limit-removing
+                    {
+                        if(buffer.substr(15)=="true")
+                            argList.append("-lr");
+                        std::getline(file, buffer);
+                    }
             std::string fullscreen = "w";
             std::string resBox = "0";
             if(buffer.substr(0,11)=="resolution=") // resolution

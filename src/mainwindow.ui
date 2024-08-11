@@ -386,6 +386,19 @@ border-radius:3px</string>
       <bool>false</bool>
      </property>
     </widget>
+    <widget class="QCheckBox" name="limit_removing_checkBox">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>120</y>
+       <width>136</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Limit-Removing</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="additionalArguments_groupBox">
     <property name="geometry">

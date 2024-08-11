@@ -325,6 +325,7 @@ historyPath = QCoreApplication::applicationDirPath()+"\\history.states";
         ui->nomo_checkBox->setChecked(settings->value("nomo").toBool());
         ui->respawn_checkBox->setChecked(settings->value("respawn").toBool());
         ui->fullscreen_checkBox->setChecked(settings->value("fullscreen").toBool());
+        ui->limit_removing_checkBox->setChecked(settings->value("limit-removing").toBool());
         ui->resolution_comboBox->setCurrentIndex(settings->value("geom").toInt());
         if(ui->iwad_comboBox->count()>=settings->value("iwad").toInt())
         {
@@ -961,6 +962,7 @@ void MainWindow::on_launchGame_pushButton_clicked(bool onExit, bool returnToolti
             settings->remove("argumentText");
         }
         settings->setValue("fullscreen", ui->fullscreen_checkBox->isChecked());
+        settings->setValue("limit-removing", ui->limit_removing_checkBox->isChecked());
         settings->setValue("geom", ui->resolution_comboBox->currentIndex());
 
         settings->setValue("solonet", isSoloNet);
@@ -983,6 +985,10 @@ void MainWindow::on_launchGame_pushButton_clicked(bool onExit, bool returnToolti
         if (ui->level_lineEdit->text().toStdString() == "")
         {
             settings->remove("warp2");
+        }
+        if (ui->limit_removing_checkBox->isChecked() == false)
+        {
+            settings->remove("limit-removing");
         }
 
         if (ui->record_lineEdit->text().toStdString() != "")
@@ -1076,8 +1082,14 @@ void MainWindow::on_launchGame_pushButton_clicked(bool onExit, bool returnToolti
         QString complevelNum;
         complevelNum.push_back(complevelString[0]);
         complevelNum.push_back(complevelString[1]);
-        complevelNum.push_back(complevelString[2]);
         argList.append(complevelNum);
+    }
+
+    // Limit-Removing
+    std::string complimitString = ui->complevel_comboBox->currentText().toStdString();
+    if(limit_removing_checkBox()->isChecked() && (complimitString=="Default" || complimitString=="0 - Doom v1.2" || complimitString=="1 - Doom v1.666" || complimitString=="2 - Doom / Doom 2" || complimitString=="3 - Ultimate Doom" || complimitString=="4 - Final Doom"))
+    {
+        argList.append("-lr");
     }
 
     // Difficulty or Skill
@@ -1606,6 +1618,22 @@ void MainWindow::SaveHistory(QString iwad, QStringList args)
     // QProcess::startDetached("chmod", {"a-w", historyPath}); windows doesnt have chmod :(
 
 
+}
+
+// If the Complevel selected changes
+void MainWindow::on_complevel_comboBox_currentIndexChanged(int index)
+{
+    std::string CompLimitString = ui->complevel_comboBox->currentText().toStdString();
+    // These are limit-removing compat. They need checkbox
+    if((CompLimitString=="Default" || CompLimitString=="0 - Doom v1.2" || CompLimitString=="1 - Doom v1.666" || CompLimitString=="2 - Doom / Doom 2" || CompLimitString=="3 - Ultimate Doom" || CompLimitString=="4 - Final Doom"))
+    {
+        ui->limit_removing_checkBox->show();
+    }
+    else // These are not limit-removing. Deactivate and hide checkbox
+    {
+        ui->limit_removing_checkBox->setChecked(false);
+        ui->limit_removing_checkBox->hide();
+    }
 }
 
 // If the IWAD selected changes
@@ -2407,6 +2435,7 @@ QCheckBox *MainWindow::respawn_checkBox() {return ui->respawn_checkBox;}
 QCheckBox *MainWindow::solonet_checkBox() {return ui->solonet_checkBox;}
 QComboBox *MainWindow::resolution_comboBox() {return ui->resolution_comboBox;}
 QCheckBox *MainWindow::fullscreen_checkBox() {return ui->fullscreen_checkBox;}
+QCheckBox *MainWindow::limit_removing_checkBox() {return ui->limit_removing_checkBox;}
 QLineEdit *MainWindow::hud_lineEdit() {return ui->hud_lineEdit;}
 QLineEdit *MainWindow::config_lineEdit() {return ui->config_lineEdit;}
 QComboBox *MainWindow::track_comboBox() {return ui->track_comboBox;}

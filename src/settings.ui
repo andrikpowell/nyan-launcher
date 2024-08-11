@@ -488,13 +488,13 @@ when the Launcher exits</string>
       <bool>true</bool>
      </property>
     </widget>
-    <zorder>advancedComplevels_radioButton</zorder>
     <zorder>PWADFolders_label</zorder>
     <zorder>darkTheme_checkBox</zorder>
     <zorder>maxSkillLevel_label</zorder>
     <zorder>maxSkillLevel_lineEdit</zorder>
     <zorder>cpmplevels_label</zorder>
     <zorder>minimalComplevels_radioButton</zorder>
+    <zorder>advancedComplevels_radioButton</zorder>
     <zorder>fullComplevels_radioButton</zorder>
     <zorder>PWADFolders_pushButton</zorder>
     <zorder>minusPWADFolders_toolButton</zorder>
