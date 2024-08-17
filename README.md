@@ -1,9 +1,9 @@
 # Nyan-Launcher
-This is a launcher for the **Nyan Doom** source port.
+This is a launcher for the [**Nyan Doom**](https://github.com/andrikpowell/nyan-doom/) source port.
 
 The binaries for a Windows version are available in [**Releases**](https://github.com/andrikpowell/nyan-launcher/releases)
 
-The MacOS binaries are included with the main [**Nyan Doom** release](https://github.com/andrikpowell/nyan-doom/releases)
+The MacOS binaries are included with the main [**Nyan Doom Releases**](https://github.com/andrikpowell/nyan-doom/releases)
 
 ___
 
@@ -14,19 +14,20 @@ ___
 
 ### Screenshots:
 
-![Screenshot 2021-09-10 at 22 22 56](https://user-images.githubusercontent.com/82064173/132919240-a6e51ac9-3863-4114-bee5-410d60f17ab7.jpg)
+<img src="https://andrikpowell.com/doom-files/images/nyan-doom/nyan-launcher-screen.png" width="300">
 
 
 ### Compiling:
 
-**compileMacOS.md** - Instructions for compiling for MacOS
+- **compileMacOS.md** - Instructions for compiling for MacOS
 
-**compileWindows.md** - Instructions for compiling for Windows
+- **compileWindows.md** - Instructions for compiling for Windows
 
-**compileLinux.md** - Instructions for compiling for Linux
+- **compileLinux.md** - Instructions for compiling for Linux
 
 This app is crossplatform thanks to the Qt framework
 
+___
 
 # From the original dsda-launcher project
 Nyan Launcher is based off dsda-launcher by Pedro Beirao.
