@@ -14,7 +14,7 @@ ___
 
 ### Screenshots:
 
-<img src="https://andrikpowell.com/doom-files/images/nyan-doom/nyan-launcher-screen.png" width="300">
+<a href="#"><img src="https://andrikpowell.com/doom-files/images/nyan-doom/nyan-launcher-screen.png" width="300"></a>
 
 
 ### Compiling:
