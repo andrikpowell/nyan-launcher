@@ -1439,7 +1439,7 @@ void MainWindow::Launch(QString iwadName, QStringList argList)
         }
         else
         {
-            QMessageBox::warning(this, "nyan-launcher", exeName + " was not found in nyan-launcher.app/Contents/Resources/"+exeName);
+            QMessageBox::warning(this, "nyan-launcher", exeName + " was not found in Nyan-Doom.app/Contents/Resources/"+exeName);
         }
 #elif __linux__
         QFile port = QFile(execPath+"/"+exeName);
@@ -1779,7 +1779,7 @@ void MainWindow::on_additionalArguments_pushButton_clicked()
     else
     {
 #ifdef __APPLE__
-        QMessageBox::warning(this, "nyan-launcher", exeName + " was not found in nyan-launcher.app/Contents/Resources/"+exeName);
+        QMessageBox::warning(this, "nyan-launcher", exeName + " was not found in Nyan-Doom.app/Contents/Resources/"+exeName);
 #elif __linux__
         QMessageBox::warning(this, "Application Not Found!", ("Failed to get additional arguments via the application executable.\nMake sure that "+ exeName+" is installed correctly through your package manager or installed with the original build instructions.\n\nIf you are sure " + exeName + " exists, symlink it to nyan-launcher's folder."));
 #else

@@ -36,7 +36,7 @@ ___
 
 2. Extract it & open the folder
  
-3. Put the **nyan-doom** executable and **nyan-doom.wad** (not included in this repo) inside the nyan-launcher folder
+3. Put the **nyan-doom** executable and **nyan-doom.wad** (not included in this repo) inside the "src" folder
 
       ^^^ Very important
 
@@ -75,5 +75,5 @@ macdeployqt is a tool to copy the required libraries into the .app
 
 It comes installed with Qt. Its in the same folder as qmake
 ```
-macdeployqt /path/to/nyan-launcher.app
+macdeployqt /path/to/Nyan-Doom.app
 ```
