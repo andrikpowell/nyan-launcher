@@ -873,8 +873,6 @@ void MainWindow::error(QProcess::ProcessError error)
 void MainWindow::finished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     QProcess *p = (QProcess *)sender();
-    QByteArray buf = p->readAllStandardOutput();
-    QString qs = buf;
     delete p;
     running = false;
 
@@ -886,7 +884,7 @@ void MainWindow::finished(int exitCode, QProcess::ExitStatus exitStatus)
         return;
     }
 
-    if (qs.indexOf("\033") != -1 || endoomString != "")
+    if (settings->value("endoom").toBool())
     {
         endoomWindow->showEndoom(endoomString);
 
@@ -1420,7 +1418,11 @@ void MainWindow::Launch(QString iwadName, QStringList argList)
     consoleWindow->clearText();
     endoomWindow->clearText();
     endoomString = "";
-    argList.append("-launcher");
+
+    if (settings->value("endoom").toBool())
+    {
+        argList.append({"-assign", "ansi_endoom=2"});
+    }
 
 #ifdef __APPLE__
         QFile port = QFile(execPath+"/../Resources/"+exeName+"");
@@ -1774,16 +1776,6 @@ void MainWindow::on_additionalArguments_pushButton_clicked()
 #else
             // xterm is the most reliable terminal to use, but it seems a few distros do not have it
             system(("xterm -e 'bash -c \""+path.toStdString()+" --help ;bash\"'").c_str());
-#endif
-    }
-    else
-    {
-#ifdef __APPLE__
-        QMessageBox::warning(this, "nyan-launcher", exeName + " was not found in nyan-launcher.app/Contents/Resources/"+exeName);
-#elif __linux__
-        QMessageBox::warning(this, "Application Not Found!", ("Failed to get additional arguments via the application executable.\nMake sure that "+ exeName+" is installed correctly through your package manager or installed with the original build instructions.\n\nIf you are sure " + exeName + " exists, symlink it to nyan-launcher's folder."));
-#else
-        QMessageBox::warning(this, "Application Not Found!", "Failed to get additional arguments via the application executable.\nMake sure that the launcher is in the same folder as "+exeName+".exe");
 #endif
     }
 
