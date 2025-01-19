@@ -1,20 +1,20 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
+#include <QDir>
 #include <QStandardPaths>
 #include <QStringList>
 
-const QString version = "v1.3.1";
+const QString version = "v1.4";
 
-static QString gameName = "";
+const QString LAUNCHER_REPO = "https://github.com/Pedro-Beirao/dsda-launcher";
+const QString LAUNCHER_API = "https://api.github.com/repos/Pedro-Beirao/dsda-launcher/releases/latest";
+const QString LAUNCHER_UPDATER = "https://raw.githubusercontent.com/Pedro-Beirao/dsda-launcher/refs/heads/master/updater/updater.json";
 
-const QString DSDALAUNCHER_URL = "https://github.com/Pedro-Beirao/dsda-launcher";
-const QString DSDALAUNCHER_API_URL = "https://api.github.com/repos/Pedro-Beirao/dsda-launcher/releases/latest";
-const QString DSDALAUNCHER_DOWNLOAD_URL = "https://github.com/Pedro-Beirao/dsda-launcher/releases/latest";
-
-const QString DSDADOOM_URL = "https://github.com/kraflab/dsda-doom";
-const QString DSDADOOM_API_URL = "https://api.github.com/repos/kraflab/dsda-doom/releases/latest";
-const QString DSDADOOM_DOWNLOAD_URL = "https://github.com/kraflab/dsda-doom/";
+const QString GAME_REPO = "https://github.com/kraflab/dsda-doom";
+const QString GAME_API = "https://api.github.com/repos/kraflab/dsda-doom/releases/latest";
+const QString GAME_UPDATER_MACOS = "https://raw.githubusercontent.com/Pedro-Beirao/dsda-launcher/refs/heads/master/updater/dsda-updater-macos.sh";
+const QString GAME_UPDATER_WINDOWS = "https://raw.githubusercontent.com/Pedro-Beirao/dsda-launcher/refs/heads/master/updater/dsda-updater-windows.bat";
 
 #if defined Q_OS_WIN
 const QChar FOLDER_SEPARATOR = '\\';
@@ -22,11 +22,9 @@ const QChar FOLDER_SEPARATOR = '\\';
 const QChar FOLDER_SEPARATOR = '/';
 #endif
 
-#if defined Q_OS_MACOS || defined Q_OS_LINUX
-const QString dotfolder = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.dsda-doom";
-#endif
-
-static QString launcherfolder = "";
+extern QString gameName;
+extern QString datafolder;
+extern QString launcherfolder;
 
 const QStringList exmxIWADS = {"doom",    "doom1",    "doomu", "freedoom", "freedoom1", "bfgdoom", "bfgdoom1",
 
@@ -47,7 +45,7 @@ const QStringList FULL_COMPLEVELS = {"Default", "0 - Doom v1.2", "1 - Doom v1.66
 
 const QStringList SKILLS_LIST = {"", "ITYTD", "HNTR", "HMP", "UV", "Nightmare!"};
 
-const QString DEFAULT_TOGGLE1TEXT = "Fast";
+const QString DEFAULT_TOGGLE1TEXT = "Fast Monsters";
 const QString DEFAULT_TOGGLE1ARG = "-fast";
 
 const QString DEFAULT_TOGGLE2TEXT = "No Monsters";
@@ -59,10 +57,9 @@ const QString DEFAULT_TOGGLE3ARG = "-respawn";
 const QString DEFAULT_TOGGLE4TEXT = "Solo-Net";
 const QString DEFAULT_TOGGLE4ARG = "-solo-net";
 
-const QString STYLE_TEXT_NORMAL = "border: 1px solid rgb(180, 180, 180); padding-left: 6px;height: 20px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); border-radius:3px";
-const QString STYLE_TEXT_PLACEHOLDER = "border: 1px solid rgb(180, 180, 180); padding-left: 6px;height: 20px; color: rgb(150, 150, 150); background-color: rgb(255, 255, 255); border-radius:3px";
+const QString STATE_HEADER = "dsdalauncherstatev2";
+const QString HISTORY_HEADER = "dsdalauncherhistoryv2";
 
-const QString STATE_HEADER = "dsdalauncherstatev1.4";
-const QString HISTORY_HEADER = "dsdalauncherhistoryv1.4";
+void findDataFolder();
 
 #endif // CONSTANTS_H

@@ -11,7 +11,7 @@ endoom::endoom(QWidget *parent) :
     // Qt::CTRL is the CTRL key for Windows/Linux and is the CMD key for MacOS
 
     // Closes the active window
-    QShortcut * shortcut3 = new QShortcut(QKeySequence(Qt::Key_W | Qt::CTRL),this,SLOT(fooo3()));
+    QShortcut *shortcut3 = new QShortcut(QKeySequence(Qt::Key_W | Qt::CTRL), this, SLOT(close()));
     shortcut3->setAutoRepeat(false);
 
     ui->endoom_textEdit->setReadOnly(true);
@@ -21,50 +21,43 @@ endoom::~endoom()
 {
     delete ui;
 }
-
-
-void endoom::fooo3() // CTRL+W runs this function close the active window
-{
-    QWidget *currentWindow = QApplication::activeWindow();
-    currentWindow->close();
-}
-
 void endoom::showEndoom(QString consoleOutput)
 {
     ui->endoom_textEdit->setText("");
 
-    QRegularExpression regex("\033");
-    QStringList qsl = consoleOutput.split(regex);
+    QStringList qsl = consoleOutput.split("\033[0m");
 
     QString ret;
 
     int col = 0;
+    ret.append("<table cellspacing='0' cellpadding='0'><tr>");
 
-    for (int i = 0; i < qsl.size() - 3; i++)
+    for (int i = 0; i < qsl.size(); i++)
     {
-        if (qsl[i].size() < 4 || qsl[i][1] != '3') continue;
-        QString foreground = colors[qsl[i].mid(2,2)];
+        QStringList cs = qsl[i].split("\033");
 
-        i++;
-        if (qsl[i].size() < 4 || qsl[i][1] != '4') continue;
-        QString background = colors[qsl[i].mid(2,2)];
+        QString character = QString(cs.last()[cs.last().size() - 1]);
 
-        i++;
-        if (qsl[i].size() < 3) continue;
-        QString character = qsl[i][qsl[i].size()-1];
+        QString foreground, background;
+        for (int j = 0; j < cs.size() - 1; j++)
+        {
+            if (cs[j].size() < 4) continue;
+            if (cs[j][1] == '3') foreground = colors[cs[j].mid(2, 2)];
+            if (cs[j][1] == '4') background = colors[cs[j].mid(2, 2)];
+        }
 
-        i++;
         if (character == " ") character = "&nbsp;";
 
-        ret.append("<span style='color: " + foreground + ";background-color: " + background + ";'>" + character + "</span>");
+        ret.append("<td style='color: " + foreground + ";background-color: " + background + "; padding: 0px;'>" + character + "</td>");
 
         col++;
         if (col >= 80)
         {
-            ret.append("<span><br/></span>");
+            ret.append("</tr><tr>");
             col = 0;
         }
     }
+    ret.append("</tr></table>");
 
     ui->endoom_textEdit->append(ret);
 }
@@ -73,8 +66,8 @@ void endoom::on_endoom_textEdit_textChanged()
 {
     QSize size = ui->endoom_textEdit->document()->size().toSize();
 
-    ui->endoom_textEdit->setFixedHeight( size.height() + 10);
-    ui->endoom_textEdit->setFixedWidth( size.width() + 10);
+    ui->endoom_textEdit->setFixedHeight(size.height() + 10);
+    ui->endoom_textEdit->setFixedWidth(size.width() + 10);
 
     setFixedSize(size);
 }

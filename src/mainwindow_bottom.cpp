@@ -6,29 +6,21 @@ void MainWindow::on_console_pushButton_clicked()
     consoleWindow->show();
     consoleWindow->activateWindow();
     consoleWindow->raise();
+    setWindowTitleBar(consoleWindow->winId());
 }
 
 void MainWindow::on_additionalArguments_pushButton_clicked()
 {
     if (!canLaunch) return;
 
-    QString path;
+    QString path = getGamePath();
 
-#if defined Q_OS_MACOS
-    path = launcherfolder + "/../Resources/" + gameName;
-#elif defined Q_OS_LINUX
-    path = launcherfolder + "/" + gameName;
-#else
-    path = launcherfolder + "\\" + gameName + ".exe";
-#endif
-
-    QFile port = QFile(path);
+    QFile port(path);
     if (port.exists())
     {
 #if defined Q_OS_MACOS
-        QProcess *process = new QProcess;
-        process->startDetached("sh", {"-c", "echo \"" + path + " --help ; rm /tmp/dsda-doom-params.sh\" > /tmp/dsda-doom-params.sh ; chmod +x /tmp/dsda-doom-params.sh ; open -a Terminal /tmp/dsda-doom-params.sh"});
-        process->deleteLater();
+        QProcess process;
+        process.startDetached("sh", {"-c", "rm /tmp/dsda-doom-params.sh; echo \"" + path + " --help\" > /tmp/dsda-doom-params.sh ; chmod +x /tmp/dsda-doom-params.sh ; open -a Terminal /tmp/dsda-doom-params.sh"});
 #elif defined Q_OS_WIN
         system(("start cmd.exe /k \"" + path.toStdString() + "\" --help").c_str());
 #else

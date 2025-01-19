@@ -1,5 +1,17 @@
 #include "mainwindow.h"
 
+// Main
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QMessageBox msgBox;
+    // msgBox.setOption(QMessageBox::Option::DontUseNativeDialog);
+    msgBox.setText(APP_NAME " " + version);
+    msgBox.setInformativeText("<a href='" + LAUNCHER_REPO + "'>" + LAUNCHER_REPO + "</a>");
+    msgBox.addButton(tr("Ok"), QMessageBox::NoRole);
+    msgBox.exec();
+}
+
 void MainWindow::on_actionLoadState_triggered()
 {
     QString fileNames = QFileDialog::getOpenFileName(this, tr("Load State"), settings->value("statefile").toString(), tr("state files (*.state)"));
@@ -20,9 +32,9 @@ void MainWindow::on_actionSaveState_triggered()
     }
 }
 
-void MainWindow::on_actionGithubDsdalauncher_triggered() { QDesktopServices::openUrl(QUrl(DSDALAUNCHER_URL)); }
+void MainWindow::on_actionGithubDsdalauncher_triggered() { QDesktopServices::openUrl(QUrl(LAUNCHER_REPO)); }
 
-void MainWindow::on_actionGithubDsdadoom_triggered() { QDesktopServices::openUrl(QUrl(DSDADOOM_URL)); }
+void MainWindow::on_actionGithubDsdadoom_triggered() { QDesktopServices::openUrl(QUrl(GAME_REPO)); }
 
 void MainWindow::on_actionCheckForUpdatesDsdalauncher_triggered()
 {
@@ -32,49 +44,7 @@ void MainWindow::on_actionCheckForUpdatesDsdalauncher_triggered()
         return;
     }
 
-    QNetworkRequest req((QUrl(DSDALAUNCHER_API_URL)));
-    req.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QJsonObject json;
-    QNetworkAccessManager nam;
-    QNetworkReply *reply = nam.get(req);
-    while (!reply->isFinished())
-    {
-        qApp->processEvents();
-    }
-    QByteArray response_data = reply->readAll();
-    QJsonDocument jsondoc = QJsonDocument::fromJson(response_data);
-    QJsonObject jsonobj = jsondoc.object();
-    foreach (const QString &key, jsonobj.keys())
-    {
-        QJsonValue value = jsonobj.value(key);
-        if (key == "name")
-        {
-            if (version != value.toString())
-            {
-                QMessageBox msgBox;
-                msgBox.setText("DSDA-Launcher " + version);
-                msgBox.setInformativeText("Available: " + value.toString());
-                QPushButton *pButtonYes = msgBox.addButton(tr("Update"), QMessageBox::YesRole);
-                msgBox.addButton(tr("Ignore"), QMessageBox::NoRole);
-                msgBox.setDefaultButton(pButtonYes);
-                msgBox.exec();
-                if (msgBox.clickedButton() == pButtonYes)
-                {
-                    QDesktopServices::openUrl(QUrl(DSDALAUNCHER_DOWNLOAD_URL));
-                }
-            }
-            else
-            {
-                QMessageBox msgBox;
-                msgBox.setText("DSDA-Launcher " + version);
-                msgBox.setInformativeText("Up to Date");
-                msgBox.addButton(tr("Ignore"), QMessageBox::NoRole);
-                msgBox.exec();
-            }
-        }
-    }
-
-    reply->deleteLater();
+    updateLauncherDialog(true);
 }
 
 void MainWindow::on_actionCheckForUpdatesDsdadoom_triggered()
@@ -85,74 +55,7 @@ void MainWindow::on_actionCheckForUpdatesDsdadoom_triggered()
         return;
     }
 
-    QString portversion;
-
-    QString path;
-
-#if defined Q_OS_MACOS
-    path = launcherfolder + "/../Resources/" + gameName;
-#elif defined Q_OS_LINUX
-    path = launcherfolder + "/" + gameName;
-#else
-    path = launcherfolder + "\\" + gameName + ".exe";
-#endif
-    QFile port = QFile(path);
-    if (port.exists())
-    {
-        QProcess *process = new QProcess;
-        process->setWorkingDirectory(QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
-        process->start(path, {"-v"});
-        process->waitForFinished();
-
-        QList output = process->readAll().split(' ');
-
-        if (output.size() >= 2) portversion = output[1];
-    }
-
-    QNetworkRequest req0((QUrl(DSDADOOM_API_URL)));
-    req0.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QJsonObject json0;
-    QNetworkAccessManager nam0;
-    QNetworkReply *reply0 = nam0.get(req0);
-    while (!reply0->isFinished())
-    {
-        qApp->processEvents();
-    }
-    QByteArray response_data = reply0->readAll();
-    QJsonDocument jsondoc = QJsonDocument::fromJson(response_data);
-    QJsonObject jsonobj = jsondoc.object();
-    foreach (const QString &key, jsonobj.keys())
-    {
-        QJsonValue value = jsonobj.value(key);
-        if (key == "name")
-        {
-            if (portversion != value.toString())
-            {
-                QMessageBox msgBox;
-                msgBox.setText("DSDA-Doom " + portversion);
-                msgBox.setInformativeText("Available: " + value.toString());
-                QPushButton *pButtonYes;
-                pButtonYes = msgBox.addButton(tr("Update"), QMessageBox::YesRole);
-                msgBox.addButton(tr("Ignore"), QMessageBox::NoRole);
-                msgBox.setDefaultButton(pButtonYes);
-                msgBox.exec();
-                if (msgBox.clickedButton() == pButtonYes)
-                {
-                    QDesktopServices::openUrl(QUrl(DSDADOOM_DOWNLOAD_URL));
-                }
-            }
-            else
-            {
-                QMessageBox msgBox;
-                msgBox.setText("DSDA-Doom " + portversion);
-                msgBox.setInformativeText("Up to Date");
-                msgBox.addButton(tr("Ignore"), QMessageBox::NoRole);
-                msgBox.exec();
-            }
-        }
-    }
-
-    reply0->deleteLater();
+    updateGameDialog(true);
 }
 
 void MainWindow::on_actionOpenSettings_triggered()
@@ -160,13 +63,18 @@ void MainWindow::on_actionOpenSettings_triggered()
     settingsWindow->show();
     settingsWindow->activateWindow();
     settingsWindow->raise();
+    setWindowTitleBar(settingsWindow->winId());
 }
 
 void MainWindow::on_actionTips_triggered()
 {
     QMessageBox msgBox;
-    msgBox.setText("A few tips you should know:");
-    msgBox.setInformativeText("- Drag .wad / .deh files on top of the launcher to add them to the loaded files\n\n- Drag .lmp files on top of the launcher to play the demo and autoselect the correct IWAD, PWADs and complevel\n\n- For the mentioned autoselect to work correctly, go to the settings and set the PWADs folders");
+    msgBox.setText("A few tips you should know (Some features may require the latest dsda-doom version):");
+    msgBox.setInformativeText("- Drag .wad / .deh files on top of the launcher to add them to the loaded files"
+                              "\n\n"
+                              "- Drag .lmp files on top of the launcher to play the demo and autoselect the correct IWAD, PWADs and complevel"
+                              "\n\n"
+                              "- For the mentioned autoselect to work correctly, go to the settings and set the PWADs folders");
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.exec();
@@ -204,4 +112,5 @@ void MainWindow::on_actionOpenHistory_triggered()
     historyListWindow->show();
     historyListWindow->activateWindow();
     historyListWindow->raise();
+    setWindowTitleBar(historyListWindow->winId());
 }

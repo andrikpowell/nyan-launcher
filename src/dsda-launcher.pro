@@ -2,14 +2,15 @@ QT       += core gui network concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-DEFINES += "APP_NAME=dsda-launcher"
+DEFINES += APP_NAME='\\"dsda-launcher\\"'
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060202    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
     console.cpp \
+    constants.cpp \
     demodialog.cpp \
     endoom.cpp \
     funcs.cpp \
@@ -20,11 +21,13 @@ SOURCES += \
     mainwindow_bottom.cpp \
     mainwindow_demos.cpp \
     mainwindow_options.cpp \
+    mainwindow_styles.cpp \
     mainwindow_top.cpp \
     mainwindow_wads.cpp \
     settings.cpp \
     states.cpp \
-    theme.cpp
+    theme.cpp \
+    updater.cpp
 
 HEADERS += \
     console.h \
@@ -36,7 +39,9 @@ HEADERS += \
     mainwindow.h \
     settings.h \
     states.h \
-    theme.h
+    styles.h \
+    theme.h \
+    updater.h
 
 FORMS += \
     console.ui \
@@ -48,17 +53,20 @@ FORMS += \
 win32 {
     CONFIG += c++11
     RC_ICONS = icons/dsda-launcher.ico
-    QMAKE_LFLAGS += -static-libgcc -static-libstdc++ -static
+
+    static {
+        QMAKE_LFLAGS += -static-libgcc -static-libstdc++ -static
+    }
 }
 
 mac {
     CONFIG += c++11 appbundle
     ICON = icons/dsda-launcher.icns
-    !noport {
+    include_port {
         APP_FILES.files = ./dsda-doom
         APP_FILES.files += ./dsda-doom.wad
     }
-    deploy {
+    macdeploy {
         QMAKE_APPLE_DEVICE_ARCHS=arm64 x86_64
         message("Compiling for both archs")
     }

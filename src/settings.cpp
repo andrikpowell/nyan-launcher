@@ -6,10 +6,9 @@ Settings::Settings(QWidget *parent) : QWidget(parent), ui(new Ui::Settings)
 {
     ui->setupUi(this);
 
-    ui->darkTheme_checkBox->setChecked(settings->value("theme")=="dark");
-    on_darkTheme_checkBox_clicked(settings->value("theme")=="dark");
+    ReadSettings();
 
-    ui->endoom_checkBox->setChecked(settings->value("endoom").toBool());
+    on_darkTheme_checkBox_clicked(settings->value("theme") == "dark");
 
 #if defined Q_OS_WIN
     ui->PWADFolders_textBrowser->setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:'.AppleSystemUIFont'; font-size:8pt; font-weight:400; font-style:normal;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
@@ -21,49 +20,6 @@ Settings::Settings(QWidget *parent) : QWidget(parent), ui(new Ui::Settings)
     ui->PWADFolders_textBrowser->setVisible(false);
     ui->IWADFolders_textBrowser->setVisible(false);
 
-    if (settings->value("complevels").isNull())
-    {
-        ui->minimalComplevels_radioButton->setChecked(true);
-        ui->remember_checkBox->setChecked(true);
-        settings->setValue("toggle1t", ui->fastText_lineEdit->text());
-        settings->setValue("toggle1a", ui->fastParam_lineEdit->text());
-        settings->setValue("toggle2t", ui->nomoText_lineEdit->text());
-        settings->setValue("toggle2a", ui->nomoParam_lineEdit->text());
-        settings->setValue("toggle3t", ui->respawnText_lineEdit->text());
-        settings->setValue("toggle3a", ui->respawnParam_lineEdit->text());
-        settings->setValue("toggle4t", ui->solonetText_lineEdit->text());
-        settings->setValue("toggle4a", ui->solonetParam_lineEdit->text());
-        settings->setValue("remember", true);
-    }
-    else
-    {
-        ui->fastText_lineEdit->setText(settings->value("toggle1t").toString());
-        ui->fastParam_lineEdit->setText(settings->value("toggle1a").toString());
-        ui->nomoText_lineEdit->setText(settings->value("toggle2t").toString());
-        ui->nomoParam_lineEdit->setText(settings->value("toggle2a").toString());
-        ui->respawnText_lineEdit->setText(settings->value("toggle3t").toString());
-        ui->respawnParam_lineEdit->setText(settings->value("toggle3a").toString());
-        ui->solonetText_lineEdit->setText(settings->value("toggle4t").toString());
-        ui->solonetParam_lineEdit->setText(settings->value("toggle4a").toString());
-        ui->remember_checkBox->setChecked(settings->value("remember").toBool());
-        if(settings->value("complevels").toInt()==0)
-        {
-            ui->minimalComplevels_radioButton->setChecked(true);
-        }
-        else if(settings->value("complevels").toInt()==1)
-        {
-            ui->fullComplevels_radioButton->setChecked(true);
-        }
-    }
-
-    if (settings->value("exeName").isNull())
-    {
-        ui->executable_lineEdit->setText("dsda-doom");
-    }
-    else
-    {
-        ui->executable_lineEdit->setText(settings->value("exeName").toString());
-    }
     MainWindow::pMainWindow->changeGameName(ui->executable_lineEdit->text());
 
     ui->maxHistory_lineEdit->setValidator(new QRegularExpressionValidator (QRegularExpression("[0-9]{2}"), this));
@@ -72,11 +28,8 @@ Settings::Settings(QWidget *parent) : QWidget(parent), ui(new Ui::Settings)
     // Qt::CTRL is the CTRL key for Windows/Linux and is the CMD key for MacOS
 
     // Closes the active window
-    QShortcut * shortcut3 = new QShortcut(QKeySequence(Qt::Key_W | Qt::CTRL),this,SLOT(fooo3()));
+    QShortcut *shortcut3 = new QShortcut(QKeySequence(Qt::Key_W | Qt::CTRL), this, SLOT(close()));
     shortcut3->setAutoRepeat(false);
-
-    if(settings->value("maxhistory").toString()!="")
-        ui->maxHistory_lineEdit->setText(settings->value("maxhistory").toString());
 
     int size = settings->beginReadArray("resolutions");
     if(size!=0)
@@ -113,10 +66,10 @@ Settings::Settings(QWidget *parent) : QWidget(parent), ui(new Ui::Settings)
     ui->IWADFolders_listWidget->addItem("%DOOMWADDIR%");
 #else
     ui->PWADFolders_listWidget->addItem("$DOOMWADPATH");
-    ui->PWADFolders_listWidget->addItem(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.dsda-doom");
+    ui->PWADFolders_listWidget->addItem(datafolder);
 
     ui->IWADFolders_listWidget->addItem("$DOOMWADDIR");
-    ui->IWADFolders_listWidget->addItem(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.dsda-doom");
+    ui->IWADFolders_listWidget->addItem(datafolder);
 #endif
     ui->PWADFolders_listWidget->item(0)->setFlags(QFlags<Qt::ItemFlag>());
     ui->PWADFolders_listWidget->item(1)->setFlags(QFlags<Qt::ItemFlag>());
@@ -150,15 +103,68 @@ Settings::Settings(QWidget *parent) : QWidget(parent), ui(new Ui::Settings)
     ui->notsaved_label->hide();
 }
 
-void Settings::fooo3() // CTRL+W runs this function close the active window
-{
-    QWidget *currentWindow = QApplication::activeWindow();
-    currentWindow->close();
-}
-
 Settings::~Settings()
 {
     delete ui;
+}
+
+void Settings::ReadSettings()
+{
+    if (!settings->value("theme").isNull()) ui->darkTheme_checkBox->setChecked(settings->value("theme") == "dark");
+    else settings->setValue("theme", "light");
+
+    if (!settings->value("endoom").isNull()) ui->endoom_checkBox->setChecked(settings->value("endoom").toBool());
+    else settings->setValue("endoom", false);
+
+    if (settings->value("toggle1t").toString() != "") ui->fastText_lineEdit->setText(settings->value("toggle1t").toString());
+    else settings->setValue("toggle1t", ui->fastText_lineEdit->text());
+    if (settings->value("toggle2t").toString() != "") ui->nomoText_lineEdit->setText(settings->value("toggle2t").toString());
+    else settings->setValue("toggle2t", ui->nomoText_lineEdit->text());
+    if (settings->value("toggle3t").toString() != "") ui->respawnText_lineEdit->setText(settings->value("toggle3t").toString());
+    else settings->setValue("toggle3t", ui->respawnText_lineEdit->text());
+    if (settings->value("toggle4t").toString() != "") ui->solonetText_lineEdit->setText(settings->value("toggle4t").toString());
+    else settings->setValue("toggle4t", ui->solonetText_lineEdit->text());
+
+    if (settings->value("toggle1a").toString() != "") ui->fastParam_lineEdit->setText(settings->value("toggle1a").toString());
+    else settings->setValue("toggle1a", ui->fastParam_lineEdit->text());
+    if (settings->value("toggle2a").toString() != "") ui->nomoParam_lineEdit->setText(settings->value("toggle2a").toString());
+    else settings->setValue("toggle2a", ui->nomoParam_lineEdit->text());
+    if (settings->value("toggle3a").toString() != "") ui->respawnParam_lineEdit->setText(settings->value("toggle3a").toString());
+    else settings->setValue("toggle3a", ui->respawnParam_lineEdit->text());
+    if (settings->value("toggle4a").toString() != "") ui->solonetParam_lineEdit->setText(settings->value("toggle4a").toString());
+    else settings->setValue("toggle4a", ui->solonetParam_lineEdit->text());
+
+    if (!settings->value("complevels").isNull())
+    {
+        if (settings->value("complevels").toInt() == 0) ui->minimalComplevels_radioButton->setChecked(true);
+        else if (settings->value("complevels").toInt() == 1) ui->fullComplevels_radioButton->setChecked(true);
+    }
+    else
+    {
+        settings->setValue("complevels", 0);
+        ui->minimalComplevels_radioButton->setChecked(true);
+    }
+
+    if (!settings->value("remember").isNull()) ui->remember_checkBox->setChecked(settings->value("remember").toBool());
+    else settings->setValue("remember", true);
+
+    if (settings->value("exeName").toString() != "") ui->executable_lineEdit->setText(settings->value("exeName").toString());
+    else ui->executable_lineEdit->setText("dsda-doom");
+
+    if (settings->value("maxhistory").toString() != "") ui->maxHistory_lineEdit->setText(settings->value("maxhistory").toString());
+    else
+    {
+        settings->setValue("maxhistory", "20");
+        ui->maxHistory_lineEdit->setText("20");
+    }
+
+    if (!settings->value("updaterStartLauncher").isNull()) ui->updaterStartLauncher_checkBox->setChecked(settings->value("updaterStartLauncher").toBool());
+    else settings->setValue("updaterStartLauncher", true);
+
+    if (!settings->value("updaterStartGame").isNull()) ui->updaterStartGame_checkBox->setChecked(settings->value("updaterStartGame").toBool());
+    else settings->setValue("updaterStartGame", true);
+
+    settings->sync();
 }
 
 void Settings::on_darkTheme_checkBox_clicked(bool checked)
@@ -166,33 +172,29 @@ void Settings::on_darkTheme_checkBox_clicked(bool checked)
     if(!checked)
     {
         qApp->setStyleSheet("QLabel::disabled {color: rgb(200, 200, 200);}"
-                            "QLabel {border: none; margin: 0px;background-color: rgba(50, 50, 50, 0);font: 13px}"
-                            );
+                            "QLabel {border: none; margin: 0px;background-color: rgba(50, 50, 50, 0);font: 13px}");
 
 #if defined Q_OS_MACOS
         macSetToLightTheme();
+        MainWindow::pMainWindow->setLightStyle();
 
-        ui->PWADFolders_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(180, 180, 180); border-radius:7px; background-color: rgb(240,240,240); color: rgb(13,13,13)}"
-                                        "QPushButton:pressed{border: 1px solid rgb(180, 180, 180); border-radius:7px; background-color: rgb(223,223,223); color: rgb(13,13,13)}");
-        ui->IWADFolders_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(180, 180, 180); border-radius:7px; background-color: rgb(240,240,240); color: rgb(13,13,13)}"
-                                        "QPushButton:pressed{border: 1px solid rgb(180, 180, 180); border-radius:7px; background-color: rgb(223,223,223); color: rgb(13,13,13)}");
+        ui->PWADFolders_pushButton->setStyleSheet(STYLE_MAC_BUTTON_LIGHT);
+        ui->IWADFolders_pushButton->setStyleSheet(STYLE_MAC_BUTTON_LIGHT);
 #else
         QPalette lightPalette;
         qApp->setPalette(lightPalette);
 #endif
 
-        settings->setValue("theme","light");
-        MainWindow::pMainWindow->changeButtonColor(false);
+        settings->setValue("theme", "light");
     }
     else
-     {
+    {
 #if defined Q_OS_MACOS
-         macSetToDarkTheme();
+        macSetToDarkTheme();
+        MainWindow::pMainWindow->setDarkStyle();
 
-         ui->PWADFolders_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(120, 120, 120); border-radius:7px; background-color: rgb(50, 50, 50); color: rgb(150, 150, 150)}"
-                                                   "QPushButton:pressed{border: 1px solid rgb(120, 120, 120); border-radius:7px; background-color: rgb(75, 75, 75); color: rgb(150, 150, 150)}");
-         ui->IWADFolders_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(120, 120, 120); border-radius:7px; background-color: rgb(50, 50, 50); color: rgb(150, 150, 150)}"
-                                                   "QPushButton:pressed{border: 1px solid rgb(120, 120, 120); border-radius:7px; background-color: rgb(75, 75, 75); color: rgb(150, 150, 150)}");
+        ui->PWADFolders_pushButton->setStyleSheet(STYLE_MAC_BUTTON_DARK);
+        ui->IWADFolders_pushButton->setStyleSheet(STYLE_MAC_BUTTON_DARK);
 #elif defined Q_OS_LINUX
          QPalette darkPalette;
          darkPalette.setColor(QPalette::Window, QColor(53, 53, 53));
@@ -250,9 +252,10 @@ void Settings::on_darkTheme_checkBox_clicked(bool checked)
                              "QToolTip {color: rgb(63, 63, 63);}");
 
 #endif
-        settings->setValue("theme","dark");
-        MainWindow::pMainWindow->changeButtonColor(true);
+        settings->setValue("theme", "dark");
     }
+
+    setAllWindowsTitleBar();
 }
 
 
@@ -355,12 +358,6 @@ void Settings::on_downResolutions_toolButton_clicked()
     }
 }
 
-void Settings::closeEvent(QCloseEvent *event) // When closing the launcher, save the settings
-{
-
-}
-
-
 void Settings::on_PWADFolders_pushButton_clicked()
 {
     ui->PWADFolders_textBrowser->setVisible(!ui->PWADFolders_textBrowser->isVisible());
@@ -370,7 +367,7 @@ void Settings::on_PWADFolders_pushButton_clicked()
 void Settings::on_executable_lineEdit_textChanged(const QString &arg1)
 {
     settingsChanged();
-    if(arg1=="")
+    if (arg1.isEmpty())
     {
         ui->executable_lineEdit->setStyleSheet(STYLE_TEXT_PLACEHOLDER);
     }
@@ -537,15 +534,10 @@ void Settings::on_minusIWADFolders_toolButton_clicked()
     settings->endArray();
 }
 
+void Settings::on_endoom_checkBox_clicked(bool checked) { settings->setValue("endoom", checked); }
 
-void Settings::on_endoom_checkBox_clicked(bool checked)
-{
-    settings->setValue("endoom", checked);
-}
+void Settings::on_remember_checkBox_toggled(bool checked) { settings->setValue("remember", checked); }
 
+void Settings::on_updaterStartLauncher_checkBox_toggled(bool checked) { settings->setValue("updaterStartLauncher", checked); }
 
-void Settings::on_remember_checkBox_toggled(bool checked)
-{
-    settings->setValue("remember", checked);
-}
-
+void Settings::on_updaterStartGame_checkBox_toggled(bool checked) { settings->setValue("updaterStartGame", checked); }

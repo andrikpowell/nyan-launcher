@@ -3,6 +3,7 @@
 #include <QtGlobal>
 
 #if defined Q_OS_WIN
+#include <dwmapi.h>
 #include <stdio.h>
 #include <tchar.h>
 #include <windows.h>
@@ -19,6 +20,8 @@
 #include "historylist.h"
 #include "settings.h"
 #include "states.h"
+#include "styles.h"
+#include "updater.h"
 #include <QClipboard>
 #include <QDebug>
 #include <QDesktopServices>
@@ -40,9 +43,11 @@
 #include <QShortcut>
 #include <QStandardPaths>
 #include <QTextEdit>
+#include <QWindow>
 #include <QtConcurrent>
 #include <QtNetwork>
 #include <qgraphicseffect.h>
+#include "theme.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -85,7 +90,7 @@ class MainWindow : public QMainWindow
     QComboBox *complevel_comboBox();
     QLineEdit *episode_lineEdit();
     QLineEdit *level_lineEdit();
-    QComboBox *difficulty_comboBox();
+    QComboBox *skill_comboBox();
     QCheckBox *toggle1_checkBox();
     QCheckBox *toggle2_checkBox();
     QCheckBox *toggle3_checkBox();
@@ -103,7 +108,7 @@ class MainWindow : public QMainWindow
     QComboBox *playback_comboBox();
     QTextEdit *additionalArguments_textEdit();
 
-public slots:
+  public slots:
     void delayLaunch();
     void closeEvent(QCloseEvent *event);
     void on_launchGame_pushButton_clicked(bool returnTooltip, QString exportCmd);
@@ -118,6 +123,7 @@ public slots:
     void on_additionalArguments_pushButton_clicked();
 
     // Actions
+    void on_actionAbout_triggered();
     void on_actionLoadState_triggered();
     void on_actionSaveState_triggered();
     void on_actionWhatIsThisState_triggered();
@@ -132,7 +138,6 @@ public slots:
     void on_actionOpenIWADsFolder_triggered();
     void on_actionOpenConsole_triggered();
 
-    void changeButtonColor(bool isDark);
     void setComplevelsList(QStringList list);
     void setResolutionsList(QListWidget *list);
     void dropFile(QString fileName);
@@ -147,6 +152,8 @@ public slots:
     void Launch(QStringList arguments);
     void showSSLDialog();
     void on_tooltip_pushButton_clicked();
+    void setLightStyle();
+    void setDarkStyle();
 
   public Q_SLOTS:
     void finished(int exitCode, QProcess::ExitStatus exitStatus);
@@ -175,7 +182,12 @@ public slots:
     void saveSelected();
     void setStyles();
     QStringList getArguments();
+    void on_playingDemo_indicator_clicked();
+    void on_recordingDemo_indicator_clicked();
+    void on_wadsSelected_indicator_clicked();
+    void CheckUpdates();
 };
+
 extern QSettings *settings;
 
 #endif // MAINWINDOW_H

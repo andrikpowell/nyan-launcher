@@ -8,42 +8,10 @@ void MainWindow::changeGameName(QString newName) { gameName = newName; }
 void MainWindow::showSSLDialog()
 {
     QMessageBox msgBox;
-    msgBox.setText("SSL library not found. Network features not available.");
-    msgBox.setInformativeText("It should have been packaged with the Launcher.\nIf reinstalling does not fix this, try manually installing OpenSSL.\n\nlibssl-1_1-x64.dll + libcrypto-1_1-x64.dll");
+    msgBox.setText("SSL library not found");
+    msgBox.setInformativeText("Network features not available.");
     msgBox.addButton(tr("Ok"), QMessageBox::NoRole);
     msgBox.exec();
-}
-
-void MainWindow::changeButtonColor(bool isDark)
-{
-#if defined Q_OS_MACOS
-    if (isDark)
-    {
-        ui->showCommandLine_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(120, 120, 120); border-radius:7px; background-color: rgb(50, 50, 50); color: rgb(150, 150, 150)}"
-                                                      "QPushButton:pressed{border: 1px solid rgb(120, 120, 120); border-radius:7px; background-color: rgb(75, 75, 75); color: rgb(150, 150, 150)}");
-        ui->tooltip_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(120, 120, 120); border-radius:7px; background-color: rgb(50, 50, 50); color: rgb(150, 150, 150)}"
-                                              "QPushButton:pressed{border: 1px solid rgb(120, 120, 120); border-radius:7px; background-color: rgb(75, 75, 75); color: rgb(150, 150, 150)}");
-        ui->additionalArguments_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(120, 120, 120); border-radius:5px; background-color: rgb(50, 50, 50); color: rgb(150, 150, 150)}"
-                                                          "QPushButton:pressed{border: 1px solid rgb(120, 120, 120); border-radius:5px; background-color: rgb(75, 75, 75); color: rgb(150, 150, 150)}");
-        ui->nextPage_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(120, 120, 120); border-radius:5px; background-color: rgb(50, 50, 50); color: rgb(150, 150, 150)}"
-                                               "QPushButton:pressed{border: 1px solid rgb(120, 120, 120); border-radius:5px; background-color: rgb(75, 75, 75); color: rgb(150, 150, 150)}");
-        ui->previousPage_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(120, 120, 120); border-radius:5px; background-color: rgb(50, 50, 50); color: rgb(150, 150, 150)}"
-                                                   "QPushButton:pressed{border: 1px solid rgb(120, 120, 120); border-radius:5px; background-color: rgb(75, 75, 75); color: rgb(150, 150, 150)}");
-    }
-    else
-    {
-        ui->showCommandLine_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(180, 180, 180); border-radius:7px; background-color: rgb(240,240,240); color: rgb(13,13,13)}"
-                                                      "QPushButton:pressed{border: 1px solid rgb(180, 180, 180); border-radius:7px; background-color: rgb(223,223,223); color: rgb(13,13,13)}");
-        ui->tooltip_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(180, 180, 180); border-radius:7px; background-color: rgb(240,240,240); color: rgb(13,13,13)}"
-                                              "QPushButton:pressed{border: 1px solid rgb(180, 180, 180); border-radius:7px; background-color: rgb(223,223,223); color: rgb(13,13,13)}");
-        ui->additionalArguments_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(180, 180, 180); border-radius:5px; background-color: rgb(240,240,240); color: rgb(13,13,13)}"
-                                                          "QPushButton:pressed{border: 1px solid rgb(180, 180, 180); border-radius:5px; background-color: rgb(223,223,223); color: rgb(13, 13, 13)}");
-        ui->nextPage_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(180, 180, 180); border-radius:5px; background-color: rgb(240,240,240); color: rgb(13,13,13)}"
-                                               "QPushButton:pressed{border: 1px solid rgb(180, 180, 180); border-radius:5px; background-color: rgb(223,223,223); color: rgb(13, 13, 13)}");
-        ui->previousPage_pushButton->setStyleSheet("QPushButton{border: 1px solid rgb(180, 180, 180); border-radius:5px; background-color: rgb(240,240,240); color: rgb(13,13,13)}"
-                                                   "QPushButton:pressed{border: 1px solid rgb(180, 180, 180); border-radius:5px; background-color: rgb(223,223,223); color: rgb(13, 13, 13)}");
-    }
-#endif
 }
 
 // Prevents launching the game twice if the button "Launch" is pressed twice quickly
@@ -56,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     MainWindow::pMainWindow = this;
 
     launcherfolder = QCoreApplication::applicationDirPath();
+    findDataFolder();
 
     // Allow files to be droped in the launcher (*.wad *.lmp *.deh *.bex)
     setAcceptDrops(true);
@@ -81,13 +50,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->stackedWidget->setAttribute(Qt::WA_TranslucentBackground);
 
-#if defined Q_OS_WIN
-    ui->tooltip_textBrowser->setHtml(
-        "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:'.AppleSystemUIFont'; font-size:8pt; font-weight:400; font-style:normal;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
-        "font-size:8pt;\">Don't see any IWAD?     ^</span></p><p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Go to the settings and add the folder you have your IWADs in, to the </span><span style=\" font-size:9pt; "
-        "font-weight:700;\">IWAD Folders</span><span style=\" font-size:8pt;\"> list.</span></p><p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Then restart the Launcher</span></p></body></html>");
-#endif
-
     // Keyboard shortcut
     // Qt::CTRL is the CTRL key for Windows/Linux and is the CMD key for MacOS
 
@@ -112,6 +74,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     initializeIndicators();
 
+    QTimer::singleShot(0, this, SLOT(CheckUpdates()));
+
     QStringList arguments = qApp->arguments();
     for (int i = 1; i < arguments.count(); i++)
     {
@@ -120,6 +84,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 }
 
 MainWindow::~MainWindow() { delete ui; }
+
+void MainWindow::CheckUpdates()
+{
+    if (settings->value("updaterStartLauncher").toBool())
+    {
+        if (updateLauncherDialog(false)) return;
+    }
+    if (settings->value("updaterStartGame").toBool()) updateGameDialog(false);
+}
 
 void MainWindow::loadSelected()
 {
@@ -138,8 +111,10 @@ void MainWindow::loadSelected()
     {
         // Top
         ui->iwad_comboBox->setCurrentIndex(settings->value("iwad").toInt());
+        if (ui->iwad_comboBox->currentIndex() == -1 && ui->iwad_comboBox->count() > 0) ui->iwad_comboBox->setCurrentIndex(0);
+
         ui->complevel_comboBox->setCurrentIndex(settings->value("complevel").toInt());
-        ui->difficulty_comboBox->setCurrentIndex(settings->value("skill").toInt());
+        ui->skill_comboBox->setCurrentIndex(settings->value("skill").toInt());
         ui->episode_lineEdit->setText(settings->value("warp1").toString());
         ui->level_lineEdit->setText(settings->value("warp2").toString());
 
@@ -183,7 +158,7 @@ void MainWindow::saveSelected()
     // Top
     settings->setValue("iwad", ui->iwad_comboBox->currentIndex());
     settings->setValue("complevel", ui->complevel_comboBox->currentIndex());
-    settings->setValue("skill", ui->difficulty_comboBox->currentIndex());
+    settings->setValue("skill", ui->skill_comboBox->currentIndex());
     settings->setValue("warp1", ui->episode_lineEdit->text());
     settings->setValue("warp2", ui->level_lineEdit->text());
 
@@ -222,29 +197,6 @@ void MainWindow::saveSelected()
     settings->sync();
 }
 
-void MainWindow::setStyles()
-{
-    // Top
-    enable_disable_skill_comboBox();
-
-    // Options
-    if (ui->hud_lineEdit->text().isEmpty()) ui->hud_lineEdit->setStyleSheet(STYLE_TEXT_PLACEHOLDER);
-    else ui->hud_lineEdit->setStyleSheet(STYLE_TEXT_NORMAL);
-
-    if (ui->config_lineEdit->text().isEmpty()) ui->config_lineEdit->setStyleSheet(STYLE_TEXT_PLACEHOLDER);
-    else ui->config_lineEdit->setStyleSheet(STYLE_TEXT_NORMAL);
-
-    // Demos
-    if (ui->viddump_lineEdit->text().isEmpty()) ui->viddump_lineEdit->setStyleSheet(STYLE_TEXT_PLACEHOLDER);
-    else ui->viddump_lineEdit->setStyleSheet(STYLE_TEXT_NORMAL);
-
-    if (ui->playback_comboBox->currentIndex() != 1)
-    {
-        ui->viddump_lineEdit->setHidden(true);
-        ui->viddump_pushButton->setHidden(true);
-    }
-}
-
 // Drag Event for *.wad *.lmp *.state *.deh *.bex
 void MainWindow::dragEnterEvent(QDragEnterEvent *e)
 {
@@ -277,8 +229,9 @@ void MainWindow::dropLmp(QString filePath)
         {
             QStringList args = QProcess::splitCommand(buffer);
             bool searching_files = false;
-            for (int i = 0; i < args.count() - 1; i++)
+            for (int i = 0; i < args.count(); i++)
             {
+                if (args[i].isEmpty()) continue;
                 if (args[i][0] == '-') searching_files = false;
 
                 if (searching_files)
@@ -290,7 +243,7 @@ void MainWindow::dropLmp(QString filePath)
                     footer_files.append(args[i]);
                 }
 
-                if (args[i] == "-iwad")
+                if (args[i] == "-iwad" && i < args.count() - 1)
                 {
                     footer_iwad = args[i + 1];
                 }
@@ -352,22 +305,23 @@ void MainWindow::finished(int exitCode, QProcess::ExitStatus exitStatus)
         consoleWindow->show();
         consoleWindow->activateWindow();
         consoleWindow->raise();
+        setWindowTitleBar(consoleWindow->winId());
         return;
     }
 
-    if (settings->value("endoom").toBool())
+    if (settings->value("endoom").toBool() && !endoomString.isEmpty())
     {
         endoomWindow->showEndoom(endoomString);
 
         endoomWindow->show();
         endoomWindow->activateWindow();
         endoomWindow->raise();
+        setWindowTitleBar(endoomWindow->winId());
     }
 }
 
 void MainWindow::readyReadStandardError()
 {
-
     QProcess *p = (QProcess *)sender();
     QByteArray buf = p->readAllStandardError();
 
@@ -416,10 +370,10 @@ QStringList MainWindow::getArguments()
         arguments.append(complevel_string.left(2));
     }
 
-    if (ui->difficulty_comboBox->isEnabled() && ui->difficulty_comboBox->currentIndex() != 0)
+    if (ui->skill_comboBox->isEnabled() && ui->skill_comboBox->currentIndex() != 0)
     {
         arguments.append("-skill");
-        arguments.append(QString::number(ui->difficulty_comboBox->currentIndex()));
+        arguments.append(QString::number(ui->skill_comboBox->currentIndex()));
     }
 
     // Warping in Doom takes 2 boxes. 1 for the episode, 1 for the mission
@@ -445,7 +399,7 @@ QStringList MainWindow::getArguments()
 
     if (ui->toggle4_checkBox->isChecked()) arguments.append(ui->toggle4_checkBox->toolTip().split(';'));
 
-    if (ui->resolution_comboBox->currentIndex() == 0)
+    if (ui->resolution_comboBox->currentIndex() <= 0)
     {
         if (ui->fullscreen_checkBox->isChecked()) arguments.append("-fullscreen");
         else arguments.append("-window");
@@ -472,6 +426,7 @@ QStringList MainWindow::getArguments()
 
     if (ui->track_comboBox->currentIndex() == 1) arguments.append("-track_pacifist");
     else if (ui->track_comboBox->currentIndex() == 2) arguments.append("-track_100k");
+    else if (ui->track_comboBox->currentIndex() == 3) arguments.append("-track_reality");
 
     if (ui->time_comboBox->currentIndex() == 1) arguments.append("-time_use");
     else if (ui->time_comboBox->currentIndex() == 2) arguments.append("-time_keys");
@@ -528,6 +483,11 @@ QStringList MainWindow::getArguments()
         }
     }
 
+    if (settings->value("endoom").toBool())
+    {
+        arguments.append({"-assign", "ansi_endoom=2"});
+    }
+
     if (!ui->additionalArguments_textEdit->toPlainText().isEmpty())
     {
         QStringList parsed = parseStringIntoArguments(ui->additionalArguments_textEdit->toPlainText());
@@ -555,12 +515,17 @@ void MainWindow::on_launchGame_pushButton_clicked(bool returnTooltip, QString ex
     {
         QString argStr;
         QString argStrComplete;
+
         foreach (QString p, arguments)
         {
-            argStrComplete.append((p + " "));
+            if (p.trimmed().contains(' ')) p = "\"" + p + "\"";
+            argStrComplete.append((" " + p));
+        }
 
+        foreach (QString p, arguments)
+        {
             int lastBar = 0;
-            for (qsizetype i = 0; i < p.length(); i++)
+            for (int i = 0; i < p.length(); i++)
             {
                 if (p[i] == QDir::separator())
                 {
@@ -587,12 +552,12 @@ void MainWindow::on_launchGame_pushButton_clicked(bool returnTooltip, QString ex
             QTextStream out(&file);
 
 #if defined Q_OS_MACOS
-            out << "\"" + launcherfolder + "/../Resources/" + gameName + "\" -iwad \"" + ui->iwad_comboBox->itemData(ui->iwad_comboBox->currentIndex(), Qt::ToolTipRole).toString() + "\" " + argStrComplete;
+            out << "\"" + getGamePath() + "\"" + argStrComplete;
 #elif defined Q_OS_LINUX
-            out << "\"" + launcherfolder + "/" + gameName + "\" -iwad \"" + ui->iwad_comboBox->itemData(ui->iwad_comboBox->currentIndex(), Qt::ToolTipRole).toString() + "\" " + argStrComplete;
+            out << "\"" + getGamePath() + "\"" + argStrComplete;
 #else
             std::replace(launcherfolder.begin(), launcherfolder.end(), '/', '\\');
-            out << "\"" + launcherfolder + "\\" + gameName + ".exe\" -iwad \"" + ui->iwad_comboBox->itemData(ui->iwad_comboBox->currentIndex(), Qt::ToolTipRole).toString() + "\" " + argStrComplete;
+            out << "\"" + getGamePath() + "\"" + argStrComplete;
 #endif
             file.close();
 
@@ -610,12 +575,12 @@ void MainWindow::on_launchGame_pushButton_clicked(bool returnTooltip, QString ex
         {
             QClipboard *clip = QApplication::clipboard();
 #if defined Q_OS_MACOS
-            clip->setText("\"" + launcherfolder + "/../Resources/" + gameName + "\" -iwad \"" + ui->iwad_comboBox->itemData(ui->iwad_comboBox->currentIndex(), Qt::ToolTipRole).toString() + "\" " + argStrComplete);
+            clip->setText("\"" + getGamePath() + "\"" + argStrComplete);
 #elif defined Q_OS_LINUX
-            clip->setText("\"" + launcherfolder + "/" + gameName + "\" -iwad \"" + ui->iwad_comboBox->itemData(ui->iwad_comboBox->currentIndex(), Qt::ToolTipRole).toString() + "\" " + argStrComplete);
+            clip->setText("\"" + getGamePath() + "\"" + argStrComplete);
 #else
             std::replace(launcherfolder.begin(), launcherfolder.end(), '/', '\\');
-            clip->setText("\"" + launcherfolder + "\\" + gameName + ".exe\" -iwad \"" + ui->iwad_comboBox->itemData(ui->iwad_comboBox->currentIndex(), Qt::ToolTipRole).toString() + "\" " + argStrComplete);
+            clip->setText("\"" + getGamePath() + "\"" + argStrComplete);
 #endif
         }
 
@@ -640,67 +605,62 @@ void MainWindow::Launch(QStringList arguments)
     consoleWindow->clearText();
     endoomString = "";
 
-    if (settings->value("endoom").toBool())
-    {
-        arguments.append({"-assign", "ansi_endoom=2"});
-    }
-
+    // clang-format off
 #if defined Q_OS_MACOS
-    QFile port = QFile(launcherfolder + "/../Resources/" + gameName + "");
+    QString gamePath = getGamePath();
+    QFile port(gamePath);
     if (port.exists())
     {
         QString homePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
         QProcess *process = new QProcess;
         process->setWorkingDirectory(homePath);
-        process->start(launcherfolder + "/../Resources/" + gameName, arguments);
-        connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(finished(int, QProcess::ExitStatus)));
+        process->start(gamePath, arguments);
+        connect(process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(finished(int,QProcess::ExitStatus)));
         connect(process, SIGNAL(readyReadStandardOutput()), this, SLOT(readyReadStandardOutput()));
         connect(process, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardError()));
         connect(process, SIGNAL(started()), this, SLOT(started()));
     }
     else
     {
-        QMessageBox::warning(this, "dsda-launcher", gameName + " was not found in dsda-launcher.app/Contents/Resources/" + gameName);
+        QMessageBox::warning(this, APP_NAME, gameName + " was not found in " + APP_NAME + ".app/Contents/Resources/" + gameName);
     }
 #elif defined Q_OS_LINUX
-    QFile port = QFile(launcherfolder + "/" + gameName);
-    QString homePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-    // Run "which" command to check if dsda-doom exists. if it does then no need to specify a path, just run a process with gameName.
-    QStringList apar;
-    apar << gameName;
-    QProcess whichProcess;
-    whichProcess.start("which", apar);
-    whichProcess.waitForFinished();
-    QString processPath;
-    // If it finds an executable in the dsda-launcher folder, it will prioritize it over the one installed in a bin folder.
-    if (port.exists()) processPath = launcherfolder + "/" + gameName;
-    else processPath = gameName;
-    if (whichProcess.readAllStandardOutput() != "")
-    {
-        QProcess *process = new QProcess;
-        process->setWorkingDirectory(homePath);
-        process->start(processPath, arguments);
-        connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(finished(int, QProcess::ExitStatus)));
-        connect(process, SIGNAL(readyReadStandardOutput()), this, SLOT(readyReadStandardOutput()));
-        connect(process, SIGNAL(started()), this, SLOT(started()));
-    }
-    else QMessageBox::warning(this, "dsda-launcher", ("Failed to launch the application executable.\nMake sure that " + gameName + " is installed correctly through your package manager or installed with the original build instructions.\n\nIf you are sure " + gameName + " exists, symlink it to dsda-launcher's folder."));
-#else
-    QFile port = QFile(launcherfolder + "/" + gameName + ".exe");
+    QString gamePath = getGamePath();
+    QFile port(gamePath);
     if (port.exists())
     {
+        QString homePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
         QProcess *process = new QProcess;
-        process->setWorkingDirectory(launcherfolder);
-        process->start(launcherfolder + "/" + gameName + ".exe", arguments);
-        connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(finished(int, QProcess::ExitStatus)));
+        process->setWorkingDirectory(homePath);
+        process->start(gamePath, arguments);
+        connect(process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(finished(int,QProcess::ExitStatus)));
         connect(process, SIGNAL(readyReadStandardOutput()), this, SLOT(readyReadStandardOutput()));
+        connect(process, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardError()));
         connect(process, SIGNAL(started()), this, SLOT(started()));
     }
     else
     {
-        QMessageBox::warning(this, "dsda-launcher", "Failed to launch the application executable.\nMake sure that the launcher is in the same folder as " + gameName + ".exe");
+        QMessageBox::warning(this, APP_NAME, ("Failed to launch the application executable.\nMake sure that " + gameName + " is installed correctly through your package manager or installed with the original build instructions.\n\nIf you are sure " + gameName + " exists, symlink it to " + APP_NAME + "'s folder."));
+    }
+#else
+    QString gamePath = getGamePath();
+    QFile port(gamePath);
+    if (port.exists())
+    {
+        QProcess *process = new QProcess;
+        process->setWorkingDirectory(launcherfolder);
+        process->start(gamePath, arguments);
+        connect(process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(finished(int,QProcess::ExitStatus)));
+        connect(process, SIGNAL(readyReadStandardOutput()), this, SLOT(readyReadStandardOutput()));
+        connect(process, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardError()));
+        connect(process, SIGNAL(started()), this, SLOT(started()));
+    }
+    else
+    {
+        QMessageBox::warning(this, APP_NAME, "Failed to launch the application executable.\nMake sure that the launcher is in the same folder as " + gameName + ".exe");
     }
 #endif
+    // clang-format on
 
     // Again, don't allow the launch button to work twice in the space of 2 secs
     canLaunch = false;
@@ -717,7 +677,12 @@ void MainWindow::SaveHistory(QStringList args)
     for (qsizetype i = 0; i < args.size(); i++)
         checksumString += args.at(i);
     QByteArray checksumByteArray = checksumString.toLatin1();
+
+#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0)
     checksum = qChecksum(checksumByteArray.data());
+#else
+    checksum = qChecksum(checksumByteArray.data(), checksumByteArray.length());
+#endif
 
     QFile file(historyListWindow->historyPath);
     file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -730,6 +695,7 @@ void MainWindow::SaveHistory(QStringList args)
         stream.readLineInto(&buffer);
         if (buffer != HISTORY_HEADER)
         {
+            // Outdated history.states file. Remove it
             file.close();
             QFile::remove(historyListWindow->historyPath);
             stream.setString(NULL);
@@ -749,6 +715,7 @@ void MainWindow::SaveHistory(QStringList args)
             {
                 if (checksum == buffer.mid(8).toInt())
                 {
+                    // Same exact parameters where launched, ignore
                     file.close();
                     return;
                 }
@@ -836,11 +803,15 @@ void MainWindow::closeEvent(QCloseEvent *event) // When closing the launcher, sa
 
 void MainWindow::on_showCommandLine_pushButton_clicked() { on_launchGame_pushButton_clicked(true, ""); }
 
+void MainWindow::on_wadsSelected_indicator_clicked() { ui->tabs->setCurrentIndex(1); }
+void MainWindow::on_recordingDemo_indicator_clicked() { ui->tabs->setCurrentIndex(2); }
+void MainWindow::on_playingDemo_indicator_clicked() { ui->tabs->setCurrentIndex(2); }
+
 QComboBox *MainWindow::iwad_comboBox() { return ui->iwad_comboBox; }
 QComboBox *MainWindow::complevel_comboBox() { return ui->complevel_comboBox; }
 QLineEdit *MainWindow::episode_lineEdit() { return ui->episode_lineEdit; }
 QLineEdit *MainWindow::level_lineEdit() { return ui->level_lineEdit; }
-QComboBox *MainWindow::difficulty_comboBox() { return ui->difficulty_comboBox; }
+QComboBox *MainWindow::skill_comboBox() { return ui->skill_comboBox; }
 QCheckBox *MainWindow::toggle1_checkBox() { return ui->toggle1_checkBox; }
 QCheckBox *MainWindow::toggle2_checkBox() { return ui->toggle2_checkBox; }
 QCheckBox *MainWindow::toggle3_checkBox() { return ui->toggle3_checkBox; }
