@@ -73,12 +73,9 @@ private slots:
     void on_minusPWADFolders_toolButton_clicked();
     void on_plusPWADFolders_toolButton_clicked();
 
-    //void on_endoom_checkBox_clicked(bool checked);
+    void on_endoom_checkBox_clicked(bool checked);
 
     void on_remember_checkBox_toggled(bool checked);
-
-    void on_dsda_doom_pushButton_clicked();
-    void on_dsda_launch_pushButton_clicked();
 
 private:
     Ui::Settings *ui;
