@@ -8,7 +8,6 @@
 #include <QTextCharFormat>
 #include <QTextEdit>
 #include <QRegularExpression>
-#include <unordered_map>
 
 namespace Ui {
 class Console;
@@ -24,8 +23,8 @@ public:
     Ui::Console *ui;
 
 public slots:
-    void fooo3();
-    void changeText(QString s);
+    void ctrlw();
+    void appendText(QString s);
     void clearText();
 };
 

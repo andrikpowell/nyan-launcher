@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleExecutable</key>
-	<string>nyan-launcher</string>
+	<string>dsda-launcher</string>
 	<key>CFBundleIconFile</key>
-	<string>nyan-launcher.icns</string>
+	<string>dsda-launcher.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>p.nyan-launcher</string>
+        <string>com.pedro-beirao.dsda-launcher</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
@@ -20,7 +20,8 @@
 	<string>NSApplication</string>
 	<key>NSSupportsAutomaticGraphicsSwitching</key>
 	<true/>
-
+        <key>NSApplicationDelegate.applicationSupportsSecureRestorableState</key>
+        <true/>
 	<key>CFBundleDocumentTypes</key>
         <array>
                 <dict>
@@ -57,6 +58,18 @@
                         <key>CFBundleTypeExtensions</key>
                         <array>
                                 <string>deh</string>
+                        </array>
+                </dict>
+                <dict>
+                        <key>CFBundleTypeName</key>
+                        <string>Boom Extended Dehacked patch</string>
+                        <key>CFBundleTypeIconFile</key>
+                        <string>doom-launcher.icns</string>
+                        <key>CFBundleTypeRole</key>
+                        <string>Viewer</string>
+                        <key>CFBundleTypeExtensions</key>
+                        <array>
+                                <string>bex</string>
                         </array>
                 </dict>
                 <dict>
