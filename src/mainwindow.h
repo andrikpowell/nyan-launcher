@@ -67,6 +67,7 @@ class MainWindow : public QMainWindow
 
     void enable_disable_skill_comboBox();
     void enable_disable_complevel_comboBox();
+    void enable_disable_limit_checkBox();
     void initializeIndicators();
 
     // Prevents launching the game twice if the button "Launch" is pressed twice quickly
@@ -93,6 +94,7 @@ class MainWindow : public QMainWindow
     QLineEdit *episode_lineEdit();
     QLineEdit *level_lineEdit();
     QComboBox *skill_comboBox();
+    QCheckBox *limit_checkBox();
     QCheckBox *toggle1_checkBox();
     QCheckBox *toggle2_checkBox();
     QCheckBox *toggle3_checkBox();
@@ -114,6 +116,7 @@ class MainWindow : public QMainWindow
     void delayLaunch();
     void closeEvent(QCloseEvent *event);
     void on_launchGame_pushButton_clicked(bool returnTooltip, QString exportCmd);
+    void on_complevel_comboBox_currentIndexChanged(int index);
     void on_iwad_comboBox_currentIndexChanged(int index);
     void on_console_pushButton_clicked();
     void on_addPwads_toolButton_clicked();

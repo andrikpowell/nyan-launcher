@@ -83,6 +83,11 @@ void states::loadStateV1(QTextStream &stream)
             if (buffer_value.length() > 0) MainWindow::pMainWindow->skill_comboBox()->setCurrentIndex((buffer_value.toInt()));
             else MainWindow::pMainWindow->skill_comboBox()->setCurrentIndex(0);
         }
+        else if (buffer_name == "lr") // limit-removing
+        {
+            if (buffer_value == "true") MainWindow::pMainWindow->limit_checkBox()->setChecked(true);
+            else MainWindow::pMainWindow->limit_checkBox()->setChecked(false);
+        }
         else if (buffer_name == "box1") // box1
         {
             if (buffer_value == "true") MainWindow::pMainWindow->toggle1_checkBox()->setChecked(true);
@@ -208,6 +213,10 @@ void states::loadStateV2(QTextStream &stream)
         {
             MainWindow::pMainWindow->skill_comboBox()->setCurrentIndex(buffer_value.toInt());
         }
+        else if (buffer_name == "lr") // limitremoving
+        {
+            MainWindow::pMainWindow->limit_checkBox()->setChecked(string_to_bool(buffer_value));
+        }
         else if (buffer_name == "box1") // box1
         {
             MainWindow::pMainWindow->toggle1_checkBox()->setChecked(string_to_bool(buffer_value));
@@ -301,6 +310,7 @@ void states::saveStateToFile(QString filePath)
     out << "complevel " + ui->complevel_comboBox()->currentText() + "\n";
     out << "warp " + ui->episode_lineEdit()->text() + " " + (ui->level_lineEdit()->isVisible() ? ui->level_lineEdit()->text() : "") + "\n";
     out << "skill " + QString::number(ui->skill_comboBox()->currentIndex()) + "\n";
+    out << "lr " + bool_to_string(ui->limit_checkBox()->isChecked()) + "\n";
     out << "box1 " + bool_to_string(ui->toggle1_checkBox()->isChecked()) + "\n";
     out << "box2 " + bool_to_string(ui->toggle2_checkBox()->isChecked()) + "\n";
     out << "box3 " + bool_to_string(ui->toggle3_checkBox()->isChecked()) + "\n";

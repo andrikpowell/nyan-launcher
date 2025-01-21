@@ -117,6 +117,7 @@ void MainWindow::loadSelected()
 
         ui->complevel_comboBox->setCurrentIndex(settings->value("complevel").toInt());
         ui->skill_comboBox->setCurrentIndex(settings->value("skill").toInt());
+        ui->limit_checkBox->setChecked(settings->value("limit-removing").toBool());
         ui->episode_lineEdit->setText(settings->value("warp1").toString());
         ui->level_lineEdit->setText(settings->value("warp2").toString());
 
@@ -160,6 +161,7 @@ void MainWindow::saveSelected()
     // Top
     settings->setValue("iwad", ui->iwad_comboBox->currentIndex());
     settings->setValue("complevel", ui->complevel_comboBox->currentIndex());
+    settings->setValue("limit-removing", ui->limit_checkBox->isChecked());
     settings->setValue("skill", ui->skill_comboBox->currentIndex());
     settings->setValue("warp1", ui->episode_lineEdit->text());
     settings->setValue("warp2", ui->level_lineEdit->text());
@@ -367,10 +369,18 @@ QStringList MainWindow::getArguments()
     arguments.append(ui->iwad_comboBox->currentData(Qt::ToolTipRole).toString());
 
     QString complevel_string = ui->complevel_comboBox->currentText();
-    if (complevel_string != "Default")
+    if (complevel_string == "Default" && ui->limit_checkBox->isChecked())
     {
+        arguments.append("-lr");
+    }
+    else if (complevel_string != "Default")
+    {
+        int limit = ui->limit_checkBox->isChecked();
+        int num = limit ? 1 : 2;
+        QString limit_char = limit ? "r" : "";
+
         arguments.append("-complevel");
-        arguments.append(complevel_string.left(2));
+        arguments.append(complevel_string.left(num) + limit_char);
     }
 
     if (ui->skill_comboBox->isEnabled() && ui->skill_comboBox->currentIndex() != 0)
@@ -816,6 +826,7 @@ QComboBox *MainWindow::complevel_comboBox() { return ui->complevel_comboBox; }
 QLineEdit *MainWindow::episode_lineEdit() { return ui->episode_lineEdit; }
 QLineEdit *MainWindow::level_lineEdit() { return ui->level_lineEdit; }
 QComboBox *MainWindow::skill_comboBox() { return ui->skill_comboBox; }
+QCheckBox *MainWindow::limit_checkBox() { return ui->limit_checkBox; }
 QCheckBox *MainWindow::toggle1_checkBox() { return ui->toggle1_checkBox; }
 QCheckBox *MainWindow::toggle2_checkBox() { return ui->toggle2_checkBox; }
 QCheckBox *MainWindow::toggle3_checkBox() { return ui->toggle3_checkBox; }

@@ -176,6 +176,7 @@ void historyList::on_history_listWidget_currentRowChanged(int currentRow)
             else if (buffer_value == '1') playbackDemo_t = "Timedemo\n";
             else if (buffer_value == '2') playbackDemo_t = "Fastdemo\n";
         }
+        else if (buffer_name == "lr" && buffer_value == "true") ui->extra_label->setText(ui->extra_label->text() + "-lr");
         else if (buffer_name == "box1" && buffer_value == "true") ui->extra_label->setText(ui->extra_label->text() + " " + MainWindow::pMainWindow->toggle1_checkBox()->toolTip());
         else if (buffer_name == "box2" && buffer_value == "true") ui->extra_label->setText(ui->extra_label->text() + " " + MainWindow::pMainWindow->toggle2_checkBox()->toolTip());
         else if (buffer_name == "box3" && buffer_value == "true") ui->extra_label->setText(ui->extra_label->text() + " " + MainWindow::pMainWindow->toggle3_checkBox()->toolTip());

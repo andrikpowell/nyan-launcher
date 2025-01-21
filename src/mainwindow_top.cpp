@@ -20,6 +20,23 @@ void MainWindow::on_iwad_comboBox_currentIndexChanged(int index)
     }
 }
 
+// If the Complevel selected changes
+void MainWindow::on_complevel_comboBox_currentIndexChanged(int index)
+{
+    QString selection = ui->complevel_comboBox->currentText();
+
+    // These are limit-removing compat. They need checkbox
+    if(LIMIT_COMPLEVELS.contains(selection))
+    {
+        ui->limit_checkBox->show();
+    }
+    else // These are not limit-removing. Deactivate and hide checkbox
+    {
+        ui->limit_checkBox->setChecked(false);
+        ui->limit_checkBox->hide();
+    }
+}
+
 void MainWindow::on_tooltip_pushButton_clicked()
 {
     if (ui->tooltip_textBrowser->isHidden()) ui->tooltip_textBrowser->show();
@@ -72,5 +89,20 @@ void MainWindow::enable_disable_complevel_comboBox()
         ui->complevel_comboBox->setEnabled(true);
         ui->complevel_label->setEnabled(true);
         ui->complevel_comboBox->setToolTip("");
+    }
+}
+
+void MainWindow::enable_disable_limit_checkBox()
+{
+    if (!ui->playback_lineEdit->text().isEmpty())
+    {
+        ui->limit_checkBox->setEnabled(false);
+        ui->limit_checkBox->setToolTip("Cannot select limit-removing\n"
+                                            "during Demo playback");
+    }
+    else
+    {
+        ui->limit_checkBox->setEnabled(true);
+        ui->limit_checkBox->setToolTip("");
     }
 }

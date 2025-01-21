@@ -39,6 +39,7 @@ void MainWindow::on_playback_lineEdit_textChanged(const QString &arg1)
 {
     enable_disable_skill_comboBox();
     enable_disable_complevel_comboBox();
+    enable_disable_limit_checkBox();
 }
 
 void MainWindow::on_viddump_lineEdit_textChanged(const QString &arg1)
