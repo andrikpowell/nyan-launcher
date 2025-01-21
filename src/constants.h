@@ -7,14 +7,14 @@
 
 const QString version = "v1.4";
 
-const QString LAUNCHER_REPO = "https://github.com/Pedro-Beirao/dsda-launcher";
-const QString LAUNCHER_API = "https://api.github.com/repos/Pedro-Beirao/dsda-launcher/releases/latest";
-const QString LAUNCHER_UPDATER = "https://raw.githubusercontent.com/Pedro-Beirao/dsda-launcher/refs/heads/master/updater/updater.json";
+const QString LAUNCHER_REPO = "https://github.com/andrikpowell/nyan-launcher";
+const QString LAUNCHER_API = "https://api.github.com/repos/andrikpowell/nyan-launcher/releases/latest";
+const QString LAUNCHER_UPDATER = "https://raw.githubusercontent.com/andrikpowell/nyan-launcher/refs/heads/master/updater/updater.json";
 
-const QString GAME_REPO = "https://github.com/kraflab/dsda-doom";
-const QString GAME_API = "https://api.github.com/repos/kraflab/dsda-doom/releases/latest";
-const QString GAME_UPDATER_MACOS = "https://raw.githubusercontent.com/Pedro-Beirao/dsda-launcher/refs/heads/master/updater/dsda-updater-macos.sh";
-const QString GAME_UPDATER_WINDOWS = "https://raw.githubusercontent.com/Pedro-Beirao/dsda-launcher/refs/heads/master/updater/dsda-updater-windows.bat";
+const QString GAME_REPO = "https://github.com/andrikpowell/nyan-doom";
+const QString GAME_API = "https://api.github.com/repos/andrikpowell/nyan-doom/releases/latest";
+const QString GAME_UPDATER_MACOS = "https://raw.githubusercontent.com/andrikpowell/nyan-launcher/refs/heads/master/updater/nyan-updater-macos.sh";
+const QString GAME_UPDATER_WINDOWS = "https://raw.githubusercontent.com/andrikpowell/nyan-launcher/refs/heads/master/updater/nyan-updater-windows.bat";
 
 #if defined Q_OS_WIN
 const QChar FOLDER_SEPARATOR = '\\';
@@ -57,8 +57,8 @@ const QString DEFAULT_TOGGLE3ARG = "-respawn";
 const QString DEFAULT_TOGGLE4TEXT = "Solo-Net";
 const QString DEFAULT_TOGGLE4ARG = "-solo-net";
 
-const QString STATE_HEADER = "dsdalauncherstatev2";
-const QString HISTORY_HEADER = "dsdalauncherhistoryv2";
+const QString STATE_HEADER = "nyanlauncherstatev2";
+const QString HISTORY_HEADER = "nyanlauncherhistoryv2";
 
 void findDataFolder();
 

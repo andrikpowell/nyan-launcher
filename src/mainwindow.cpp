@@ -350,7 +350,7 @@ void MainWindow::started() { running = true; }
 void MainWindow::gameIsRunningDialog()
 {
     QMessageBox msgBox;
-    msgBox.setText("dsda-doom is still running.");
+    msgBox.setText("Nyan Doom is still running.");
     msgBox.addButton("Ok", QMessageBox::YesRole);
     msgBox.exec();
 }

@@ -2,7 +2,7 @@ QT       += core gui network concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-DEFINES += APP_NAME='\\"dsda-launcher\\"'
+DEFINES += APP_NAME='\\"nyan-launcher\\"'
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -52,7 +52,7 @@ FORMS += \
 
 win32 {
     CONFIG += c++11
-    RC_ICONS = icons/dsda-launcher.ico
+    RC_ICONS = icons/nyan-launcher.ico
 
     static {
         QMAKE_LFLAGS += -static-libgcc -static-libstdc++ -static
@@ -61,10 +61,10 @@ win32 {
 
 mac {
     CONFIG += c++11 appbundle
-    ICON = icons/dsda-launcher.icns
+    ICON = icons/nyan-launcher.icns
     include_port {
-        APP_FILES.files = ./dsda-doom
-        APP_FILES.files += ./dsda-doom.wad
+        APP_FILES.files = ./nyan-doom
+        APP_FILES.files += ./nyan-doom.wad
     }
     macdeploy {
         QMAKE_APPLE_DEVICE_ARCHS=arm64 x86_64

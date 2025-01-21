@@ -9,7 +9,7 @@ void findDataFolder()
 #if defined(Q_OS_WIN)
     datafolder = launcherfolder;
 #else
-    QString dotfolder = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.dsda-doom";
+    QString dotfolder = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.nyan-doom";
     if (QDir(dotfolder).exists())
     {
         datafolder = dotfolder;
@@ -17,17 +17,17 @@ void findDataFolder()
     else
     {
 #if defined(Q_OS_MACOS)
-        datafolder = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/Library/Application Support/dsda-doom";
+        datafolder = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/Library/Application Support/nyan-doom";
 #elif defined(Q_OS_LINUX)
 
         QString xdg_data_home = QString(qgetenv("XDG_DATA_HOME"));
         if (!xdg_data_home.isEmpty())
         {
-            datafolder = xdg_data_home + "/dsda-doom";
+            datafolder = xdg_data_home + "/nyan-doom";
         }
         else
         {
-            datafolder = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.local/share/dsda-doom";
+            datafolder = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.local/share/nyan-doom";
         }
 #endif
     }

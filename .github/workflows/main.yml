@@ -50,12 +50,12 @@ jobs:
           cd build
           qmake ..
           make
-          zip -j dsda-launcher-${{ github.ref_name }}-win64.zip release/dsda-launcher.exe
+          zip -j nyan-launcher-${{ github.ref_name }}-win64.zip release/nyan-launcher.exe
           
       - uses: actions/upload-artifact@v4
         with:
-          name: dsda-launcher-dev-win64
-          path: src\build\dsda-launcher-${{ github.ref_name }}-win64.zip
+          name: nyan-launcher-dev-win64
+          path: src\build\nyan-launcher-${{ github.ref_name }}-win64.zip
 
       - name: Release
         if: ${{ contains(github.ref, 'tags') }}
@@ -63,7 +63,7 @@ jobs:
         with:
           name: ${{ github.ref_name }}
           allowUpdates: true
-          artifacts: src/build/dsda-launcher-${{ github.ref_name }}-win64.dmg
+          artifacts: src/build/nyan-launcher-${{ github.ref_name }}-win64.dmg
           
   build-linux:
     runs-on: ubuntu-latest
@@ -93,11 +93,11 @@ jobs:
           chmod a+x ./linuxdeploy-x86_64.AppImage
           wget -c -nv "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/2.0.0-alpha-1-20241106/linuxdeploy-plugin-qt-x86_64.AppImage"
           chmod a+x ./linuxdeploy-plugin-qt-x86_64.AppImage
-          ./linuxdeploy-x86_64.AppImage --plugin=qt --executable=./dsda-launcher --output=appimage --appdir=./ --desktop-file=../icons/dsda-Launcher.desktop --icon-file=../icons/dsda-launcher.svg
+          ./linuxdeploy-x86_64.AppImage --plugin=qt --executable=./nyan-launcher --output=appimage --appdir=./ --desktop-file=../icons/nyan-launcher.desktop --icon-file=../icons/nyan-launcher.svg
       
       - uses: actions/upload-artifact@v4
         with:
-          name: dsda-launcher-dev-linux
+          name: nyan-launcher-dev-linux
           path: src/build
           
   build-macos:
@@ -121,15 +121,15 @@ jobs:
           cd build
           qmake .. "CONFIG+=macdeploy"
           make
-          macdeployqt ./dsda-launcher.app
+          macdeployqt ./nyan-launcher.app
 
           brew install create-dmg
-          create-dmg --app-drop-link 10 10 ./dsda-launcher-${{ github.ref_name }}-mac.dmg ./dsda-launcher.app
+          create-dmg --app-drop-link 10 10 ./nyan-launcher-${{ github.ref_name }}-mac.dmg ./nyan-launcher.app
           
       - uses: actions/upload-artifact@v4
         with:
-          name: dsda-launcher-dev-mac
-          path: src/build/dsda-launcher-${{ github.ref_name }}-mac.dmg
+          name: nyan-launcher-dev-mac
+          path: src/build/nyan-launcher-${{ github.ref_name }}-mac.dmg
     
       - name: Release
         if: ${{ contains(github.ref, 'tags') }}
@@ -137,4 +137,4 @@ jobs:
         with:
           name: ${{ github.ref_name }}
           allowUpdates: true
-          artifacts: src/build/dsda-launcher-${{ github.ref_name }}-mac.dmg
+          artifacts: src/build/nyan-launcher-${{ github.ref_name }}-mac.dmg

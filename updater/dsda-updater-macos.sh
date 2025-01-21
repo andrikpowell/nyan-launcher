@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO="kraflab/dsda-doom"
+REPO="andrikpowell/nyan-doom"
 
 TEMP=`mktemp --directory`
 DEST=$1
@@ -8,8 +8,8 @@ DEST=$1
 TAG=$(curl -s "https://api.github.com/repos/$REPO/releases/latest" | jq -r '.tag_name')
 VERSION=${TAG:1}
 
-v_arm64="dsda-doom-$VERSION-mac-arm64"
-v_x64="dsda-doom-$VERSION-mac-x86_64"
+v_arm64="nyan-doom-$VERSION-mac-arm64"
+v_x64="nyan-doom-$VERSION-mac-x86_64"
 
 CleanUp()
 {
@@ -40,8 +40,8 @@ Download()
 
 RemoveOld()
 {
-  [ -e $DEST/dsda-doom ] && rm -f $DEST/dsda-doom
-  [ -e $DEST/dsda-doom.wad ] && rm -f $DEST/dsda-doom.wad
+  [ -e $DEST/nyan-doom ] && rm -f $DEST/nyan-doom
+  [ -e $DEST/nyan-doom.wad ] && rm -f $DEST/nyan-doom.wad
   [ -e $DEST/COPYING.txt ] && rm -f $DEST/COPYING.txt
   [ -e $DEST/libs ] && rm -rf $DEST/libs
   [ -e $DEST/libs_arm64 ] && rm -rf $DEST/libs_arm64
@@ -50,8 +50,8 @@ RemoveOld()
 
 CopyUpdate()
 {
-  lipo -create $TEMP/$v_arm64/dsda-doom $TEMP/$v_x64/dsda-doom -output $DEST/dsda-doom
-  cp $TEMP/$v_arm64/dsda-doom.wad $DEST/dsda-doom.wad
+  lipo -create $TEMP/$v_arm64/nyan-doom $TEMP/$v_x64/nyan-doom -output $DEST/nyan-doom
+  cp $TEMP/$v_arm64/nyan-doom.wad $DEST/nyan-doom.wad
   cp $TEMP/$v_arm64/COPYING.txt $DEST/COPYING.txt
   cp -r $TEMP/$v_arm64/libs_arm64 $DEST/libs_arm64
   cp -r $TEMP/$v_x64/libs_x86_64 $DEST/libs_x86_64
@@ -66,11 +66,11 @@ then
         CopyUpdate
         CleanUp
 
-        echo "\ndsda-doom $VERSION has been installed succesfully!"
+        echo "\nNyan Doom $VERSION has been installed succesfully!"
         exit
     else
         echo "Destination folder does not exist"
     fi
 else
-    echo "Error - Missing argument\n\nUsage: sh dsda-update-mac.sh /path/to/destination"
+    echo "Error - Missing argument\n\nUsage: sh nyan-update-mac.sh /path/to/destination"
 fi

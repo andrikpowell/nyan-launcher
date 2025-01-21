@@ -133,7 +133,7 @@ void MainWindow::on_config_lineEdit_textChanged(const QString &arg1)
 
 void MainWindow::on_hud_pushButton_clicked()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("DSDAHUD.lmp"), settings->value("hudfolder").toString(), tr("DSDAHUD file (*.lmp *.txt *)"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("NYANHUD.lmp"), settings->value("hudfolder").toString(), tr("NYANHUD file (*.lmp *.txt *)"));
     if (!fileName.isEmpty())
     {
         settings->setValue("hudfolder", fileName);
@@ -143,7 +143,7 @@ void MainWindow::on_hud_pushButton_clicked()
 
 void MainWindow::on_config_pushButton_clicked()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("dsda-doom.cfg"), settings->value("configfolder").toString(), tr("Config file (*.cfg *.txt *)"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("nyan-doom.cfg"), settings->value("configfolder").toString(), tr("Config file (*.cfg *.txt *)"));
     if (!fileName.isEmpty())
     {
         settings->setValue("configfolder", fileName);

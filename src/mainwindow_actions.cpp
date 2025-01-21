@@ -32,11 +32,11 @@ void MainWindow::on_actionSaveState_triggered()
     }
 }
 
-void MainWindow::on_actionGithubDsdalauncher_triggered() { QDesktopServices::openUrl(QUrl(LAUNCHER_REPO)); }
+void MainWindow::on_actionGithubNyanlauncher_triggered() { QDesktopServices::openUrl(QUrl(LAUNCHER_REPO)); }
 
-void MainWindow::on_actionGithubDsdadoom_triggered() { QDesktopServices::openUrl(QUrl(GAME_REPO)); }
+void MainWindow::on_actionGithubNyandoom_triggered() { QDesktopServices::openUrl(QUrl(GAME_REPO)); }
 
-void MainWindow::on_actionCheckForUpdatesDsdalauncher_triggered()
+void MainWindow::on_actionCheckForUpdatesNyanlauncher_triggered()
 {
     if (!QSslSocket::supportsSsl())
     {
@@ -47,7 +47,7 @@ void MainWindow::on_actionCheckForUpdatesDsdalauncher_triggered()
     updateLauncherDialog(true);
 }
 
-void MainWindow::on_actionCheckForUpdatesDsdadoom_triggered()
+void MainWindow::on_actionCheckForUpdatesNyandoom_triggered()
 {
     if (!QSslSocket::supportsSsl())
     {
@@ -69,7 +69,7 @@ void MainWindow::on_actionOpenSettings_triggered()
 void MainWindow::on_actionTips_triggered()
 {
     QMessageBox msgBox;
-    msgBox.setText("A few tips you should know (Some features may require the latest dsda-doom version):");
+    msgBox.setText("A few tips you should know (Some features may require the latest Nyan Doom version):");
     msgBox.setInformativeText("- Drag .wad / .deh files on top of the launcher to add them to the loaded files"
                               "\n\n"
                               "- Drag .lmp files on top of the launcher to play the demo and autoselect the correct IWAD, PWADs and complevel"

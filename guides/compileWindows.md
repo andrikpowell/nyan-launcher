@@ -1,4 +1,4 @@
-# Intructions for compiling dsda-launcher for Windows
+# Intructions for compiling Nyan Launcher for Windows
 
 
 ## Qt - https://www.qt.io/download
@@ -13,12 +13,12 @@ Take a look at .github/workflows/main.yml in this repo
 
 1. Clone this repo
 ```
-git clone https://github.com/Pedro-Beirao/dsda-launcher.git
+git clone https://github.com/andrikpowell/nyan-launcher.git
 ```
 
 2. Create a "build" folder inside src/
 ```
-cd dsda-launcher
+cd nyan-launcher
 cd src
 
 mkdir build

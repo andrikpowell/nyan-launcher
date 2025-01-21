@@ -1,7 +1,7 @@
 <div align="center">
-    <img src="./src/icons/dsda-launcher.png" alt="dsda-doom logo" width="200"/>
-    <h1>dsda-launcher</h1>
-    <h3>This is a launcher GUI for the <a href="https://github.com/kraflab/dsda-doom">dsda-doom</a> source port</h3>
+    <img src="./src/icons/nyan-launcher.png" alt="nyan-doom logo" width="200"/>
+    <h1>Nyan Launcher</h1>
+    <h3>This is a launcher GUI for the <a href="https://github.com/andrikpowell/nyan-doom">Nyan Doom</a> source port</h3>
 </div>
 
 <div align="center" markdown="1">
@@ -10,25 +10,25 @@
 [![Static Badge](https://img.shields.io/badge/macOS-grey?logo=apple)]()
 [![Static Badge](https://img.shields.io/badge/Linux-grey?logo=linux)]()
 <br>
-[![GitHub Release](https://img.shields.io/github/v/release/Pedro-Beirao/dsda-launcher)](https://github.com/Pedro-Beirao/dsda-launcher/releases/latest)
-[![GitHub branch check runs](https://img.shields.io/github/check-runs/Pedro-Beirao/dsda-launcher/master?logo=github&label=Continuous%20Integration)](https://github.com/Pedro-Beirao/dsda-launcher/actions)
-[![GitHub top language](https://img.shields.io/github/languages/top/Pedro-Beirao/dsda-launcher)]()
+[![GitHub Release](https://img.shields.io/github/v/release/andrikpowell/nyan-launcher)](https://github.com/andrikpowell/nyan-launcher/releases/latest)
+[![GitHub branch check runs](https://img.shields.io/github/check-runs/andrikpowell/nyan-launcher/master?logo=github&label=Continuous%20Integration)](https://github.com/andrikpowell/nyan-launcher/actions)
+[![GitHub top language](https://img.shields.io/github/languages/top/andrikpowell/nyan-launcher)]()
 [![Static Badge](https://img.shields.io/badge/Qt-grey?logo=qt)](https://www.qt.io)
 
 </div>
 
-For both casual players and experienced speedrunners, this launcher is everything you need to organize and launch the game. It has a very simple and intuitive graphical interface with the more advanced features working under the hood and in organized menus. dsda-launcher fits in your dsda-doom's installation with minimal footprint, and can even auto-update it.
+For both casual players and experienced speedrunners, this launcher is everything you need to organize and launch the game. It has a very simple and intuitive graphical interface with the more advanced features working under the hood and in organized menus. Nyan Launcher fits in your Nyan Doom's installation with minimal footprint, and can even auto-update it.
 
-[Doomworld thread](https://www.doomworld.com/forum/topic/121953-dsda-doom-source-port-on-mac-a-guide/)
+[Doomworld thread](https://www.doomworld.com/forum/topic/145913/)
 
 ## Downloads
 
-Available for Windows, macOS and Linux in [Releases](https://github.com/Pedro-Beirao/dsda-launcher/releases/latest)
+Available for Windows, macOS and Linux in [Releases](https://github.com/andrikpowell/nyan-launcher/releases/latest)
 
 <details markdown="1">
   <summary>Dev builds</summary>
   
-  <a href="https://github.com/Pedro-Beirao/dsda-launcher/actions">https://github.com/Pedro-Beirao/dsda-launcher/actions</a>
+  <a href="https://github.com/andrikpowell/nyan-launcher/actions">https://github.com/andrikpowell/nyan-launcher/actions</a>
 
   Requires a github account to download and are only available for a 90 days after creation.
   
@@ -38,9 +38,9 @@ Available for Windows, macOS and Linux in [Releases](https://github.com/Pedro-Be
 ## Key Features
 
 - Basic launcher operations
-- Special support for dsda-doom specific features
+- Special support for Nyan Doom specific features
 - Customizable toggles for quick switching parameters
-- Auto-updating dsda-doom
+- Auto-updating Nyan Doom
 - Ability to read the footer of demos and auto-loading the needed pwads
 - Built in console, removing the need of showing an ugly CMD/Terminal window
 - Endoom support
@@ -77,6 +77,6 @@ Available for Windows, macOS and Linux in [Releases](https://github.com/Pedro-Be
 
 ## Compiling
 
-Code available at [https://github.com/Pedro-Beirao/dsda-launcher/](https://github.com/Pedro-Beirao/dsda-launcher/)
+Code available at [https://github.com/andrikpowell/nyan-launcher/](https://github.com/andrikpowell/nyan-launcher/)
 
 Instructions in [guides](./guides/)

@@ -20,7 +20,7 @@ void MainWindow::on_additionalArguments_pushButton_clicked()
     {
 #if defined Q_OS_MACOS
         QProcess process;
-        process.startDetached("sh", {"-c", "rm /tmp/dsda-doom-params.sh; echo \"" + path + " --help\" > /tmp/dsda-doom-params.sh ; chmod +x /tmp/dsda-doom-params.sh ; open -a Terminal /tmp/dsda-doom-params.sh"});
+        process.startDetached("sh", {"-c", "rm /tmp/nyan-doom-params.sh; echo \"" + path + " --help\" > /tmp/nyan-doom-params.sh ; chmod +x /tmp/nyan-doom-params.sh ; open -a Terminal /tmp/nyan-doom-params.sh"});
 #elif defined Q_OS_WIN
         system(("start cmd.exe /k \"" + path.toStdString() + "\" --help").c_str());
 #else

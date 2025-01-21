@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Nyan-Launcher
+Comment=This is a launcher GUI for the Nyan-Doom source port
+Icon=nyan-doom
+TryExec=nyan-doom
+Exec=nyan-launcher
+Categories=Game;ActionGame;
+MimeType=application/x-doom-wad;
+Keywords=first;person;shooter;doom;boom;mbf;prboom;dsda;nyan;

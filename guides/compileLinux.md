@@ -1,4 +1,4 @@
-# Intructions for compiling dsda-launcher for Linux
+# Intructions for compiling Nyan Launcher for Linux
 
 
 ## Qt - https://www.qt.io/download
@@ -12,12 +12,12 @@ You could also install qt using your prefered package manager
 
 1. Clone this repo
 ```
-git clone https://github.com/Pedro-Beirao/dsda-launcher.git
+git clone https://github.com/andrikpowell/nyan-launcher.git
 ```
 
 2. Create a "build" folder inside src/
 ```
-cd dsda-launcher
+cd nyan-launcher
 cd src
 
 mkdir build
@@ -43,10 +43,10 @@ A basic build+install script would be
 	make
 	
 #installing
-	sudo mv ./dsda-launcher /bin
+	sudo mv ./nyan-launcher /bin
 	cd ..
-	sudo install -Dm644 ./icons/dsda-launcher.png "${pkgdir}"/usr/share/pixmaps/dsda-launcher.png
-	sudo install -Dm644 ./icons/dsda-Launcher.desktop "${pkgdir}"/usr/share/applications/dsda-Launcher.desktop
+	sudo install -Dm644 ./icons/nyan-launcher.png "${pkgdir}"/usr/share/pixmaps/nyan-launcher.png
+	sudo install -Dm644 ./icons/nyan-launcher.desktop "${pkgdir}"/usr/share/applications/nyan-launcher.desktop
 ```
 
 

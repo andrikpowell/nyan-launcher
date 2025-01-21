@@ -1,4 +1,4 @@
-# Intructions for compiling dsda-launcher for MacOS
+# Intructions for compiling Nyan Launcher for MacOS
 
 
 ## Qt - https://www.qt.io/download
@@ -12,12 +12,12 @@ You could also install qt using 'brew'
 
 1. Clone this repo
 ```
-git clone https://github.com/Pedro-Beirao/dsda-launcher.git
+git clone https://github.com/andrikpowell/nyan-launcher.git
 ```
 
 2. Create a "build" folder inside src/
 ```
-cd dsda-launcher
+cd nyan-launcher
 cd src
 
 mkdir build

@@ -97,14 +97,14 @@ QString getFilePath(QString fileName)
 {
     fileName = fileName.toLower();
 
-    QDir dsda_folder_path(datafolder);
-    QStringList dsda_folder_files_list = dsda_folder_path.entryList(QDir::Files);
+    QDir nyan_folder_path(datafolder);
+    QStringList nyan_folder_files_list = nyan_folder_path.entryList(QDir::Files);
 
-    foreach (QString file_in_dsda_folder, dsda_folder_files_list)
+    foreach (QString file_in_nyan_folder, nyan_folder_files_list)
     {
-        if (fileName == file_in_dsda_folder.toLower())
+        if (fileName == file_in_nyan_folder.toLower())
         {
-            return (datafolder + FOLDER_SEPARATOR + file_in_dsda_folder);
+            return (datafolder + FOLDER_SEPARATOR + file_in_nyan_folder);
         }
     }
 

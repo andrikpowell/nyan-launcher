@@ -149,7 +149,7 @@ void Settings::ReadSettings()
     else settings->setValue("remember", true);
 
     if (settings->value("exeName").toString() != "") ui->executable_lineEdit->setText(settings->value("exeName").toString());
-    else ui->executable_lineEdit->setText("dsda-doom");
+    else ui->executable_lineEdit->setText("nyan-doom");
 
     if (settings->value("maxhistory").toString() != "") ui->maxHistory_lineEdit->setText(settings->value("maxhistory").toString());
     else
@@ -389,7 +389,7 @@ void Settings::on_save_pushButton_clicked()
 
     if (ui->executable_lineEdit->text().isEmpty())
     {
-        MainWindow::pMainWindow->changeGameName("dsda-doom");
+        MainWindow::pMainWindow->changeGameName("nyan-doom");
     }
     else
     {

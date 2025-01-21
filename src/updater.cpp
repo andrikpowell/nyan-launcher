@@ -36,11 +36,11 @@ bool updateLauncherDialog(bool manualReq)
     QString latest = getLatestLauncherVersion();
 
     QMessageBox msgBox;
-    msgBox.setText("DSDA-Launcher " + current);
+    msgBox.setText("Nyan Launcher " + current);
 
     if (latest == "" && manualReq)
     {
-        msgBox.setInformativeText("Failed to get information about the latest dsda-launcher version. Try again later.");
+        msgBox.setInformativeText("Failed to get information about the latest Nyan Launcher version. Try again later.");
         msgBox.addButton("Close", QMessageBox::NoRole);
         msgBox.exec();
     }
@@ -124,27 +124,27 @@ bool updateGameDialog(bool manualReq)
     QString latest = getLatestGameVersion();
 
     QMessageBox msgBox;
-    msgBox.setText("DSDA-Doom " + current);
+    msgBox.setText("Nyan Doom " + current);
 
     if (current == "")
     {
 #if defined(Q_OS_WIN)
-        msgBox.setInformativeText("It seems you do not have dsda-doom installed.\n"
-                                  "Make sure that the Launcher and dsda-doom are in the same folder  OR  click 'Install'"
+        msgBox.setInformativeText("It seems you do not have Nyan Doom installed.\n"
+                                  "Make sure that the Launcher and Nyan Doom are in the same folder  OR  click 'Install'"
                                   "\n\n"
                                   "This will download and extract the latest version to the current folder.\n"
                                   "A CMD window will appear to perform this action.");
         QPushButton *buttonYes = msgBox.addButton("Install", QMessageBox::YesRole);
 #elif defined(Q_OS_MACOS)
-        msgBox.setInformativeText("It seems you do not have dsda-doom installed.\n"
+        msgBox.setInformativeText("It seems you do not have Nyan Doom installed.\n"
                                   "Click 'Install'"
                                   "\n\n"
                                   "This will download and install the latest version, inside the Launcher's App Bundle.\n"
                                   "A Terminal window will appear to perform this action.");
         QPushButton *buttonYes = msgBox.addButton("Install", QMessageBox::YesRole);
 #elif defined(Q_OS_LINUX)
-        msgBox.setInformativeText("It seems you do not have dsda-doom installed.\n"
-                                  "Install dsda-doom using your prefered package manager  OR  Download the official AppImage and put it in your $PATH");
+        msgBox.setInformativeText("It seems you do not have Nyan Doom installed.\n"
+                                  "Install Nyan Doom using your prefered package manager  OR  Download the official AppImage and put it in your $PATH");
         QPushButton *buttonYes = msgBox.addButton("Go to Downloads", QMessageBox::YesRole);
 #endif
         msgBox.addButton("Close", QMessageBox::NoRole);
@@ -158,7 +158,7 @@ bool updateGameDialog(bool manualReq)
     }
     else if (latest == "" && manualReq)
     {
-        msgBox.setInformativeText("Failed to get information about the latest dsda-doom version. Try again later.");
+        msgBox.setInformativeText("Failed to get information about the latest Nyan Doom version. Try again later.");
         msgBox.addButton("Close", QMessageBox::NoRole);
         msgBox.exec();
     }
@@ -205,13 +205,13 @@ void updateGame()
     // clang-format off
 #if defined(Q_OS_MAC)
     QProcess process;
-    process.startDetached("sh", {"-c", "rm /tmp/dsda-updater-macos.sh;"
-                                       "curl -L -o /tmp/dsda-updater-macos.sh " + GAME_UPDATER_MACOS + ";"
+    process.startDetached("sh", {"-c", "rm /tmp/nyan-updater-macos.sh;"
+                                       "curl -L -o /tmp/nyan-updater-macos.sh " + GAME_UPDATER_MACOS + ";"
                                        "p2=" + launcherfolder + "/../Resources;"
                                        "p2=${p2//\\//\\\\/};"
-                                       "sed -i -e s/'$1'/$p2/g /tmp/dsda-updater-macos.sh;"
-                                       "chmod +x /tmp/dsda-updater-macos.sh;"
-                                       "open -na Terminal --args /tmp/dsda-updater-macos.sh"});
+                                       "sed -i -e s/'$1'/$p2/g /tmp/nyan-updater-macos.sh;"
+                                       "chmod +x /tmp/nyan-updater-macos.sh;"
+                                       "open -na Terminal --args /tmp/nyan-updater-macos.sh"});
 #elif defined(Q_OS_WIN)
     QProcess process;
     process.setCreateProcessArgumentsModifier([] (QProcess::CreateProcessArguments *args)
@@ -221,9 +221,9 @@ void updateGame()
                                                   args->startupInfo->dwFlags |= STARTF_USEFILLATTRIBUTE;
                                               });
     process.setProgram("cmd.exe");
-    process.setArguments({"/k", "powershell -command New-Item \"%temp%\\dsda-doom-temp\" -type directory -force && "
-                                "powershell -command (Invoke-WebRequest -OutFile '%temp%\\dsda-doom-temp\\dsda-updater-windows.bat' -Uri " + GAME_UPDATER_WINDOWS + ") && " +
-                                "powershell -command Start-Process -FilePath '%temp%\\dsda-doom-temp\\dsda-updater-windows.bat' -ArgumentList '" + launcherfolder + "' -Wait -NoNewWindow"});
+    process.setArguments({"/k", "powershell -command New-Item \"%temp%\\nyan-doom-temp\" -type directory -force && "
+                                "powershell -command (Invoke-WebRequest -OutFile '%temp%\\nyan-doom-temp\\nyan-updater-windows.bat' -Uri " + GAME_UPDATER_WINDOWS + ") && " +
+                                "powershell -command Start-Process -FilePath '%temp%\\nyan-doom-temp\\nyan-updater-windows.bat' -ArgumentList '" + launcherfolder + "' -Wait -NoNewWindow"});
     process.startDetached();
 #elif defined(Q_OS_LINUX)
     QDesktopServices::openUrl(QUrl(GAME_REPO + "/releases/latest"));

@@ -22,14 +22,14 @@ int main(int argc, char *argv[])
     // Check for previous registry settings and copy it to the new one if needed
     if (settings->value("version").toString()=="")
     {
-        QSettings prev_reg_settings("pedrobeirao", APP_NAME); // Legacy path
+        QSettings prev_reg_settings("andrikpowell", APP_NAME); // Legacy path
         Q_FOREACH(QString key, prev_reg_settings.allKeys())
         {
             settings->setValue(key, prev_reg_settings.value(key));
         }
     }
 #else
-    settings = new QSettings("pedrobeirao", APP_NAME);
+    settings = new QSettings("andrikpowell", APP_NAME);
 #endif
 
     MainWindow w;

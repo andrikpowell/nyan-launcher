@@ -60,7 +60,7 @@ class MainWindow : public QMainWindow
   private:
     Ui::MainWindow *ui;
 
-    // If dsda-doom is running
+    // If Nyan Doom is running
     bool running = false;
     void gameIsRunningDialog();
 
@@ -127,10 +127,10 @@ class MainWindow : public QMainWindow
     void on_actionLoadState_triggered();
     void on_actionSaveState_triggered();
     void on_actionWhatIsThisState_triggered();
-    void on_actionGithubDsdalauncher_triggered();
-    void on_actionCheckForUpdatesDsdalauncher_triggered();
-    void on_actionGithubDsdadoom_triggered();
-    void on_actionCheckForUpdatesDsdadoom_triggered();
+    void on_actionGithubNyanlauncher_triggered();
+    void on_actionCheckForUpdatesNyanlauncher_triggered();
+    void on_actionGithubNyandoom_triggered();
+    void on_actionCheckForUpdatesNyandoom_triggered();
     void on_actionOpenSettings_triggered();
     void on_actionTips_triggered();
     void on_actionOpenHistory_triggered();

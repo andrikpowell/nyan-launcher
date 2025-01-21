@@ -19,7 +19,7 @@ void states::loadStateFromFile(QString filePath)
     QString header;
     stream.readLineInto(&header);
 
-    if (header == "dsdalauncherstatev2") loadStateV2(stream);
+    if (header == "nyanlauncherstatev2") loadStateV2(stream);
     else loadStateV1(stream);
 
     file.close();

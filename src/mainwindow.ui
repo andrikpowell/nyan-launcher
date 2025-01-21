@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>dsda-launcher</string>
+   <string>Nyan Launcher</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -684,7 +684,7 @@ background-color:rgb(255, 255, 255);
 border-radius:3px</string>
         </property>
         <property name="placeholderText">
-         <string>DSDAHUD.lmp</string>
+         <string>NYANHUD.lmp</string>
         </property>
         <property name="clearButtonEnabled">
          <bool>true</bool>
@@ -708,7 +708,7 @@ background-color:rgb(255, 255, 255);
 border-radius:3px</string>
         </property>
         <property name="placeholderText">
-         <string>dsda-doom.cfg</string>
+         <string>nyan-doom.cfg</string>
         </property>
         <property name="clearButtonEnabled">
          <bool>true</bool>
@@ -1293,16 +1293,16 @@ font: 13pt &quot;Arial&quot;;</string>
     </property>
     <addaction name="actionOpenSettings"/>
     <addaction name="actionAbout"/>
-    <addaction name="actionGithubDsdalauncher"/>
-    <addaction name="actionCheckForUpdatesDsdalauncher"/>
+    <addaction name="actionGithubNyanlauncher"/>
+    <addaction name="actionCheckForUpdatesNyanlauncher"/>
     <addaction name="actionTips"/>
    </widget>
-   <widget class="QMenu" name="menudsda_doom">
+   <widget class="QMenu" name="menunyan_doom">
     <property name="title">
-     <string>dsda-doom</string>
+     <string>Nyan Doom</string>
     </property>
-    <addaction name="actionGithubDsdadoom"/>
-    <addaction name="actionCheckForUpdatesDsdadoom"/>
+    <addaction name="actionGithubNyandoom"/>
+    <addaction name="actionCheckForUpdatesNyandoom"/>
    </widget>
    <widget class="QMenu" name="menuAdvanced">
     <property name="title">
@@ -1314,7 +1314,7 @@ font: 13pt &quot;Arial&quot;;</string>
     <addaction name="actionExportCommand"/>
    </widget>
    <addaction name="menuMain"/>
-   <addaction name="menudsda_doom"/>
+   <addaction name="menunyan_doom"/>
    <addaction name="menuAdvanced"/>
    <addaction name="menuState"/>
   </widget>
@@ -1339,12 +1339,12 @@ font: 13pt &quot;Arial&quot;;</string>
     <string>Version</string>
    </property>
   </action>
-  <action name="actionGithubDsdalauncher">
+  <action name="actionGithubNyanlauncher">
    <property name="text">
     <string>Github</string>
    </property>
   </action>
-  <action name="actionCheckForUpdatesDsdalauncher">
+  <action name="actionCheckForUpdatesNyanlauncher">
    <property name="text">
     <string>Check for Updates</string>
    </property>
@@ -1369,12 +1369,12 @@ font: 13pt &quot;Arial&quot;;</string>
     <string>What is this?</string>
    </property>
   </action>
-  <action name="actionCheckForUpdatesDsdadoom">
+  <action name="actionCheckForUpdatesNyandoom">
    <property name="text">
     <string>Check for Updates</string>
    </property>
   </action>
-  <action name="actionGithubDsdadoom">
+  <action name="actionGithubNyandoom">
    <property name="text">
     <string>Github</string>
    </property>

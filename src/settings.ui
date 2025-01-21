@@ -962,7 +962,7 @@ background-color: rgb(255, 255, 255);
 border-radius:3px</string>
      </property>
      <property name="placeholderText">
-      <string>dsda-doom</string>
+      <string>nyan-doom</string>
      </property>
     </widget>
     <widget class="QLabel" name="executable_label">
@@ -1015,7 +1015,7 @@ border-radius:3px</string>
       <string>Show Endoom screen on game exit</string>
      </property>
      <property name="text">
-      <string>dsda-launcher</string>
+      <string>Nyan Launcher</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -1047,7 +1047,7 @@ border-radius:3px</string>
       <string>Show Endoom screen on game exit</string>
      </property>
      <property name="text">
-      <string>dsda-doom</string>
+      <string>Nyan Doom</string>
      </property>
      <property name="checked">
       <bool>true</bool>

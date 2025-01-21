@@ -31,11 +31,11 @@
 *.out
 *.app
 .DS_Store
-src/dsda-doom
+src/nyan-doom
 .vscode
 src/build
 src/.DS_Store
-src/dsda-doom.wad
+src/nyan-doom.wad
 
 build*/
-src/dsda-launcher.pro.user
+src/nyan-launcher.pro.user
