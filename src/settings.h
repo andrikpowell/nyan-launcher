@@ -33,6 +33,7 @@ private slots:
   void on_darkTheme_checkBox_clicked(bool checked);
 
   void on_minimalComplevels_radioButton_toggled(bool checked);
+  void on_advComplevels_radioButton_toggled(bool checked);
   void on_fullComplevels_radioButton_toggled(bool checked);
 
   void on_resolutions_listWidget_itemChanged(QListWidgetItem *item);

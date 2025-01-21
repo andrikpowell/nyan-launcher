@@ -90,7 +90,7 @@ Launcher should fix them.</string>
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>115</y>
+       <y>110</y>
        <width>81</width>
        <height>16</height>
       </rect>
@@ -103,7 +103,7 @@ Launcher should fix them.</string>
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>135</y>
+       <y>130</y>
        <width>99</width>
        <height>22</height>
       </rect>
@@ -112,11 +112,24 @@ Launcher should fix them.</string>
       <string>Minimal</string>
      </property>
     </widget>
+    <widget class="QRadioButton" name="advComplevels_radioButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>150</y>
+       <width>99</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Adv</string>
+     </property>
+    </widget>
     <widget class="QRadioButton" name="fullComplevels_radioButton">
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>155</y>
+       <y>170</y>
        <width>99</width>
        <height>22</height>
       </rect>
@@ -243,7 +256,7 @@ border-radius:3px</string>
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>190</y>
+       <y>200</y>
        <width>31</width>
        <height>24</height>
       </rect>
@@ -272,7 +285,7 @@ border-radius:3px</string>
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>195</y>
+       <y>205</y>
        <width>91</width>
        <height>16</height>
       </rect>
@@ -444,6 +457,7 @@ when the Launcher exits</string>
       <bool>true</bool>
      </property>
     </widget>
+    <zorder>advComplevels_radioButton</zorder>
     <zorder>PWADFolders_label</zorder>
     <zorder>darkTheme_checkBox</zorder>
     <zorder>complevels_label</zorder>

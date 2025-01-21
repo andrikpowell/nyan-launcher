@@ -137,7 +137,8 @@ void Settings::ReadSettings()
     if (!settings->value("complevels").isNull())
     {
         if (settings->value("complevels").toInt() == 0) ui->minimalComplevels_radioButton->setChecked(true);
-        else if (settings->value("complevels").toInt() == 1) ui->fullComplevels_radioButton->setChecked(true);
+        else if (settings->value("complevels").toInt() == 1) ui->advComplevels_radioButton->setChecked(true);
+        else if (settings->value("complevels").toInt() == 2) ui->fullComplevels_radioButton->setChecked(true);
     }
     else
     {
@@ -297,12 +298,20 @@ void Settings::on_minimalComplevels_radioButton_toggled(bool checked)
     }
 }
 
+void Settings::on_advComplevels_radioButton_toggled(bool checked)
+{
+    if(checked)
+    {
+        settings->setValue("complevels", 1);
+        MainWindow::pMainWindow->setComplevelsList(ADV_COMPLEVELS);
+    }
+}
 
 void Settings::on_fullComplevels_radioButton_toggled(bool checked)
 {
     if(checked)
     {
-        settings->setValue("complevels", 1);
+        settings->setValue("complevels", 2);
         MainWindow::pMainWindow->setComplevelsList(FULL_COMPLEVELS);
     }
 }
