@@ -2,17 +2,6 @@
 
 // Main
 
-void MainWindow::on_actionAbout_triggered()
-{
-    QMessageBox msgBox;
-    msgBox.setWindowTitle("About");
-    // msgBox.setOption(QMessageBox::Option::DontUseNativeDialog);
-    msgBox.setText(APP_NAME " " + version);
-    msgBox.setInformativeText("<a href='" + LAUNCHER_REPO + "'>" + LAUNCHER_REPO + "</a>");
-    msgBox.addButton(tr("Ok"), QMessageBox::NoRole);
-    msgBox.exec();
-}
-
 void MainWindow::on_actionLoadState_triggered()
 {
     QString fileNames = QFileDialog::getOpenFileName(this, tr("Load State"), settings->value("statefile").toString(), tr("state files (*.state)"));
@@ -65,6 +54,14 @@ void MainWindow::on_actionOpenSettings_triggered()
     settingsWindow->activateWindow();
     settingsWindow->raise();
     setWindowTitleBar(settingsWindow->winId());
+}
+
+void MainWindow::on_actionOpenAbout_triggered()
+{
+    aboutWindow->show();
+    aboutWindow->activateWindow();
+    aboutWindow->raise();
+    setWindowTitleBar(aboutWindow->winId());
 }
 
 void MainWindow::on_actionTips_triggered()

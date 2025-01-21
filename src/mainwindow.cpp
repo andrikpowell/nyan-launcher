@@ -37,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->launchGame_pushButton->installEventFilter(this);
 
     // set the settings and console windows
+    aboutWindow = new About;
     settingsWindow = new Settings;
     consoleWindow = new Console;
     historyListWindow = new historyList;

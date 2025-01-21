@@ -1287,7 +1287,7 @@ font: 13pt &quot;Arial&quot;;</string>
      <string>Main</string>
     </property>
     <addaction name="actionOpenSettings"/>
-    <addaction name="actionAbout"/>
+    <addaction name="actionOpenAbout"/>
     <addaction name="actionGithubNyanlauncher"/>
     <addaction name="actionCheckForUpdatesNyanlauncher"/>
     <addaction name="actionTips"/>
@@ -1416,7 +1416,7 @@ font: 13pt &quot;Arial&quot;;</string>
     <string>Ctrl+Y</string>
    </property>
   </action>
-  <action name="actionAbout">
+  <action name="actionOpenAbout">
    <property name="text">
     <string>About</string>
    </property>
