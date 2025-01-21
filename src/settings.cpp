@@ -113,9 +113,6 @@ void Settings::ReadSettings()
     if (!settings->value("theme").isNull()) ui->darkTheme_checkBox->setChecked(settings->value("theme") == "dark");
     else settings->setValue("theme", "light");
 
-    if (!settings->value("endoom").isNull()) ui->endoom_checkBox->setChecked(settings->value("endoom").toBool());
-    else settings->setValue("endoom", false);
-
     if (settings->value("toggle1t").toString() != "") ui->fastText_lineEdit->setText(settings->value("toggle1t").toString());
     else settings->setValue("toggle1t", ui->fastText_lineEdit->text());
     if (settings->value("toggle2t").toString() != "") ui->nomoText_lineEdit->setText(settings->value("toggle2t").toString());
@@ -542,8 +539,6 @@ void Settings::on_minusIWADFolders_toolButton_clicked()
     }
     settings->endArray();
 }
-
-void Settings::on_endoom_checkBox_clicked(bool checked) { settings->setValue("endoom", checked); }
 
 void Settings::on_remember_checkBox_toggled(bool checked) { settings->setValue("remember", checked); }
 

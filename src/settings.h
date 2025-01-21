@@ -68,8 +68,6 @@ private slots:
   void on_minusPWADFolders_toolButton_clicked();
   void on_plusPWADFolders_toolButton_clicked();
 
-  void on_endoom_checkBox_clicked(bool checked);
-
   void on_remember_checkBox_toggled(bool checked);
 
   void on_updaterStartLauncher_checkBox_toggled(bool checked);

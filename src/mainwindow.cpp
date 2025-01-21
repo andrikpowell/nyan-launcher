@@ -313,7 +313,7 @@ void MainWindow::finished(int exitCode, QProcess::ExitStatus exitStatus)
         return;
     }
 
-    if (settings->value("endoom").toBool() && !endoomString.isEmpty())
+    if (!endoomString.isEmpty())
     {
         endoomWindow->showEndoom(endoomString);
 
@@ -496,10 +496,7 @@ QStringList MainWindow::getArguments()
         }
     }
 
-    if (settings->value("endoom").toBool())
-    {
-        arguments.append({"-assign", "ansi_endoom=2"});
-    }
+    arguments.append("-launcher");
 
     if (!ui->additionalArguments_textEdit->toPlainText().isEmpty())
     {
