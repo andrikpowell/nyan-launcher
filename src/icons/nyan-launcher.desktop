@@ -2,7 +2,7 @@
 Type=Application
 Name=Nyan-Launcher
 Comment=This is a launcher GUI for the Nyan-Doom source port
-Icon=nyan-doom
+Icon=nyan-launcher
 TryExec=nyan-doom
 Exec=nyan-launcher
 Categories=Game;ActionGame;
