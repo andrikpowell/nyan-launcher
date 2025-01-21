@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Endoom</string>
+   <string>ENDOOM</string>
   </property>
   <widget class="QTextEdit" name="endoom_textEdit">
    <property name="geometry">
