@@ -37,6 +37,7 @@ bool updateLauncherDialog(bool manualReq)
 
     QMessageBox msgBox;
     msgBox.setText("Nyan Launcher " + current);
+    msgBox.setWindowTitle("Update");
 
     if (latest == "" && manualReq)
     {
@@ -125,6 +126,7 @@ bool updateGameDialog(bool manualReq)
 
     QMessageBox msgBox;
     msgBox.setText("Nyan Doom " + current);
+    msgBox.setWindowTitle("Update");
 
     if (current == "")
     {

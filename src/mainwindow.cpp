@@ -8,6 +8,7 @@ void MainWindow::changeGameName(QString newName) { gameName = newName; }
 void MainWindow::showSSLDialog()
 {
     QMessageBox msgBox;
+    msgBox.setWindowTitle("Warning");
     msgBox.setText("SSL library not found");
     msgBox.setInformativeText("Network features not available.");
     msgBox.addButton(tr("Ok"), QMessageBox::NoRole);
@@ -350,6 +351,7 @@ void MainWindow::started() { running = true; }
 void MainWindow::gameIsRunningDialog()
 {
     QMessageBox msgBox;
+    msgBox.setWindowTitle("Nyan Launcher");
     msgBox.setText("Nyan Doom is still running.");
     msgBox.addButton("Ok", QMessageBox::YesRole);
     msgBox.exec();
@@ -565,6 +567,7 @@ void MainWindow::on_launchGame_pushButton_clicked(bool returnTooltip, QString ex
         }
 
         QMessageBox msgBox;
+        msgBox.setWindowTitle("Parameters");
         msgBox.setText("Executable: " + gameName + "\nIWAD: " + ui->iwad_comboBox->currentText() + "\nParameters: " + argStr);
         msgBox.addButton(tr("Copy"), QMessageBox::NoRole);
         QPushButton *pButtonYes = msgBox.addButton(tr("Ok"), QMessageBox::YesRole);

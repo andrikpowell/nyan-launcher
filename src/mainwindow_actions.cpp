@@ -5,6 +5,7 @@
 void MainWindow::on_actionAbout_triggered()
 {
     QMessageBox msgBox;
+    msgBox.setWindowTitle("About");
     // msgBox.setOption(QMessageBox::Option::DontUseNativeDialog);
     msgBox.setText(APP_NAME " " + version);
     msgBox.setInformativeText("<a href='" + LAUNCHER_REPO + "'>" + LAUNCHER_REPO + "</a>");
@@ -69,6 +70,7 @@ void MainWindow::on_actionOpenSettings_triggered()
 void MainWindow::on_actionTips_triggered()
 {
     QMessageBox msgBox;
+    msgBox.setWindowTitle("Tips");
     msgBox.setText("A few tips you should know (Some features may require the latest Nyan Doom version):");
     msgBox.setInformativeText("- Drag .wad / .deh files on top of the launcher to add them to the loaded files"
                               "\n\n"
@@ -82,6 +84,7 @@ void MainWindow::on_actionTips_triggered()
 void MainWindow::on_actionWhatIsThisState_triggered()
 {
     QMessageBox msgBox;
+    msgBox.setWindowTitle("What Is This?");
     msgBox.setText("State files");
     msgBox.setInformativeText("These .state files save all the parameters selected on the launcher, and lets you load them again whenever you need");
     msgBox.setStandardButtons(QMessageBox::Ok);
