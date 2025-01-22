@@ -40,6 +40,14 @@ const QStringList mapxxIWADS = {"doom2", "doom2f",   "freedoom2", "bfgdoom2",
 
                                 "hacx"};
 
+const QStringList IWAD_NICENAMES = {"Doom",    "Doom (Shareware)",    "Ultimate Doom", "Freedoom", "Freedoom (Shareware)", "Doom (BFG)", "Doom (BFG Shareware)",
+                               "Heretic", "Heretic (Shareware)",
+                               "Chex",    "REKKR",
+                               "Doom II", "Doom II (French)",   "Freedoom II", "Doom II (BFG)",
+                               "TNT",   "Plutonia",
+                               "Hexen",
+                               "HACX"};
+
 const QStringList LIMIT_COMPLEVELS = {"Default", "0 - Doom v1.2", "1 - Doom v1.666", "2 - Doom / Doom 2", "3 - Ultimate Doom", "4 - Final Doom"};
 
 const QStringList MINIMAL_COMPLEVELS = {"Default", "2 - Doom / Doom 2", "3 - Ultimate Doom", "4 - Final Doom", "9 - Boom", "11 - MBF", "21 - MBF 21"};
