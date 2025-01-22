@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>350</width>
-    <height>505</height>
+    <height>485</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>350</width>
-    <height>505</height>
+    <height>485</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>350</width>
-    <height>505</height>
+    <height>485</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>440</y>
+      <y>424</y>
       <width>81</width>
       <height>32</height>
      </rect>
@@ -61,7 +61,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>372</y>
+      <y>360</y>
       <width>291</width>
       <height>51</height>
      </rect>
@@ -356,30 +356,28 @@ border-radius:3px</string>
      <string notr="true">alternate-background-color: rgb(37, 37, 37);
 </string>
     </property>
-    <widget class="QPushButton" name="tooltip_pushButton">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>15</y>
-       <width>20</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
+   <widget class="QPushButton" name="tooltip_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>15</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
      <property name="toolTip">
       <string/>
      </property>
-     <property name="text">
-      <string>?</string>
-     </property>
+    <property name="text">
+     <string>?</string>
+    </property>
      <property name="checkable">
       <bool>true</bool>
      </property>
-    </widget>
+   </widget>
     <widget class="QCheckBox" name="limit_checkBox">
      <property name="geometry">
       <rect>
@@ -398,9 +396,9 @@ border-radius:3px</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>345</y>
+      <y>335</y>
       <width>311</width>
-      <height>86</height>
+      <height>85</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -410,7 +408,7 @@ border-radius:3px</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>6</y>
+       <y>5</y>
        <width>171</width>
        <height>16</height>
       </rect>
@@ -440,7 +438,7 @@ border-radius:3px</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>440</y>
+      <y>424</y>
       <width>71</width>
       <height>32</height>
      </rect>
@@ -461,7 +459,7 @@ border-radius:3px</string>
       <x>20</x>
       <y>170</y>
       <width>311</width>
-      <height>165</height>
+      <height>155</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -485,8 +483,8 @@ border-radius:3px</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>310</width>
-        <height>131</height>
+        <width>307</width>
+        <height>121</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -539,7 +537,7 @@ border-radius:3px</string>
         <property name="geometry">
          <rect>
           <x>170</x>
-          <y>102</y>
+          <y>97</y>
           <width>111</width>
           <height>20</height>
          </rect>
@@ -605,7 +603,7 @@ border-radius:3px</string>
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>100</y>
+          <y>95</y>
           <width>131</width>
           <height>24</height>
          </rect>
@@ -764,7 +762,7 @@ border-radius:3px</string>
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>100</y>
+          <y>95</y>
           <width>121</width>
           <height>24</height>
          </rect>
@@ -1011,9 +1009,9 @@ border-radius:3px</string>
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>17</y>
+        <y>15</y>
         <width>61</width>
-        <height>26</height>
+        <height>32</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1049,7 +1047,7 @@ border-radius:3px</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>100</y>
+        <y>95</y>
         <width>111</width>
         <height>24</height>
        </rect>
@@ -1077,7 +1075,7 @@ border-radius:3px</string>
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>103</y>
+        <y>97</y>
         <width>101</width>
         <height>21</height>
        </rect>
@@ -1100,8 +1098,7 @@ border-radius:3px</string>
      <widget class="QPushButton" name="viddump_pushButton">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>100</y>
+        <x>240</x>        <y>94</y>
         <width>61</width>
         <height>26</height>
        </rect>
@@ -1122,7 +1119,7 @@ border-radius:3px</string>
     <property name="geometry">
      <rect>
       <x>225</x>
-      <y>445</y>
+      <y>428</y>
       <width>20</width>
       <height>20</height>
      </rect>
@@ -1147,7 +1144,9 @@ border-radius:3px</string>
      </rect>
     </property>
     <property name="font">
-     <font/>
+     <font>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">border: 1px solid rgb(160, 160, 160);
@@ -1165,11 +1164,9 @@ hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.AppleSystemUIFont';&quot;&gt;Don't see any IWAD?     ^&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.AppleSystemUIFont';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.AppleSystemUIFont';&quot;&gt;Put your IWADs (e.g. doom.wad tnt.wad) in the same folder as the Launcher.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.AppleSystemUIFont';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.AppleSystemUIFont';&quot;&gt;Then restart the Launcher&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Don't see any IWAD? ^&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Put your IWADs (e.g. doom.wad tnt.wad) in the same folder as the Launcher.&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Then restart the Launcher&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget">
