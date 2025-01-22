@@ -178,6 +178,8 @@ void Settings::on_darkTheme_checkBox_clicked(bool checked)
 
         ui->PWADFolders_pushButton->setStyleSheet(STYLE_MAC_BUTTON_LIGHT);
         ui->IWADFolders_pushButton->setStyleSheet(STYLE_MAC_BUTTON_LIGHT);
+#elif defined Q_OS_WIN
+        qApp->setStyleSheet("QPushButton {max-height: 25px;}");
 #else
         QPalette lightPalette;
         qApp->setPalette(lightPalette);
