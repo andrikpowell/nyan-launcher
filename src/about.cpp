@@ -16,7 +16,16 @@ About::About(QWidget *parent) :
     shortcut3->setAutoRepeat(false);
 
     ui->about_version_label2->setText("Nyan Launcher " + version);
-    ui->about_version_label2->setStyleSheet("QLabel {  font-size:11pt; font-weight:700; }");
+
+    #if defined Q_OS_MACOS
+        ui->about_version_label2->setStyleSheet("QLabel {  font-size:15pt; font-weight:700; }");
+
+    #elif defined Q_OS_WIN
+        ui->about_version_label2->setStyleSheet("QLabel {  font-size:11pt; font-weight:700; }");
+
+    #else
+        ui->about_version_label2->setStyleSheet("QLabel {  font-size:10pt; font-weight:700; }");
+    #endif
 }
 
 About::~About()
