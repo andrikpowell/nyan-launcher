@@ -12,6 +12,7 @@ void MainWindow::showSSLDialog()
     msgBox.setText("SSL library not found");
     msgBox.setInformativeText("Network features not available.");
     msgBox.addButton(tr("Ok"), QMessageBox::NoRole);
+    msgBox.adjustSize();
     msgBox.exec();
 }
 
@@ -358,6 +359,7 @@ void MainWindow::gameIsRunningDialog()
     msgBox.setWindowTitle("Nyan Launcher");
     msgBox.setText("Nyan Doom is still running.");
     msgBox.addButton("Ok", QMessageBox::YesRole);
+    msgBox.adjustSize();
     msgBox.exec();
 }
 
@@ -579,6 +581,7 @@ void MainWindow::on_launchGame_pushButton_clicked(bool returnTooltip, QString ex
         msgBox.addButton(tr("Copy"), QMessageBox::NoRole);
         QPushButton *pButtonYes = msgBox.addButton(tr("Ok"), QMessageBox::YesRole);
         msgBox.setDefaultButton(pButtonYes);
+        msgBox.adjustSize();
         msgBox.exec();
 
         if (msgBox.clickedButton() != pButtonYes)

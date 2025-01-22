@@ -76,6 +76,7 @@ void MainWindow::on_actionTips_triggered()
                               "- For the mentioned autoselect to work correctly, go to the settings and set the PWADs folders");
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
+    msgBox.adjustSize();
     msgBox.exec();
 }
 void MainWindow::on_actionWhatIsThisState_triggered()
@@ -86,6 +87,7 @@ void MainWindow::on_actionWhatIsThisState_triggered()
     msgBox.setInformativeText("These .state files save all the parameters selected on the launcher, and lets you load them again whenever you need");
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
+    msgBox.adjustSize();
     msgBox.exec();
 }
 
