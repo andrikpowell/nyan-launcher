@@ -85,4 +85,4 @@ Instructions in [guides](./guides/)
 
 The Nyan Launcher and Nyan Doom icons were designed by Andrik Powell (Arsinikk)
 
-Nyan Launcher is based off [DSDA-Launcher](https://github.com/andrikpowell/nyan-launcher) by Pedro-Beirao
+Nyan Launcher is based off [DSDA-Launcher](https://github.com/Pedro-Beirao/dsda-launcher) by Pedro-Beirao
