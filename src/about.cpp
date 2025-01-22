@@ -18,7 +18,7 @@ About::About(QWidget *parent) :
     ui->about_version_label2->setText("Nyan Launcher " + version);
 
     #if defined Q_OS_MACOS
-        ui->about_version_label2->setStyleSheet("QLabel {  font-size:15pt; font-weight:700; }");
+        ui->about_version_label2->setStyleSheet("QLabel {  font-size:18pt; font-weight:700; }");
 
     #elif defined Q_OS_WIN
         ui->about_version_label2->setStyleSheet("QLabel {  font-size:11pt; font-weight:700; }");

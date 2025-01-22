@@ -23,7 +23,7 @@ void MainWindow::setStyles()
     }
 
 #if defined Q_OS_MACOS
-    ui->tooltip_textBrowser->setFontPointSize(10);
+    ui->tooltip_textBrowser->setFontPointSize(12);
     ui->tooltip_textBrowser->setText("Don't see any IWAD?     ^\n\n"
                                      "Put your IWADs in " +
                                      datafolder +
