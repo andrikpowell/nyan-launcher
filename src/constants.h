@@ -26,7 +26,7 @@ extern QString gameName;
 extern QString datafolder;
 extern QString launcherfolder;
 
-const QStringList exmxIWADS = {"doom",    "doom1",    "doomu", "freedoom", "freedoom1", "bfgdoom", "bfgdoom1",
+const QStringList exmxIWADS = {"doom",    "doom1",    "doomu", "freedoom", "freedoom1", "bfgdoom",
 
                                "heretic", "heretic1",
 
@@ -40,7 +40,7 @@ const QStringList mapxxIWADS = {"doom2", "doom2f",   "freedoom2", "bfgdoom2",
 
                                 "hacx"};
 
-const QStringList IWAD_NICENAMES = {"Doom",    "Doom (Shareware)",    "Ultimate Doom", "Freedoom", "Freedoom (Shareware)", "Doom (BFG)", "Doom (BFG Shareware)",
+const QStringList IWAD_NICENAMES = {"Doom",    "Doom (Shareware)",    "Ultimate Doom", "Freedoom", "Freedoom (Shareware)", "Doom (BFG)",
                                "Heretic", "Heretic (Shareware)",
                                "Chex",    "REKKR",
                                "Doom II", "Doom II (French)",   "Freedoom II", "Doom II (BFG)",
