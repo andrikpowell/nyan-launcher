@@ -80,3 +80,9 @@ Available for Windows, macOS and Linux in [Releases](https://github.com/andrikpo
 Code available at [https://github.com/andrikpowell/nyan-launcher/](https://github.com/andrikpowell/nyan-launcher/)
 
 Instructions in [guides](./guides/)
+
+## Credits
+
+The Nyan Launcher and Nyan Doom icons were designed by Andrik Powell (Arsinikk)
+
+Nyan Launcher is based off [DSDA-Launcher](https://github.com/andrikpowell/nyan-launcher) by Pedro-Beirao
