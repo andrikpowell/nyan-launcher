@@ -48,11 +48,11 @@ const QStringList IWAD_NICENAMES = {"Doom",    "Doom (Shareware)",    "Ultimate 
                                "Hexen",
                                "HACX"};
 
-const QStringList LIMIT_COMPLEVELS = {"Default", "0 - Doom v1.2", "1 - Doom v1.666", "2 - Doom / Doom 2", "3 - Ultimate Doom", "4 - Final Doom"};
+const QStringList LIMIT_COMPLEVELS = {"Default", "0 - Doom v1.2", "1 - Doom v1.666", "2 - Doom / Doom II", "3 - Ultimate Doom", "4 - Final Doom"};
 
-const QStringList MINIMAL_COMPLEVELS = {"Default", "2 - Doom / Doom 2", "3 - Ultimate Doom", "4 - Final Doom", "9 - Boom", "11 - MBF", "21 - MBF 21"};
-const QStringList ADV_COMPLEVELS = {"Default", "0 - Doom v1.2", "1 - Doom v1.666", "2 - Doom / Doom 2", "3 - Ultimate Doom", "4 - Final Doom", "9 - Boom", "11 - MBF", "21 - MBF 21"};
-const QStringList FULL_COMPLEVELS = {"Default", "0 - Doom v1.2", "1 - Doom v1.666", "2 - Doom / Doom 2", "3 - Ultimate Doom", "4 - Final Doom", "5 - DOSDoom", "6 - TASDoom", "7 - Boom's comp mode", "8 - Boom v2.01", "9 - Boom", "10 - LxDoom", "11 - MBF", "12 - PrBoom v2.03beta", "13 - PrBoom v2.1.0", "14 - PrBoom v2.1.1 - 2.2.6", "15 - PrBoom v2.3.x", "16 - PrBoom v2.4.0", "17 - Current PrBoom", "21 - MBF 21"};
+const QStringList MINIMAL_COMPLEVELS = {"Default", "2 - Doom / Doom II", "3 - Ultimate Doom", "4 - Final Doom", "9 - Boom", "11 - MBF", "21 - MBF 21"};
+const QStringList ADV_COMPLEVELS = {"Default", "0 - Doom v1.2", "1 - Doom v1.666", "2 - Doom / Doom II", "3 - Ultimate Doom", "4 - Final Doom", "9 - Boom", "11 - MBF", "21 - MBF 21"};
+const QStringList FULL_COMPLEVELS = {"Default", "0 - Doom v1.2", "1 - Doom v1.666", "2 - Doom / Doom II", "3 - Ultimate Doom", "4 - Final Doom", "5 - DOSDoom", "6 - TASDoom", "7 - Boom's comp mode", "8 - Boom v2.01", "9 - Boom", "10 - LxDoom", "11 - MBF", "12 - PrBoom v2.03beta", "13 - PrBoom v2.1.0", "14 - PrBoom v2.1.1 - 2.2.6", "15 - PrBoom v2.3.x", "16 - PrBoom v2.4.0", "17 - Current PrBoom", "21 - MBF 21"};
 
 const QStringList SKILLS_LIST = {"", "ITYTD", "HNTR", "HMP", "UV", "Nightmare!"};
 
