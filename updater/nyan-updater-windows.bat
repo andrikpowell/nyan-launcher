@@ -42,5 +42,4 @@ rmdir /s /q "%temp%\nyan-doom-temp\%v_win64%"
 
 echo Nyan Doom %VERSION% has been installed succesfully!
 
-pause
 exit
