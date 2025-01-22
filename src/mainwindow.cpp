@@ -496,8 +496,6 @@ QStringList MainWindow::getArguments()
         }
     }
 
-    arguments.append("-launcher");
-
     if (!ui->additionalArguments_textEdit->toPlainText().isEmpty())
     {
         QStringList parsed = parseStringIntoArguments(ui->additionalArguments_textEdit->toPlainText());
@@ -615,6 +613,9 @@ void MainWindow::Launch(QStringList arguments)
 
     consoleWindow->clearText();
     endoomString = "";
+
+    // Add "-launcher" arg
+    arguments.append("-launcher");
 
     // clang-format off
 #if defined Q_OS_MACOS
