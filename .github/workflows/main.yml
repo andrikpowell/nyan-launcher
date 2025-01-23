@@ -50,7 +50,7 @@ jobs:
           cd build
           qmake ..
           make
-          zip -j nyan-launcher-${{ github.ref_name }}-win64.zip release/nyan-launcher.exe
+          zip -j nyan-launcher-${{ github.ref_name }}-win64.zip release/Nyan-Launcher.exe
           
       - uses: actions/upload-artifact@v4
         with:
@@ -93,7 +93,7 @@ jobs:
           chmod a+x ./linuxdeploy-x86_64.AppImage
           wget -c -nv "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/2.0.0-alpha-1-20241106/linuxdeploy-plugin-qt-x86_64.AppImage"
           chmod a+x ./linuxdeploy-plugin-qt-x86_64.AppImage
-          ./linuxdeploy-x86_64.AppImage --plugin=qt --executable=./nyan-launcher --output=appimage --appdir=./ --desktop-file=../icons/nyan-launcher.desktop --icon-file=../icons/nyan-launcher.svg
+          ./linuxdeploy-x86_64.AppImage --plugin=qt --executable=./Nyan-Launcher --output=appimage --appdir=./ --desktop-file=../icons/nyan-launcher.desktop --icon-file=../icons/nyan-launcher.svg
       
       - uses: actions/upload-artifact@v4
         with:
@@ -121,10 +121,10 @@ jobs:
           cd build
           qmake .. "CONFIG+=macdeploy"
           make
-          macdeployqt ./nyan-launcher.app
+          macdeployqt ./Nyan-Launcher.app
 
           brew install create-dmg
-          create-dmg --background ../bg/install-bg.png --icon nyan-launcher.app 128 135 --hide-extension nyan-launcher.app --app-drop-link 368 135 ./nyan-launcher-${{ github.ref_name }}-mac.dmg ./nyan-launcher.app
+          create-dmg --volname Nyan\ Launcher --background ../bg/install-bg.png --icon Nyan-Launcher.app 128 135 --hide-extension Nyan-Launcher.app --app-drop-link 368 135 ./nyan-launcher-${{ github.ref_name }}-mac.dmg ./Nyan-Launcher.app
           
       - uses: actions/upload-artifact@v4
         with:
