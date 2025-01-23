@@ -6,6 +6,7 @@ endoom::endoom(QWidget *parent) :
     ui(new Ui::endoom)
 {
     ui->setupUi(this);
+    this->setStyleSheet("background: black;");
 
     // Keyboard shortcut
     // Qt::CTRL is the CTRL key for Windows/Linux and is the CMD key for MacOS
