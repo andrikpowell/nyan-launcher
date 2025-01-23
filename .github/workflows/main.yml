@@ -124,7 +124,7 @@ jobs:
           macdeployqt ./nyan-launcher.app
 
           brew install create-dmg
-          create-dmg --app-drop-link 10 10 ./nyan-launcher-${{ github.ref_name }}-mac.dmg ./nyan-launcher.app
+          create-dmg --background ../bg/install-bg.png --icon nyan-launcher.app 128 135 --hide-extension nyan-launcher.app --app-drop-link 368 135 ./nyan-launcher-${{ github.ref_name }}-mac.dmg ./nyan-launcher.app
           
       - uses: actions/upload-artifact@v4
         with:
