@@ -34,7 +34,7 @@ if exist "%temp%\nyan-doom-temp\%v_win64%.zip" (
 
 :: Copy to destination folder
 echo Copying files to destination
-robocopy "%temp%\nyan-doom-temp\%v_win64%" "%DEST%" * /nfl /ndl /njh /njs /nc /ns /np
+robocopy "%temp%\nyan-doom-temp\%v_win64%" "%DEST% " * /nfl /ndl /njh /njs /nc /ns /np
 
 :: Delete temp files
 del /q "%temp%\nyan-doom-temp\%v_win64%.zip"
