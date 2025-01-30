@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleExecutable</key>
-	<string>Nyan Launcher</string>
+	<string>Nyan-Launcher</string>
 	<key>CFBundleIconFile</key>
 	<string>nyan-launcher.icns</string>
 	<key>CFBundleIdentifier</key>
