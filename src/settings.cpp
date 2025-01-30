@@ -118,7 +118,11 @@ Settings::~Settings()
 
 void Settings::ReadSettings()
 {
-    if (!settings->value("theme").isNull()) ui->darkTheme_checkBox->setChecked(settings->value("theme") == "dark");
+    if ((settings->value("theme").isNull()) || (settings->value("theme").toString() == "dark"))
+    {
+        settings->setValue("theme", "dark");
+        ui->darkTheme_checkBox->setChecked(settings->value("theme") == "dark");
+    }
     else settings->setValue("theme", "light");
 
     if (settings->value("toggle1t").toString() != "") ui->fastText_lineEdit->setText(settings->value("toggle1t").toString());
