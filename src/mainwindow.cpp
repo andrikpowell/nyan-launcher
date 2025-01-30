@@ -618,8 +618,8 @@ void MainWindow::Launch(QStringList arguments)
     consoleWindow->clearText();
     endoomString = "";
 
-    // Add "-launcher" arg
-    arguments.append("-launcher");
+    // Fix "ENDOOM" font
+    arguments.append({"-assign", "ansi_endoom=2"});
 
     // clang-format off
 #if defined Q_OS_MACOS
