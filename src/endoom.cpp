@@ -67,7 +67,7 @@ void endoom::on_endoom_textEdit_textChanged()
 {
     QSize size = ui->endoom_textEdit->document()->size().toSize();
 
-    ui->endoom_textEdit->setFixedHeight(size.height() + 10);
+    ui->endoom_textEdit->setFixedHeight(size.height() + 2);
     ui->endoom_textEdit->setFixedWidth(size.width() + 2);
 
     setFixedSize(size);

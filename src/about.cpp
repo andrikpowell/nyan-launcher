@@ -15,16 +15,16 @@ About::About(QWidget *parent) :
     QShortcut *shortcut3 = new QShortcut(QKeySequence(Qt::Key_W | Qt::CTRL), this, SLOT(close()));
     shortcut3->setAutoRepeat(false);
 
-    ui->about_version_label2->setText("Nyan Launcher " + version);
+    ui->about_version_label->setText("Nyan Launcher " + version);
 
     #if defined Q_OS_MACOS
-        ui->about_version_label2->setStyleSheet("QLabel {  font-size:18pt; font-weight:700; }");
+        ui->about_version_label->setStyleSheet("QLabel {  font-size:18pt; font-weight:700; }");
 
     #elif defined Q_OS_WIN
-        ui->about_version_label2->setStyleSheet("QLabel {  font-size:11pt; font-weight:700; }");
+        ui->about_version_label->setStyleSheet("QLabel {  font-size:11pt; font-weight:700; }");
 
     #else
-        ui->about_version_label2->setStyleSheet("QLabel {  font-size:10pt; font-weight:700; }");
+        ui->about_version_label->setStyleSheet("QLabel {  font-size:10pt; font-weight:700; }");
     #endif
 }
 
