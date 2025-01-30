@@ -11,10 +11,18 @@ Settings::Settings(QWidget *parent) : QWidget(parent), ui(new Ui::Settings)
     on_darkTheme_checkBox_clicked(settings->value("theme") == "dark");
 
 #if defined Q_OS_WIN
+    ui->PWADFolders_textBrowser->setFontPointSize(7);
+    ui->IWADFolders_textBrowser->setFontPointSize(7);
     ui->PWADFolders_textBrowser->setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:'.AppleSystemUIFont'; font-size:8pt; font-weight:400; font-style:normal;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
                                          "text-indent:0px;\"><span style=\" font-size:8pt;\">When droping .lmp files into the launcher, it autoselects the correct IWAD, PWADs and complevel.</span></p><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">For this to work, you need to add the folders you have your PWADs in, to the following container.</span></p></body></html>");
     ui->IWADFolders_textBrowser->setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:'.AppleSystemUIFont'; font-size:8pt; font-weight:400; font-style:normal;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
                                          "text-indent:0px;\"><span style=\" font-size:8pt;\">The launcher will search for IWADs on these folders.</span></p><p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>");
+#elif defined Q_OS_MACOS
+    ui->PWADFolders_textBrowser->setFontPointSize(11);
+    ui->IWADFolders_textBrowser->setFontPointSize(11);
+#else
+    ui->PWADFolders_textBrowser->setFontPointSize(6.5);
+    ui->IWADFolders_textBrowser->setFontPointSize(6.5);
 #endif
 
     ui->PWADFolders_textBrowser->setVisible(false);

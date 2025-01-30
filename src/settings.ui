@@ -155,9 +155,9 @@ Launcher should fix them.</string>
      <property name="geometry">
       <rect>
        <x>260</x>
-       <y>135</y>
-       <width>221</width>
-       <height>101</height>
+       <y>130</y>
+       <width>235</width>
+       <height>105</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -317,9 +317,9 @@ border-radius:3px</string>
      <property name="geometry">
       <rect>
        <x>260</x>
-       <y>35</y>
-       <width>171</width>
-       <height>70</height>
+       <y>30</y>
+       <width>180</width>
+       <height>60</height>
       </rect>
      </property>
      <property name="font">
