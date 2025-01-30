@@ -50,7 +50,7 @@ jobs:
           cd build
           qmake ..
           make
-          zip -j nyan-launcher-${{ github.ref_name }}-win64.zip release/Nyan-Launcher.exe
+          zip -j nyan-launcher-${{ github.ref_name }}-win64.zip release/nyan-launcher.exe
           
       - uses: actions/upload-artifact@v4
         with:

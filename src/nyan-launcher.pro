@@ -2,7 +2,7 @@ QT       += core gui network concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-DEFINES += APP_NAME='\\"Nyan-Launcher\\"'
+DEFINES += APP_NAME='\\"nyan-launcher\\"'
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
