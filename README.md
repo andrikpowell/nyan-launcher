@@ -67,13 +67,13 @@ Available for Windows, macOS and Linux in [Releases](https://github.com/andrikpo
     </div>
 </details>
 
-<details>
+<!--<details>
     <summary>Linux</summary>
     <div display="flex" flex-direction="row">
         <img src="./screenshots/linux-dark.png" width="300">
         <img src="./screenshots/linux-light.png" width="300">
     </div>
-</details>
+</details>-->
 
 ## Compiling
 
