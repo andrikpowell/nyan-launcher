@@ -14,6 +14,10 @@
 [![GitHub branch check runs](https://img.shields.io/github/check-runs/andrikpowell/nyan-launcher/master?logo=github&label=Continuous%20Integration)](https://github.com/andrikpowell/nyan-launcher/actions)
 [![GitHub top language](https://img.shields.io/github/languages/top/andrikpowell/nyan-launcher)]()
 [![Static Badge](https://img.shields.io/badge/Qt-grey?logo=qt)](https://www.qt.io)
+<br>
+[![Downloads (total)](https://img.shields.io/github/downloads/andrikpowell/nyan-launcher/total)](https://github.com/andrikpowell/nyan-launcher/releases/latest)
+[![Downloads (latest)](https://img.shields.io/github/downloads/andrikpowell/nyan-launcher/latest/total.svg)](https://github.com/andrikpowell/nyan-launcher/releases/latest)
+[![Latest Release](https://img.shields.io/github/release-date/andrikpowell/nyan-launcher.svg)](https://github.com/andrikpowell/nyan-launcher/releases/latest)
 
 </div>
 
