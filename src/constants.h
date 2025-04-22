@@ -29,25 +29,25 @@ extern QString launcherfolder;
 const QStringList exmxIWADS = {"doom",    "doom1",    "doomu",  "bfgdoom",
                                "freedoom", "freedoom1",
                                "heretic", "heretic1",
-                               "chex",
+                               "chex",    "chex3v",
                                "rekkrsa"};
 
 const QStringList mapxxIWADS = {"doom2", "doom2f",  "bfgdoom2",
                                 "freedoom2",  "freedm",
                                 "tnt",   "plutonia",
-                                "hexen",
+                                "chex3d2", "hexen",
                                 "hacx"};
 
 const QStringList exmxIWAD_NICENAMES = {"Doom",    "Doom (Shareware)",    "Ultimate Doom", "Doom (BFG)",
                                         "Freedoom", "Freedoom",
                                         "Heretic", "Heretic (Shareware)",
-                                        "Chex",
+                                        "Chex",  "Chex 3",
                                         "REKKR"};
 
 const QStringList mapxxIWAD_NICENAMES = {"Doom II", "Doom II (French)", "Doom II (BFG)",
                                          "Freedoom II", "FreeDM",
                                          "TNT",   "Plutonia",
-                                         "Hexen",
+                                         "Chex 3 (Modding)", "Hexen",
                                          "HACX"};
 
 const QStringList LIMIT_COMPLEVELS = {"Default", "0 - Doom v1.2", "1 - Doom v1.666", "2 - Doom / Doom II", "3 - Ultimate Doom", "4 - Final Doom"};
