@@ -237,6 +237,7 @@ QStringList findIwads_NiceNames()
     // This makes sure that a logical order to display the IWADs is followed
     // I think doing this is better than having random orders like: Doom 2 -> TNT -> Doom
     QStringList IWADS = exmxIWADS + mapxxIWADS;
+    QStringList IWAD_NICENAMES = exmxIWAD_NICENAMES + mapxxIWAD_NICENAMES;
 
     for (int i = 0; i < IWADS.size(); i++)
     {

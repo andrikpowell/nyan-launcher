@@ -26,27 +26,29 @@ extern QString gameName;
 extern QString datafolder;
 extern QString launcherfolder;
 
-const QStringList exmxIWADS = {"doom",    "doom1",    "doomu", "freedoom", "freedoom1", "bfgdoom",
-
+const QStringList exmxIWADS = {"doom",    "doom1",    "doomu",  "bfgdoom",
+                               "freedoom", "freedoom1",
                                "heretic", "heretic1",
+                               "chex",
+                               "rekkrsa"};
 
-                               "chex",    "rekkrsa"};
-
-const QStringList mapxxIWADS = {"doom2", "doom2f",   "freedoom2", "bfgdoom2",
-
+const QStringList mapxxIWADS = {"doom2", "doom2f",  "bfgdoom2",
+                                "freedoom2",  "freedm",
                                 "tnt",   "plutonia",
-
                                 "hexen",
-
                                 "hacx"};
 
-const QStringList IWAD_NICENAMES = {"Doom",    "Doom (Shareware)",    "Ultimate Doom", "Freedoom", "Freedoom (Shareware)", "Doom (BFG)",
-                               "Heretic", "Heretic (Shareware)",
-                               "Chex",    "REKKR",
-                               "Doom II", "Doom II (French)",   "Freedoom II", "Doom II (BFG)",
-                               "TNT",   "Plutonia",
-                               "Hexen",
-                               "HACX"};
+const QStringList exmxIWAD_NICENAMES = {"Doom",    "Doom (Shareware)",    "Ultimate Doom", "Doom (BFG)",
+                                        "Freedoom", "Freedoom",
+                                        "Heretic", "Heretic (Shareware)",
+                                        "Chex",
+                                        "REKKR"};
+
+const QStringList mapxxIWAD_NICENAMES = {"Doom II", "Doom II (French)", "Doom II (BFG)",
+                                         "Freedoom II", "FreeDM",
+                                         "TNT",   "Plutonia",
+                                         "Hexen",
+                                         "HACX"};
 
 const QStringList LIMIT_COMPLEVELS = {"Default", "0 - Doom v1.2", "1 - Doom v1.666", "2 - Doom / Doom II", "3 - Ultimate Doom", "4 - Final Doom"};
 
