@@ -5,7 +5,7 @@
 #include <QStandardPaths>
 #include <QStringList>
 
-const QString version = "v1.4";
+const QString version = "v1.4.1";
 
 const QString LAUNCHER_REPO = "https://github.com/andrikpowell/nyan-launcher";
 const QString LAUNCHER_API = "https://api.github.com/repos/andrikpowell/nyan-launcher/releases/latest";
