@@ -5,6 +5,7 @@ set "REPO=andrikpowell/nyan-doom"
 
 set "DEST=%~dp0"
 if not "%~1"=="" set "DEST=%~1"
+if "%DEST:~-1%"=="\" set "DEST=%DEST:~0,-1%"
 echo Destination folder is "%DEST%"
 
 :: Get latest version
