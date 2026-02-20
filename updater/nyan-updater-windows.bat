@@ -12,7 +12,7 @@ echo Latest Nyan Doom version is %TAG%
 set VERSION=%TAG:~1%
 
 :: File name
-set v_win64=nyan-doom-%VERSION%-win64
+set v_win64=nyan-doom-%VERSION%-win-x64
 
 mkdir "%temp%\nyan-doom-temp"
 
