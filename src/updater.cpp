@@ -241,47 +241,35 @@ void updateGame()
         " & echo."
 
         " & echo [1] set TMP"
-        " & set \"TMP=" + tmpDir + "\""
+        " & set TMP=" + tmpDir +
         " & echo TMP after set = [%TMP%]"
         " & echo errorlevel after set = %errorlevel%"
-        " & if not \"%errorlevel%\"==\"0\" (echo FAIL at step 1 & pause & exit /b 1)"
         " & echo."
 
         " & echo [2] mkdir TMP if missing"
         " & if not exist \"%TMP%\" mkdir \"%TMP%\""
         " & echo errorlevel after mkdir = %errorlevel%"
-        " & if not \"%errorlevel%\"==\"0\" (echo FAIL at step 2 & pause & exit /b 2)"
         " & echo."
 
         " & echo [3] where curl"
         " & where curl"
-        " & echo errorlevel after where curl = %errorlevel%"
-        " & if not \"%errorlevel%\"==\"0\" (echo FAIL at step 3 & pause & exit /b 3)"
         " & echo."
 
         " & echo [4] curl download"
-        " & echo curl -o \"" + batPath + "\" \"" + GAME_UPDATER_WINDOWS + "\""
         " & curl -L --fail --silent --show-error -o \"" + batPath + "\" \"" + GAME_UPDATER_WINDOWS + "\""
         " & echo errorlevel after curl = %errorlevel%"
-        " & if not \"%errorlevel%\"==\"0\" (echo FAIL at step 4 & pause & exit /b 4)"
         " & echo."
 
         " & echo [5] dir bat"
         " & dir \"" + batPath + "\""
-        " & echo errorlevel after dir = %errorlevel%"
-        " & if not \"%errorlevel%\"==\"0\" (echo FAIL at step 5 & pause & exit /b 5)"
         " & echo."
 
         " & echo [6] call updater"
-        " & echo call \"" + batPath + "\" \"" + dest + "\""
         " & call \"" + batPath + "\" \"" + dest + "\""
         " & echo errorlevel after call = %errorlevel%"
-        " & if not \"%errorlevel%\"==\"0\" (echo FAIL at step 6 & pause & exit /b 6)"
-
         " & echo."
-        " & echo --- done ---"
-        " & pause";
 
+        " & pause";
     process.setProgram("cmd.exe");
     process.setArguments({"/s", "/k", cmd});
     process.startDetached();
