@@ -231,19 +231,18 @@ void updateGame()
                                                   // args->startupInfo->dwFlags |= STARTF_USEFILLATTRIBUTE;
                                               });
 
-QString cmd =
-    "echo [A] TMPDIR=" + tmpDir +
-    " && set \"TMP=" + tmpDir + "\""
-    " && echo [B] TMP=[%TMP%]"
-    " && if not exist \"%TMP%\" (echo [C] mkdir \"%TMP%\" & mkdir \"%TMP%\")"
-    " && echo [D] downloading to \"" + batPath + "\""
-    " && where curl"
-    " && curl -L --fail --silent --show-error -o \"" + batPath + "\" \"" + GAME_UPDATER_WINDOWS + "\""
-    " && echo [E] curl ok, bat exists?"
-    " && dir \"" + batPath + "\""
-    " && echo [F] calling bat with dest=\"" + dest + "\""
-    " && call \"" + batPath + "\" \"" + dest + "\""
-    " || (echo. & echo [FAIL] errorlevel=%errorlevel% & echo. & pause)";
+    QString cmd =
+        "set \"TMP=" + tmpDir + "\""
+        " && echo [B] TMP=[%TMP%]"
+        " && if not exist \"%TMP%\" (echo [C] mkdir \"%TMP%\" & mkdir \"%TMP%\")"
+        " && echo [D] downloading to \"" + batPath + "\""
+        " && where curl"
+        " && curl -L --fail --silent --show-error -o \"" + batPath + "\" \"" + GAME_UPDATER_WINDOWS + "\""
+        " && echo [E] curl ok & dir \"" + batPath + "\""
+        " && echo [F] calling updater"
+        " && call \"" + batPath + "\" \"" + launcherfolder + "\""
+        " || (echo. & echo [FAIL] errorlevel=%errorlevel% & echo. & pause)";
+
     process.setProgram("cmd.exe");
     process.setArguments({"/c", cmd});
     process.startDetached();
