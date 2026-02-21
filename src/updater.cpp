@@ -217,8 +217,8 @@ void updateGame()
                                        "chmod +x /tmp/nyan-updater-macos.sh;"
                                        "open -na Terminal --args /tmp/nyan-updater-macos.sh"});
 #elif defined(Q_OS_WIN)
-    const QString tmpDir = "%TEMP%\\nyan-doom-temp";
-    const QString batPath = tmpDir + "\\nyan-updater-windows.bat";
+    const QString tmpDir = "%TEMP%/nyan-doom-temp";
+    const QString batPath = tmpDir + "/nyan-updater-windows.bat";
 
     QString dest = QDir::toNativeSeparators(launcherfolder);
     while (dest.endsWith('\\') || dest.endsWith('/')) dest.chop(1);
