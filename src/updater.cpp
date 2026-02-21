@@ -217,6 +217,9 @@ void updateGame()
                                        "chmod +x /tmp/nyan-updater-macos.sh;"
                                        "open -na Terminal --args /tmp/nyan-updater-macos.sh"});
 #elif defined(Q_OS_WIN)
+    const QString tmpDir = "%TEMP%\\nyan-doom-temp";
+    const QString batPath = tmpDir + "\\nyan-updater-windows.bat";
+
     QProcess process;
     process.setCreateProcessArgumentsModifier([] (QProcess::CreateProcessArguments *args)
                                               {
@@ -224,11 +227,16 @@ void updateGame()
                                                   args->startupInfo->dwFlags &= ~STARTF_USESTDHANDLES;
                                                   args->startupInfo->dwFlags |= STARTF_USEFILLATTRIBUTE;
                                               });
+
+    QString cmd =
+        "set \"TMP=" + tmpDir + "\""
+        " && if not exist \"%TMP%\" mkdir \"%TMP%\""
+        " && curl -L --fail --silent --show-error -o \"" + batPath + "\" \"" + GAME_UPDATER_WINDOWS + "\""
+        " && call \"" + batPath + "\" \"" + launcherfolder + "\""
+        " || (echo. & echo Updater failed. & echo. & pause)";
+
     process.setProgram("cmd.exe");
-    process.setArguments({"/c", "powershell -command New-Item \"%temp%\\nyan-doom-temp\" -type directory -force && "
-                                "powershell -command Invoke-WebRequest -OutFile '%temp%\\nyan-doom-temp\\nyan-updater-windows.bat' -Uri '" + GAME_UPDATER_WINDOWS + "' && "
-                                "powershell -command Start-Process -FilePath '%temp%\\nyan-doom-temp\\nyan-updater-windows.bat' -ArgumentList '" + launcherfolder + "' -Wait -NoNewWindow"
-    });
+    process.setArguments({"/c", cmd});
     process.startDetached();
 #elif defined(Q_OS_LINUX)
     QDesktopServices::openUrl(QUrl(GAME_REPO + "/releases/latest"));
