@@ -217,8 +217,8 @@ void updateGame()
                                        "chmod +x /tmp/nyan-updater-macos.sh;"
                                        "open -na Terminal --args /tmp/nyan-updater-macos.sh"});
 #elif defined(Q_OS_WIN)
-    const QString tmpDir = "%TEMP%/nyan-doom-temp";
-    const QString batPath = tmpDir + "/nyan-updater-windows.bat";
+    QString tmpDir = QDir::toNativeSeparators(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/nyan-doom-temp");
+    QString batPath = tmpDir + "\\nyan-updater-windows.bat";
 
     QString dest = QDir::toNativeSeparators(launcherfolder);
     while (dest.endsWith('\\') || dest.endsWith('/')) dest.chop(1);
@@ -231,47 +231,36 @@ void updateGame()
                                                   // args->startupInfo->dwFlags |= STARTF_USEFILLATTRIBUTE;
                                               });
 
-    QString cmd =
-        "@echo on"
-        " & setlocal EnableExtensions DisableDelayedExpansion"
-        " & echo --- begin launcher updater debug ---"
-        " & echo raw tmpDir literal = [" + tmpDir + "]"
-        " & echo raw batPath literal = [" + batPath + "]"
-        " & echo raw dest literal   = [" + dest + "]"
-        " & echo."
+    QString script =
+        "@echo on & setlocal EnableExtensions EnableDelayedExpansion "
+        "& set \"TMP=%~1\" "
+        "& set \"BAT=%~2\" "
+        "& set \"URL=%~3\" "
+        "& set \"DEST=%~4\" "
+        "& echo TMP=[!TMP!] "
+        "& echo BAT=[!BAT!] "
+        "& echo URL=[!URL!] "
+        "& echo DEST=[!DEST!] "
+        "& if not exist \"!TMP!\" mkdir \"!TMP!\" "
+        "& echo Downloading updater... "
+        "& curl -L --fail --silent --show-error -o \"!BAT!\" \"!URL!\" "
+        "& if errorlevel 1 (echo CURL FAILED !errorlevel! & pause & exit /b 1) "
+        "& dir \"!BAT!\" "
+        "& echo Running updater... "
+        "& call \"!BAT!\" \"!DEST!\" "
+        "& echo Updater finished (errorlevel=!errorlevel!) "
+        "& pause";
 
-        " & echo [1] set TMP"
-        " & set TMP=" + tmpDir +
-        " & echo TMP after set = [%TMP%]"
-        " & echo errorlevel after set = %errorlevel%"
-        " & echo."
-
-        " & echo [2] mkdir TMP if missing"
-        " & if not exist \"%TMP%\" mkdir \"%TMP%\""
-        " & echo errorlevel after mkdir = %errorlevel%"
-        " & echo."
-
-        " & echo [3] where curl"
-        " & where curl"
-        " & echo."
-
-        " & echo [4] curl download"
-        " & curl -L --fail --silent --show-error -o \"" + batPath + "\" \"" + GAME_UPDATER_WINDOWS + "\""
-        " & echo errorlevel after curl = %errorlevel%"
-        " & echo."
-
-        " & echo [5] dir bat"
-        " & dir \"" + batPath + "\""
-        " & echo."
-
-        " & echo [6] call updater"
-        " & call \"" + batPath + "\" \"" + dest + "\""
-        " & echo errorlevel after call = %errorlevel%"
-        " & echo."
-
-        " & pause";
     process.setProgram("cmd.exe");
-    process.setArguments({"/s", "/k", cmd});
+
+    process.setArguments({
+        "/V:ON", "/K", script,
+        tmpDir,
+        batPath,
+        GAME_UPDATER_WINDOWS,
+        dest
+    });
+
     process.startDetached();
 #elif defined(Q_OS_LINUX)
     QDesktopServices::openUrl(QUrl(GAME_REPO + "/releases/latest"));
