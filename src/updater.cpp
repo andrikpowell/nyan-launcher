@@ -220,19 +220,22 @@ void updateGame()
     const QString tmpDir = "%TEMP%\\nyan-doom-temp";
     const QString batPath = tmpDir + "\\nyan-updater-windows.bat";
 
+    QString dest = QDir::toNativeSeparators(launcherfolder);
+    while (dest.endsWith('\\') || dest.endsWith('/')) dest.chop(1);
+
     QProcess process;
     process.setCreateProcessArgumentsModifier([] (QProcess::CreateProcessArguments *args)
                                               {
                                                   args->flags |= CREATE_NEW_CONSOLE;
                                                   args->startupInfo->dwFlags &= ~STARTF_USESTDHANDLES;
-                                                  args->startupInfo->dwFlags |= STARTF_USEFILLATTRIBUTE;
+                                                  // args->startupInfo->dwFlags |= STARTF_USEFILLATTRIBUTE;
                                               });
 
     QString cmd =
         "set \"TMP=" + tmpDir + "\""
         " && if not exist \"%TMP%\" mkdir \"%TMP%\""
         " && curl -L --fail --silent --show-error -o \"" + batPath + "\" \"" + GAME_UPDATER_WINDOWS + "\""
-        " && call \"" + batPath + "\" \"" + launcherfolder + "\""
+        " && call \"" + batPath + "\" \"" + dest + "\""
         " || (echo. & echo Updater failed. & echo. & pause)";
 
     process.setProgram("cmd.exe");
