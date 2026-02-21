@@ -1,4 +1,3 @@
-@ECHO OFF
 setlocal
 
 set "REPO=andrikpowell/nyan-doom"
