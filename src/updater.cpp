@@ -234,17 +234,18 @@ void updateGame()
     QString cmd =
         "set \"TMP=" + tmpDir + "\""
         " && echo [B] TMP=[%TMP%]"
-        " && if not exist \"%TMP%\" (echo [C] mkdir \"%TMP%\" & mkdir \"%TMP%\")"
+        " && if not exist \"%TMP%\" mkdir \"%TMP%\""
+        " && echo [C] mkdir ok"
         " && echo [D] downloading to \"" + batPath + "\""
         " && where curl"
         " && curl -L --fail --silent --show-error -o \"" + batPath + "\" \"" + GAME_UPDATER_WINDOWS + "\""
         " && echo [E] curl ok & dir \"" + batPath + "\""
         " && echo [F] calling updater"
-        " && call \"" + batPath + "\" \"" + launcherfolder + "\""
+        " && call \"" + batPath + "\" \"" + dest + "\""
         " || (echo. & echo [FAIL] errorlevel=%errorlevel% & echo. & pause)";
 
     process.setProgram("cmd.exe");
-    process.setArguments({"/c", cmd});
+    process.setArguments({"/s", "/c", cmd});
     process.startDetached();
 #elif defined(Q_OS_LINUX)
     QDesktopServices::openUrl(QUrl(GAME_REPO + "/releases/latest"));
