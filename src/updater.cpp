@@ -232,7 +232,6 @@ void updateGame()
     " && "
     "call \"%TEMP%\\nyan-doom-temp\\nyan-updater-windows.bat\" \"" + launcherfolder + "\""
     });
-});
     process.startDetached();
 #elif defined(Q_OS_LINUX)
     QDesktopServices::openUrl(QUrl(GAME_REPO + "/releases/latest"));
