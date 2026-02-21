@@ -217,12 +217,6 @@ void updateGame()
                                        "chmod +x /tmp/nyan-updater-macos.sh;"
                                        "open -na Terminal --args /tmp/nyan-updater-macos.sh"});
 #elif defined(Q_OS_WIN)
-    QString tmpDir = QDir::toNativeSeparators(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/nyan-doom-temp");
-    QString batPath = tmpDir + "\\nyan-updater-windows.bat";
-
-    QString dest = QDir::toNativeSeparators(launcherfolder);
-    while (dest.endsWith('\\') || dest.endsWith('/')) dest.chop(1);
-
     QProcess process;
     process.setCreateProcessArgumentsModifier([] (QProcess::CreateProcessArguments *args)
                                               {
@@ -230,37 +224,14 @@ void updateGame()
                                                   args->startupInfo->dwFlags &= ~STARTF_USESTDHANDLES;
                                                   // args->startupInfo->dwFlags |= STARTF_USEFILLATTRIBUTE;
                                               });
-
-    QString script =
-        "@echo on & setlocal EnableExtensions EnableDelayedExpansion "
-        "& set \"TMP=%~1\" "
-        "& set \"BAT=%~2\" "
-        "& set \"URL=%~3\" "
-        "& set \"DEST=%~4\" "
-        "& echo TMP=[!TMP!] "
-        "& echo BAT=[!BAT!] "
-        "& echo URL=[!URL!] "
-        "& echo DEST=[!DEST!] "
-        "& if not exist \"!TMP!\" mkdir \"!TMP!\" "
-        "& echo Downloading updater... "
-        "& curl -L --fail --silent --show-error -o \"!BAT!\" \"!URL!\" "
-        "& if errorlevel 1 (echo CURL FAILED !errorlevel! & pause & exit /b 1) "
-        "& dir \"!BAT!\" "
-        "& echo Running updater... "
-        "& call \"!BAT!\" \"!DEST!\" "
-        "& echo Updater finished (errorlevel=!errorlevel!) "
-        "& pause";
-
     process.setProgram("cmd.exe");
-
-    process.setArguments({
-        "/V:ON", "/K", script,
-        tmpDir,
-        batPath,
-        GAME_UPDATER_WINDOWS,
-        dest
+    process.setArguments({"/k", "powershell -NoProfile -Command "
+    "\"$tmp = Join-Path $env:TEMP 'nyan-doom-temp'; "
+    "New-Item -Path $tmp -ItemType Directory -Force | Out-Null; "
+    "$bat = Join-Path $tmp 'nyan-updater-windows.bat'; "
+    "Invoke-WebRequest -OutFile $bat -Uri '" + GAME_UPDATER_WINDOWS + "'; "
+    "Start-Process -FilePath $bat -ArgumentList @('" + launcherfolder.replace("'", "''") + "') -Wait\""
     });
-
     process.startDetached();
 #elif defined(Q_OS_LINUX)
     QDesktopServices::openUrl(QUrl(GAME_REPO + "/releases/latest"));
