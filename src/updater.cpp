@@ -225,7 +225,7 @@ void updateGame()
                                                   // args->startupInfo->dwFlags |= STARTF_USEFILLATTRIBUTE;
                                               });
     process.setProgram("cmd.exe");
-    process.setArguments({"/k", "powershell -command New-Item \"%temp%\\nyan-doom-temp\" -type directory -force && "
+    process.setArguments({"/c", "powershell -command New-Item \"%temp%\\nyan-doom-temp\" -type directory -force && "
                                 "powershell -command (Invoke-WebRequest -OutFile '%temp%\\nyan-doom-temp\\nyan-updater-windows.bat' -Uri " + GAME_UPDATER_WINDOWS + ") && " +
                                 "powershell -command Start-Process -FilePath '%temp%\\nyan-doom-temp\\nyan-updater-windows.bat' -WorkingDirectory '" + launcherfolder + "' -ArgumentList . -Wait -NoNewWindow"});
     process.startDetached();
