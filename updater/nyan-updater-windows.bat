@@ -38,7 +38,7 @@ set "RC=%ERRORLEVEL%"
 if %RC% GEQ 8 goto :fail
 
 :: Delete temp files
-rmdir /s /q "%TMPDIR%" 2>nul
+if exist "%TMPDIR%" rmdir /s /q "%TMPDIR%" >nul 2>&1
 
 echo Nyan Doom %VERSION% has been installed successfully!
 exit /b 0
@@ -50,7 +50,7 @@ echo Update failed.
 echo.
 
 :: Best-effort cleanup
-if defined TMPDIR if exist "%TMPDIR%" rmdir /s /q "%TMPDIR%" 2>nul
+if defined TMPDIR if exist "%TMPDIR%" rmdir /s /q "%TMPDIR%" >nul 2>&1
 
 pause
 exit /b 1
