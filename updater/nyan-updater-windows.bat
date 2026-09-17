@@ -4,7 +4,14 @@ setlocal
 set "REPO=andrikpowell/nyan-doom"
 
 set "DEST=%~dp0"
-if not "%~1"=="" set "DEST=%~1"
+if not "%~1"=="" (
+    if "%~2"=="" (
+        set "DEST=%~f1"
+    ) else (
+        :: Older launchers pass an unquoted path as multiple arguments
+        set "DEST=%*"
+    )
+)
 if "%DEST:~-1%"=="\" set "DEST=%DEST:~0,-1%"
 echo Destination folder is "%DEST%"
 
