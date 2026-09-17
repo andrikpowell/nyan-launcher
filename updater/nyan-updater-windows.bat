@@ -51,6 +51,7 @@ if exist "%TMPDIR%\%v_win64%.zip" del /q "%TMPDIR%\%v_win64%.zip" >nul 2>&1
 if exist "%TMPDIR%\%v_win64%" rmdir /s /q "%TMPDIR%\%v_win64%" >nul 2>&1
 
 echo Nyan Doom %VERSION% has been installed successfully!
+echo.
 powershell -NoProfile -Command "for ($seconds = 10; $seconds -gt 0; $seconds--) { [Console]::Write([char]13); Write-Host -NoNewline ('Closing in {0} seconds. Press any key to close now... ' -f $seconds); for ($tick = 0; $tick -lt 10; $tick++) { if ([Console]::KeyAvailable) { [void][Console]::ReadKey($true); exit }; Start-Sleep -Milliseconds 100 } }"
 exit 0
 
