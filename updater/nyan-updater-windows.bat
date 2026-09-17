@@ -46,8 +46,9 @@ robocopy "%TMPDIR%\%v_win64%" "%DEST%" * /nfl /ndl /njh /njs /nc /ns /np
 set "RC=%ERRORLEVEL%"
 if %RC% GEQ 8 goto :fail
 
-:: Delete temp files
-if exist "%TMPDIR%" rmdir /s /q "%TMPDIR%" >nul 2>&1
+:: Delete downloaded files without deleting this running batch file.
+if exist "%TMPDIR%\%v_win64%.zip" del /q "%TMPDIR%\%v_win64%.zip" >nul 2>&1
+if exist "%TMPDIR%\%v_win64%" rmdir /s /q "%TMPDIR%\%v_win64%" >nul 2>&1
 
 echo Nyan Doom %VERSION% has been installed successfully!
 exit /b 0
@@ -57,9 +58,6 @@ exit /b 0
 echo.
 echo Update failed.
 echo.
-
-:: Best-effort cleanup
-if defined TMPDIR if exist "%TMPDIR%" rmdir /s /q "%TMPDIR%" >nul 2>&1
 
 pause
 exit /b 1
