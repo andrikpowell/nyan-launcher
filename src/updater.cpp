@@ -224,11 +224,10 @@ void updateGame()
                                                   args->startupInfo->dwFlags &= ~STARTF_USESTDHANDLES;
                                                   args->startupInfo->dwFlags |= STARTF_USEFILLATTRIBUTE;
                                               });
-    process.setWorkingDirectory(launcherfolder);
     process.setProgram("cmd.exe");
     process.setArguments({"/c", "powershell -command New-Item \"%temp%\\nyan-doom-temp\" -type directory -force && "
                                 "powershell -command (Invoke-WebRequest -OutFile '%temp%\\nyan-doom-temp\\nyan-updater-windows.bat' -Uri " + GAME_UPDATER_WINDOWS + ") && " +
-                                "call \"%temp%\\nyan-doom-temp\\nyan-updater-windows.bat\" \".\""});
+                                "powershell -command Start-Process -FilePath '%temp%\\nyan-doom-temp\\nyan-updater-windows.bat' -WorkingDirectory '" + launcherfolder + "' -ArgumentList . -Wait -NoNewWindow"});
     process.startDetached();
 #elif defined(Q_OS_LINUX)
     QDesktopServices::openUrl(QUrl(GAME_REPO + "/releases/latest"));
