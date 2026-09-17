@@ -12,6 +12,7 @@ if not "%~1"=="" (
         set "DEST=%*"
     )
 )
+set "DEST=%DEST:/=\%"
 if "%DEST:~-1%"=="\" set "DEST=%DEST:~0,-1%"
 echo Destination folder is "%DEST%"
 
