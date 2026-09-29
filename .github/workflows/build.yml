@@ -1,0 +1,167 @@
+name: Build
+
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    name: Windows
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Set reference slug
+        run: echo "REF_SLUG=${GITHUB_REF////_}" >> $GITHUB_ENV
+
+      - uses: msys2/setup-msys2@66cd2cce69caa17b53920067426061ca1de3a884
+        with:
+          msystem: MINGW64
+          path-type: minimal
+          update: true
+          install: >-
+            mingw-w64-x86_64-qt5-static
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-make
+            mingw-w64-x86_64-openssl
+            make
+            zip
+
+      - name: Build
+        shell: msys2 {0}
+        run: |
+          export PATH="/mingw64/bin:$PATH"
+          export PATH="/mingw64/qt5-static/bin:$PATH"
+
+          cd src
+          mkdir build
+          cd build
+          qmake ..
+          make
+          find . -name "*.exe"
+          zip -j nyan-launcher-${{ env.REF_SLUG }}-win64.zip release/nyan-launcher.exe
+
+      - name: Store build as artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: nyan-launcher-dev-${{ env.REF_SLUG }}-win64
+          path: src\build\nyan-launcher-${{ env.REF_SLUG }}-win64.zip
+
+      - name: Release
+        if: ${{ contains(github.ref, 'tags') }}
+        uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd
+        with:
+          name: ${{ env.REF_SLUG }}
+          allowUpdates: true
+          artifacts: src/build/nyan-launcher-${{ env.REF_SLUG }}-win64.zip
+
+  build-linux:
+    name: Linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@48d3ad6db93f3627c8ee7a0454bc6f3744f7e730
+        with:
+          version: '6.8.*'
+          host: 'linux'
+          target: 'desktop'
+          arch: 'linux_gcc_64'
+          tools: 'tools_opensslv3_src'
+
+      - name: Build
+        run: |
+          sudo apt install libfuse2
+          cd src
+          mkdir build
+          cd build
+          qmake ..
+          make
+
+          export EXTRA_QT_PLUGINS="waylandcompositor"
+          export EXTRA_PLATFORM_PLUGINS="libqwayland-egl.so;libqwayland-generic.so"
+          wget -c -nv "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage"
+          chmod a+x ./linuxdeploy-x86_64.AppImage
+          wget -c -nv "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/latest/download/linuxdeploy-plugin-qt-x86_64.AppImage"
+          chmod a+x ./linuxdeploy-plugin-qt-x86_64.AppImage
+          ./linuxdeploy-x86_64.AppImage --plugin=qt \
+              --executable=./nyan-launcher \
+              --output=appimage \
+              --appdir=./ \
+              --desktop-file=../../dist/linux/com.andrikpowell.nyan-launcher.desktop \
+              --icon-file=../../dist/icons/com.andrikpowell.nyan-launcher.svg
+
+      - name: Store build as artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: nyan-launcher-dev-linux
+          path: src/build/nyan-launcher-x86_64.AppImage
+
+      - name: Release
+        if: ${{ contains(github.ref, 'tags') }}
+        uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd
+        with:
+          name: ${{ github.ref_name }}
+          allowUpdates: true
+          artifacts: src/build/nyan-launcher-x86_64.AppImage
+
+  build-macos:
+    name: MacOS
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@48d3ad6db93f3627c8ee7a0454bc6f3744f7e730
+        with:
+          aqtversion: '==3.1.*'
+          version: '6.2.0'
+          host: 'mac'
+          target: 'desktop'
+          arch: 'clang_64'
+
+      - name: Set reference slug
+        run: echo "REF_SLUG=${GITHUB_REF////_}" >> $GITHUB_ENV
+
+      - name: Build
+        run: |
+          cd src
+          mkdir build
+          cd build
+          qmake .. "CONFIG+=macdeploy"
+          make
+          macdeployqt ./nyan-launcher.app
+
+          brew install create-dmg
+          create-dmg \
+            --app-drop-link 10 10 \
+            ./nyan-launcher-${{ env.REF_SLUG }}-mac.dmg \
+            ./nyan-launcher.app
+
+      - name: Store build as artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: nyan-launcher-dev-mac
+          path: src/build/nyan-launcher-${{ env.REF_SLUG }}-mac.dmg
+
+      - name: Release
+        if: ${{ contains(github.ref, 'tags') }}
+        uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd
+        with:
+          name: ${{ github.ref_name }}
+          allowUpdates: true
+          artifacts: src/build/nyan-launcher-${{ env.REF_SLUG }}-mac.dmg

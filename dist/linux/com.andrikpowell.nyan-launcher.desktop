@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=nyan-launcher
-Comment=This is a launcher GUI for the Nyan-Doom source port
-Icon=nyan-launcher
+Name=Nyan-Launcher
+Comment=GUI launcher for Nyan Doom
+Icon=com.andrikpowell.nyan-launcher
 TryExec=nyan-doom
 Exec=nyan-launcher
 Categories=Game;ActionGame;

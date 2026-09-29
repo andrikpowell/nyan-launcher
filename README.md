@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./src/icons/nyan-launcher.png" alt="nyan-doom logo" width="200"/>
+    <img src="./dist/icons/nyan-launcher.png" alt="nyan-doom logo" width="200"/>
     <h1>Nyan Launcher</h1>
     <h3>This is a launcher GUI for the <a href="https://github.com/andrikpowell/nyan-doom">Nyan Doom</a> source port</h3>
 </div>
@@ -81,7 +81,7 @@ Available for Windows, macOS and Linux in [Releases](https://github.com/andrikpo
 
 ## Compiling
 
-Code available at [https://github.com/andrikpowell/nyan-launcher/](https://github.com/andrikpowell/nyan-launcher/)
+Code available on [GitHub](https://github.com/andrikpowell/nyan-launcher/)
 
 Instructions in [guides](./guides/)
 

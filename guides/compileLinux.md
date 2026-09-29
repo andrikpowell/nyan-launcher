@@ -45,8 +45,8 @@ A basic build+install script would be
 #installing
 	sudo mv ./nyan-launcher /bin
 	cd ..
-	sudo install -Dm644 ./icons/nyan-launcher.png "${pkgdir}"/usr/share/pixmaps/nyan-launcher.png
-	sudo install -Dm644 ./icons/nyan-launcher.desktop "${pkgdir}"/usr/share/applications/nyan-launcher.desktop
+	sudo install -Dm644 ../../dist/icons/com.andrikpowell.nyan-launcher.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/com.andrikpowell.nyan-launcher.svg
+	sudo install -Dm644 ../../dist/linux/com.andrikpowell.nyan-launcher.desktop "${pkgdir}"/usr/share/applications/com.andrikpowell.nyan-launcher.desktop
 ```
 
 

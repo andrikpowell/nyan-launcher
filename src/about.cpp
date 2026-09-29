@@ -40,4 +40,3 @@ void About::ctrlw() // CTRL+W runs this function close the active window
     QWidget *currentWindow = QApplication::activeWindow();
     currentWindow->close();
 }
-

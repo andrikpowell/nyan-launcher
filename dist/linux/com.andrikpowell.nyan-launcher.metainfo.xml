@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<component type="desktop-application">
+  <id>com.andrikpowell.nyan-launcher</id>
+  <name>nyan-launcher</name>
+  <developer id="com.andrikpowell.nyan-launcher">
+    <name>Nyan Launcher contributors</name>
+    <url>https://github.com/andrikpowell/nyan-launcher/graphs/contributors</url>
+  </developer>
+  <branding>
+    <color type="primary" scheme_preference="light">#eaeaec</color>
+    <color type="primary" scheme_preference="dark">#442b2b</color>
+  </branding>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <launchable type="desktop-id">com.andrikpowell.nyan-launcher.desktop</launchable>
+  <url type="homepage">https://github.com/andrikpowell/nyan-launcher</url>
+  <url type="vcs-browser">https://github.com/andrikpowell/nyan-launcher</url>
+  <summary>GUI launcher for Nyan Doom</summary>
+  <description>
+    <p>For both casual players and experienced speedrunners, this launcher is everything
+      you need to organize and launch Nyan Doom. It has a very simple and intuitive graphical
+      interface with the more advanced features working under the hood and in organized menus.
+      Nyan Launcher fits in your Nyan Doom installation with minimal footprint, and can even
+      auto-update it.</p>
+    <p>Key Features</p>
+      <ul>
+        <li>Basic launcher operations</li>
+        <li>Special support for Nyan Doom specific features</li>
+        <li>Customizable toggles for quick switching parameters</li>
+        <li>Auto-updating Nyan Doom</li>
+        <li>Ability to read the footer of demos and auto-loading the needed pwads</li>
+        <li>Built in console, removing the need of showing an ugly CMD/Terminal window</li>
+        <li>Ease of running -help to see all supported parameters</li>
+        <li>History list of past launched parameters, and loading them back in</li>
+        <li>Saving the current state of the launcher to a file, and loading it back later</li>
+        <li>Exporting the current state to a .bat/.sh script</li>
+      </ul>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://cdn.jsdelivr.net/gh/andrikpowell/nyan-launcher@master/screenshots/linux-dark.png</image>
+      <caption>Dark mode</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://cdn.jsdelivr.net/gh/andrikpowell/nyan-launcher@master/screenshots/linux-light.png?raw=true</image>
+      <caption>Light mode</caption>
+    </screenshot>
+  </screenshots>
+  <categories>
+    <category>Game</category>
+  </categories>
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+  </supports>
+  <provides>
+    <binary>nyan-launcher</binary>
+  </provides>
+  <keywords>
+    <keyword>shooter</keyword>
+    <keyword>fps</keyword>
+    <keyword>port</keyword>
+    <keyword>speedrunning</keyword>
+  </keywords>
+  <releases>
+    <release version="1.5" date="2026-09-29" url="https://github.com/andrikpowell/nyan-launcher/releases/tag/v1.5">
+      <description/>
+    </release>
+    <release version="1.4.1" date="2025-04-22" url="https://github.com/andrikpowell/nyan-launcher/releases/tag/v1.4.1">
+      <description/>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1">
+    <content_attribute id="violence-fantasy">intense</content_attribute>
+    <content_attribute id="violence-bloodshed">intense</content_attribute>
+    <content_attribute id="violence-desecration">moderate</content_attribute>
+  </content_rating>
+</component>
