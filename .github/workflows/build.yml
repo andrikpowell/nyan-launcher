@@ -110,7 +110,7 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: nyan-launcher-dev-linux
-          path: src/build/nyan-launcher-x86_64.AppImage
+          path: src/build/Nyan-Launcher-x86_64.AppImage
 
       - name: Release
         if: ${{ contains(github.ref, 'tags') }}
@@ -118,7 +118,7 @@ jobs:
         with:
           name: ${{ github.ref_name }}
           allowUpdates: true
-          artifacts: src/build/nyan-launcher-x86_64.AppImage
+          artifacts: src/build/Nyan-Launcher-x86_64.AppImage
 
   build-macos:
     name: MacOS
